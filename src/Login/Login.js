@@ -4,7 +4,8 @@ class Login extends React.Component {
     constructor(){
         super()
         this.state = {
-
+            username: '',
+            password: ''
         }
     }
 
@@ -23,7 +24,9 @@ class Login extends React.Component {
         })
         .then(r => r.json())
         .then( user => {
+            this.setState({})
             console.log(user)
+
         })
     }
 

@@ -4,7 +4,10 @@ class Register extends React.Component {
     constructor(){
         super()
         this.state = {
-
+            first_name: '',
+            last_name: '',
+            username: '',
+            password: ''
         }
     }
 
@@ -25,6 +28,7 @@ class Register extends React.Component {
         })
         .then(r => r.json())
         .then( user => {
+            this.setState({})
             console.log(user)
         })
     }
