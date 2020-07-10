@@ -1,5 +1,9 @@
 import {createStore} from 'redux'
-import reducer from './reducer'
+import thunk from 'redux-thunk'
+
+import reducer from './Reducers/root'
+
+const middleware = [thunk];
 
 const store = createStore(reducer)
 

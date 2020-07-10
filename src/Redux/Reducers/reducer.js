@@ -1,5 +1,10 @@
 
-const reducer = (oldState, action) => {
+
+const initialState = {
+    
+}
+
+const reducer = (oldState = initialState, action) => {
 
     switch (action.type) {
 
