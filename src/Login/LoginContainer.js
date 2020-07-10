@@ -21,8 +21,10 @@ class LoginContainer extends React.Component {
         return (
             <div className='LoginContainer'>
                 <div className='Login-cont-toggle-bar'>
-                    <div className={`Login-cont-toggle ${this.state.showingRegister ? '' : 'active' }`}>Login</div>
-                    <div className={`Login-cont-toggle ${this.state.showingRegister ? 'active' : '' }`}>Register</div>
+                    <div className={`Login-cont-toggle ${this.state.showingRegister ? '' : 'active' }`} 
+                        onClick={this.toggleLogin}>Login</div>
+                    <div className={`Login-cont-toggle ${this.state.showingRegister ? 'active' : '' }`} 
+                        onClick={this.toggleLogin}>Register</div>
                 </div>
                 {this.state.showingRegister 
                 ? <Register /> 
