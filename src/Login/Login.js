@@ -1,13 +1,9 @@
 import React from 'react'
 
+import {connect} from 'react-redux'
+
 class Login extends React.Component {
-    constructor(){
-        super()
-        this.state = {
-            username: '',
-            password: ''
-        }
-    }
+   
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -18,20 +14,28 @@ class Login extends React.Component {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                username: this.state.username,
-                password: this.state.password
+                username: this.props.username,
+                password: this.props.password
             })
         })
         .then(r => r.json())
         .then( user => {
-            this.setState({})
+            this.props.dispatch({
+                type: 'LOGIN_FORM',
+                payload: {
+                    username: '',
+                    password: ''}
+            })
             console.log(user)
 
         })
     }
 
     handleChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
+        this.props.dispatch({
+            type: "LOGIN_FORM", 
+            payload: {[e.target.name]: e.target.value}
+        })
     }
 
     render(){
@@ -42,13 +46,13 @@ class Login extends React.Component {
                     <label htmlFor='Log-username'> Username: 
                         <input id='Log-username' name='username' 
                             type='text'
-                            value={this.state.username} 
+                            value={this.props.username} 
                             onChange={this.handleChange}/>
                     </label>
                     <label htmlFor='Log-password'> Password: 
                         <input id='Log-password' name='password' 
                             type='password'
-                            value={this.state.password} 
+                            value={this.props.password} 
                             onChange={this.handleChange}/>
                     </label>
                     <button type='submit'>Login</button>
@@ -60,4 +64,11 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+        username: state.username,
+        password: state.password
+    }
+} 
+
+export default connect(mapStateToProps)(Login);

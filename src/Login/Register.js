@@ -1,16 +1,9 @@
 import React from 'react'
 
-class Register extends React.Component {
-    constructor(){
-        super()
-        this.state = {
-            first_name: '',
-            last_name: '',
-            username: '',
-            password: ''
-        }
-    }
+import {connect} from 'react-redux'
 
+class Register extends React.Component {
+    
     handleSubmit = (e) => {
         e.preventDefault()
         fetch('http://localhost:3001/signup', {
@@ -20,21 +13,32 @@ class Register extends React.Component {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                first_name: this.state.first_name,
-                last_name: this.state.last_name,
-                username: this.state.username,
-                password: this.state.password
+                first_name: this.props.first_name,
+                last_name: this.props.last_name,
+                username: this.props.username,
+                password: this.props.password
             })
         })
         .then(r => r.json())
         .then( user => {
-            this.setState({})
+            this.props.dispatch({
+                type: 'REGISTER_FORM',
+                payload: {
+                    first_name: '',
+                    last_name: '',
+                    username: '',
+                    password: ''
+                }
+            })
             console.log(user)
         })
     }
 
     handleChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
+        this.props.dispatch({
+            type: "REGISTER_FORM",
+            payload: {[e.target.name]: e.target.value}
+        })
     }
 
     render(){
@@ -45,25 +49,25 @@ class Register extends React.Component {
                     <label htmlFor='Reg-first_name'> First Name: 
                         <input id='Reg-first_name' name='first_name' 
                             type='text'
-                            value={this.state.first_name} 
+                            value={this.props.first_name} 
                             onChange={this.handleChange}/>
                     </label>
                     <label htmlFor='Reg-last_name'> Last Name: 
                         <input id='Reg-last_name' name='last_name' 
                             type='text'
-                            value={this.state.last_name} 
+                            value={this.props.last_name} 
                             onChange={this.handleChange}/>
                     </label>
                     <label htmlFor='Reg-username'> Username: 
                         <input id='Reg-username' name='username' 
                             type='text'
-                            value={this.state.username} 
+                            value={this.props.username} 
                             onChange={this.handleChange}/>
                     </label>
                     <label htmlFor='Reg-password'> Password: 
                         <input id='Reg-password' name='password' 
                             type='password'
-                            value={this.state.password} 
+                            value={this.props.password} 
                             onChange={this.handleChange}/>
                     </label>
                     <button type='submit'>Register</button>
@@ -75,4 +79,13 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+    return {
+        first_name: state.first_name,
+        last_name: state.last_name,
+        username: state.username,
+        password: state.password
+    }
+}
+
+export default connect(mapStateToProps)(Register);
