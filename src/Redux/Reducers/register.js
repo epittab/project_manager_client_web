@@ -1,5 +1,4 @@
 
-
 const initialState = {
     first_name: '',
     last_name: '',
@@ -13,6 +12,8 @@ const reducer = (oldState = initialState, action) => {
 
         case "REGISTER_FORM":
             return {...oldState, ...action.payload}
+        case "REGISTER_FORM_CLEANUP":
+            return initialState
         default:
             return oldState
 

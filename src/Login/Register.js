@@ -4,6 +4,10 @@ import {connect} from 'react-redux'
 
 class Register extends React.Component {
     
+    componentWillUnmount(){
+        this.props.dispatch({type: 'REGISTER_FORM_CLEANUP'})
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
         fetch('http://localhost:3001/signup', {
@@ -21,15 +25,7 @@ class Register extends React.Component {
         })
         .then(r => r.json())
         .then( user => {
-            this.props.dispatch({
-                type: 'REGISTER_FORM',
-                payload: {
-                    first_name: '',
-                    last_name: '',
-                    username: '',
-                    password: ''
-                }
-            })
+            this.props.dispatch({type: 'REGISTER_FORM_CLEANUP'})
             console.log(user)
         })
     }
@@ -81,10 +77,10 @@ class Register extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        first_name: state.first_name,
-        last_name: state.last_name,
-        username: state.username,
-        password: state.password
+        first_name: state.register.first_name,
+        last_name: state.register.last_name,
+        username: state.register.username,
+        password: state.register.password
     }
 }
 

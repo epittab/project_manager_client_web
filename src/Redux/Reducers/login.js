@@ -5,11 +5,13 @@ const initialState = {
 }
 
 const reducer = (oldState = initialState, action) => {
-    console.log('login')
+    
     switch (action.type) {
         
         case "LOGIN_FORM":
             return {...oldState, ...action.payload}
+        case "LOGIN_FORM_CLEANUP":
+                return initialState
         default:
             return oldState
     }

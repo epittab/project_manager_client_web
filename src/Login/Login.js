@@ -1,9 +1,11 @@
 import React from 'react'
 
 import {connect} from 'react-redux'
-
 class Login extends React.Component {
    
+    componentWillUnmount(){
+        this.props.dispatch({type: 'LOGIN_FORM_CLEANUP'})
+    }
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -20,12 +22,7 @@ class Login extends React.Component {
         })
         .then(r => r.json())
         .then( user => {
-            this.props.dispatch({
-                type: 'LOGIN_FORM',
-                payload: {
-                    username: '',
-                    password: ''}
-            })
+            this.props.dispatch({type: 'LOGIN_FORM_CLEANUP'})
             console.log(user)
 
         })
@@ -39,6 +36,7 @@ class Login extends React.Component {
     }
 
     render(){
+        
         return (
             <div className='Login'>
 
@@ -66,8 +64,8 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        username: state.username,
-        password: state.password
+        username: state.login.username,
+        password: state.login.password
     }
 } 
 
