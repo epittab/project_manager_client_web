@@ -1,0 +1,18 @@
+div.ProjectContainer{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85vw;
+}
+
+div.ProjectContainer.close {
+    transition: ease-in .3s;
+    width: 95vw;
+}
+
+.transparent {
+    background-color: rgba(255, 255, 255, .3);
+    backdrop-filter: blur(.3rem);
+    box-shadow: 0 0 10px rgba(31, 23, 64, .3);
+}

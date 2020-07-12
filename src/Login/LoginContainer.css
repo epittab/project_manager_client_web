@@ -1,8 +1,15 @@
-div.LoginContainer {
-    height: 40vh;
-    width: 30vw;
-    margin: auto;
+/* Container styling */
 
+div.LoginContainer {
+    height: 50vh;
+    width: 40vw;
+    margin: auto;
+    
+
+    box-shadow: 0 0 10px rgba(31, 23, 64, .3);
+
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(.3rem);
 }
 
 
@@ -19,17 +26,76 @@ div.Login-cont-toggle {
     width: 50%;
     
     line-height: 2rem;
-    background-color: azure;
+    text-align: center;
+    background-color: rgba(207, 237, 229, 1);
 
     cursor: pointer;
 }
 
 div.Login-cont-toggle:hover, div.Login-cont-toggle.active:hover {
-    background-color: rgb(53, 187, 173);
+    background-color: rgb(30, 162, 185);
     color: whitesmoke;
 }
 
 div.Login-cont-toggle.active{
-    background-color: turquoise;
+    background-color: rgba(41, 206, 235, 1);
     
+}
+
+
+/* Forms Styling */
+
+div.Login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    height: 80%;
+    width: 100%;
+}
+
+div.Register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    height: 80%;
+    width: 100%;
+}
+
+div form.Login-form-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 80%;
+}
+
+label.Login-form-text {
+    color: rgba(31, 23, 64, 1);
+}
+
+label.Login-form-text input {
+    height: 1.5rem;
+    margin-left: .5rem;
+    font-size: 1.2rem;
+}
+
+button.Login-form-button {
+    height: 2.5rem;
+    width: 40%;
+
+    font-size: 1.2rem;
+
+    background-color: rgba(41, 206, 235, 1);
+    border-radius: 8px;
+    border: none;
+
+    color: rgba(31, 23, 64, 1);
+}
+
+button.Login-form-button:hover {
+    background-color: rgb(30, 162, 185);
+    color: whitesmoke;
 }

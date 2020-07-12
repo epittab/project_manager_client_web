@@ -1,4 +1,7 @@
 import React from 'react';
+
+import {Switch, Route} from 'react-router-dom'
+
 import {Provider} from 'react-redux'
 import store from './Redux/store'
 
@@ -6,6 +9,7 @@ import './App.css';
 
 import LoginC from './Login/LoginContainer'
 import Navbar from './Navbar/Navbar'
+import Project from './Project/ProjectContainer'
 
 class App extends React.Component {
 
@@ -16,7 +20,14 @@ class App extends React.Component {
 
         <div className="App">
           <Navbar />
-          <LoginC />
+          
+          <Switch>
+            <Route path='/projects' render={ () => < Project /> } />
+            <Route path='/account' render={ () => < LoginC /> } />
+            <Route path='/performance' render={ () => < LoginC /> } /> 
+            <Route path='/' render={ () => < LoginC /> } />
+          </Switch>
+        
         </div>
 
       </Provider>

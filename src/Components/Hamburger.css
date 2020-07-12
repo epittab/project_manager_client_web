@@ -1,12 +1,18 @@
 div.Hamburger {
+    width: 100%;
+    display: flex;
+    justify-content: center;  
+}
+
+div.Hamburger-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 1.2rem;
-    width: 100%;
-
+    width: 1.5rem;
     padding: .5rem 0 .5rem 0;
+    cursor: pointer;
 }
 
 div.h-line {

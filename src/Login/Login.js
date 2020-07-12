@@ -22,6 +22,10 @@ class Login extends React.Component {
         })
         .then(r => r.json())
         .then( user => {
+            if (user.token !== undefined ) {
+                localStorage.setItem('token', user.token)
+                localStorage.setItem('first_name', user.first_name)
+            }
             this.props.dispatch({type: 'LOGIN_FORM_CLEANUP'})
             console.log(user)
 
@@ -40,20 +44,20 @@ class Login extends React.Component {
         return (
             <div className='Login'>
 
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor='Log-username'> Username: 
-                        <input id='Log-username' name='username' 
+                <form className='Login-form-body' onSubmit={this.handleSubmit}>
+                    <label className='Login-form-text'  htmlFor='Log-username'> Username: 
+                    <input id='Log-username' name='username' 
                             type='text'
                             value={this.props.username} 
                             onChange={this.handleChange}/>
                     </label>
-                    <label htmlFor='Log-password'> Password: 
-                        <input id='Log-password' name='password' 
+                    <label className='Login-form-text'  htmlFor='Log-password'> Password:
+                    <input id='Log-password' name='password' 
                             type='password'
                             value={this.props.password} 
                             onChange={this.handleChange}/>
-                    </label>
-                    <button type='submit'>Login</button>
+                     </label>
+                    <button className='Login-form-button' type='submit'>Login</button>
                 </form>
 
 

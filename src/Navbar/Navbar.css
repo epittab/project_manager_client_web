@@ -1,9 +1,16 @@
 nav.Navbar {
+    transition: ease-in .3s;
     height: 100vh;
     width: 15vw;
-    background-color: turquoise;
+    background-color: rgba(41, 206, 235, 1);
 }
 
-nav.Navbar.closed {
+nav.Navbar.close {
+    transition: ease-in .3s;
     width: 5vw;
+}
+
+.Navbar-link {
+    text-decoration: none;
+    color: rgba(31, 23, 64, 1);
 }
