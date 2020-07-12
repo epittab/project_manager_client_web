@@ -1,0 +1,9 @@
+nav.Navbar {
+    height: 100vh;
+    width: 15vw;
+    background-color: turquoise;
+}
+
+nav.Navbar.closed {
+    width: 5vw;
+}

@@ -1,0 +1,35 @@
+div.LoginContainer {
+    height: 40vh;
+    width: 30vw;
+    margin: auto;
+
+}
+
+
+div.Login-cont-toggle-bar {
+    display: flex;
+    width: 100%;
+
+
+}
+
+div.Login-cont-toggle {
+    
+    height: 2rem;
+    width: 50%;
+    
+    line-height: 2rem;
+    background-color: azure;
+
+    cursor: pointer;
+}
+
+div.Login-cont-toggle:hover, div.Login-cont-toggle.active:hover {
+    background-color: rgb(53, 187, 173);
+    color: whitesmoke;
+}
+
+div.Login-cont-toggle.active{
+    background-color: turquoise;
+    
+}

@@ -1,0 +1,33 @@
+div.Hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.2rem;
+    width: 100%;
+
+    padding: .5rem 0 .5rem 0;
+}
+
+div.h-line {
+    transition: ease-in .3s;
+    height: .2rem;
+    width: 1.5rem;
+    border-radius: 3px;
+    background-color: aliceblue;
+}
+
+div#h-line-1.close {
+    transition: ease-in .3s;
+    transform: rotate(-45deg) translateX(-.35rem) translateY(.35rem);
+}
+
+div#h-line-2.close  {
+    transition: ease-in-out .3s;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+div#h-line-3.close  {
+    transition: ease-in .3s;
+    transform: rotate(45deg) translateX(-.35rem) translateY(-.35rem);
+}

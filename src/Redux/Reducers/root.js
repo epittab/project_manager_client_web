@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux';
 import register from './register'
 import login from './login'
+import loginContainer from './loginContainer'
 
 export default combineReducers({
-    register, login
+    register, login, loginContainer
 });
 
 
