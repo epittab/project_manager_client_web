@@ -5,7 +5,7 @@ import './ProjectCard.css'
 class ProjectCard extends Component {
     render() {
         return (
-            <div className='ProjectCard'>
+            <div className='Card ProjectCard'>
                 
             </div>
         )

@@ -1,9 +1,35 @@
-div.ProjectCard {
+div.Card {
     display: flex;
-    flex-wrap: wrap;
     height: 12rem;
     width: 12rem;
     background-color: lightgray;
     border-radius: 8px;
     margin: 2rem .5rem 1rem .5rem;
+}
+
+div.card-icon {
+
+    height: 3.5rem;
+    width: 3.5rem;
+    margin-bottom: 1rem;
+    
+    background-size: contain;
+    background-image: url('../../../images/add-circle-icon.svg');
+
+}
+
+div.card-text {
+    color: #484848;
+}
+
+div.newCard{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.newCard:hover{
+    background-color: #b8b8b8;
+    box-shadow: 0 0 10px rgba(80, 80, 80, .3);
+    cursor: pointer;
 }
