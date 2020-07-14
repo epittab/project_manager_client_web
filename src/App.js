@@ -25,7 +25,8 @@ class App extends React.Component {
             <Route path='/projects' render={ () => < Project /> } />
             <Route path='/account' render={ () => < LoginC /> } />
             <Route path='/performance' render={ () => < LoginC /> } /> 
-            <Route path='/' render={ () => < LoginC /> } />
+            <Route exact path='/' render={ () => < LoginC /> } />
+            <Route path='' render={ () => <div>404</div> } />
           </Switch>
         
         </div>

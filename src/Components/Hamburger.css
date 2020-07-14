@@ -20,7 +20,15 @@ div.h-line {
     height: .2rem;
     width: 1.5rem;
     border-radius: 3px;
-    background-color: aliceblue;
+    background-color: lightgray;
+}
+
+div.h-line:hover {
+    transition: ease-in .3s;
+    height: .2rem;
+    width: 1.5rem;
+    border-radius: 3px;
+    background-color: white;
 }
 
 div#h-line-1.close {

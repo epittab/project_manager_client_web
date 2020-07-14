@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 
+import {Switch, Route} from 'react-router-dom'
+
 import {connect} from 'react-redux'
 
 import './ProjectContainer.css'
 
-import Board from './Board/Board'
-import Tray from './Tray/Tray'
+import ProjectMenu from './ProjectMenu/ProjectMenu'
+import ProjectDetail from './ProjectDetail/ProjectDetail'
 
 class ProjectContainer extends Component {
     render() {
         
         return (
             <div className={`ProjectContainer${this.props.navIsOpen ? '' : ' close'}`}>
-                < Tray />
-                < Board />
+                <Switch >
+                   < Route exact path='/projects' render={() => < ProjectMenu /> }/>
+                   < Route path='/projects/' component={ProjectDetail}/>
+                </Switch>
+                
             </div>
         )
     }
