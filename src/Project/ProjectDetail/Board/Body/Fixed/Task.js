@@ -4,7 +4,7 @@ class Task extends Component {
     render() {
         return (
             <div>
-                
+                {this.props.name}
             </div>
         )
     }

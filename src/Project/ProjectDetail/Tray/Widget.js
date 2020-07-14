@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+import './Widget.css'
+
 class Widget extends Component {
     render() {
         return (
-            <div>
-                
+            <div className='Widget'>
+                Widget
             </div>
         )
     }

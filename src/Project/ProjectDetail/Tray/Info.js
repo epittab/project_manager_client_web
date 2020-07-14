@@ -4,7 +4,7 @@ class Info extends Component {
     render() {
         return (
             <div>
-                
+                    Information
             </div>
         )
     }
