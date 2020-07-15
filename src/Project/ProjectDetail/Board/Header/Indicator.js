@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 
+import './Indicator.css'
+
 class Indicator extends Component {
     render() {
         return (
-            <div>
-                O
+            <div className='lb-wrapper'>
+                <div className={`indicator-bulb default-bulb ${this.props.performance}`}>
+                </div>
             </div>
+            
         )
     }
 }

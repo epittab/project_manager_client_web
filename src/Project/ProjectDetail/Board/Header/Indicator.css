@@ -1,0 +1,33 @@
+div.lb-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+}
+
+div.indicator-bulb {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    
+    /* background-image: radial-gradient( lightgreen 1%, rgb(16, 134, 16) 55%, rgb(3, 34, 3) 95%); */
+}
+
+div.default-bulb {
+    background-image: radial-gradient( lightgray 1%, gray 55%, darkslategrey 95%);
+}
+
+div.good-bulb {
+    background-image: radial-gradient( lightgreen 1%, rgb(66, 184, 127) 55%, rgb(5, 83, 5) 95%);
+}
+
+div.bad-bulb {
+    background-image: radial-gradient( pink 1%, rgb(244, 67, 54) 55%, rgb(59, 4, 4) 95%);
+}
+
+div.warning-bulb {
+    background-image: radial-gradient( lightyellow 1%, rgb(191, 168, 71) 55%, rgb(66, 60, 8) 95%);
+}
