@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 
-import Task from './Task'
+import FixedCell from './FixedCell'
 import DynamicCell from '../Dynamic/DynamicCell'
 class Row extends Component {
     render() {
         return (
             <div>
-                <Task name={this.props.name}/>
-                {/* iterate over number of days with Dynamic Cell */}
-                {/* < DynamicCell /> */}
+                <div style ={{display: 'flex', width: '100%'}} >
+                    < FixedCell name= {this.props.name} isHeader={false} />
+                    {this.props.days.map( (day, index) => < DynamicCell key={index+1} isHeader={false}  cellDateOffset={index+1}/> )}
+                </div>
             </div>
         )
     }

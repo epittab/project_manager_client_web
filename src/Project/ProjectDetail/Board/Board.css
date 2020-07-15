@@ -46,10 +46,14 @@ div.Project-title-column {
     padding-right: 1rem;
     
 
-    background-color: rgba(207, 237, 229, 1);;
+    background-color: rgba(207, 237, 229, 1);
     border-bottom: 1px solid rgba(31, 23, 64, .4) ;
     /* box-shadow: inset 0 -1px 8px 5px rgba(31, 23, 64, .4); */
 }
+
+div.task {
+    background-color: rgb(208, 219, 216);
+} 
 
 /* style={
     textAlign: 'center',

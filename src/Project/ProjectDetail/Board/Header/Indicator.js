@@ -6,7 +6,7 @@ class Indicator extends Component {
     render() {
         return (
             <div className='lb-wrapper'>
-                <div className={`indicator-bulb default-bulb ${this.props.performance}`}>
+                <div className={`indicator-bulb ${this.props.performance}`}>
                 </div>
             </div>
             
