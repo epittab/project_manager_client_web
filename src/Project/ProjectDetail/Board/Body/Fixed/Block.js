@@ -18,15 +18,14 @@ class Block extends Component {
         this.setState({isTaskShowing: !this.state.isTaskShowing})
     }
 
-  
 
     render() {
         const days = new Array(this.props.duration).fill("")
         
         return (
             <div className='GroupRow' >
-                <div style ={{display: 'flex', width: '100%'}} onClick={this.toggleTask}>
-                    < FixedCell name= {this.props.block.b_name} isHeader={false} />
+                <div style ={{display: 'flex', width: '100%'}} >
+                    < FixedCell name= {this.props.block.b_name} isHeader={false} handleToggle={this.toggleTask}/>
                     {days.map( (day, index) => {  
     
                     return < DynamicCell key={index+1} isHeader={false}  cellDateOffset={index+1}/> })}
