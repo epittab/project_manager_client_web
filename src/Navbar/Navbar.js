@@ -26,8 +26,9 @@ class Navbar extends React.Component {
             <nav className={`Navbar${this.props.isOpen ? '' : ' close'}`}>
                 <Hamburger isOpen={this.props.isOpen} toggle={this.toggleOpen}/>
                 <div><Link className='Navbar-link' to='/projects'>Project</Link></div>
-                <ul></ul>
-                <div>Avatar</div>
+                <div><Link className='Navbar-link' to='/performance'>Performace</Link></div>
+                <div><Link className='Navbar-link' to='/account'>Avatar</Link></div>
+                
             </nav>
         )
     }

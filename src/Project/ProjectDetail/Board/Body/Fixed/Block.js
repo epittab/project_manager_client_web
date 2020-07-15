@@ -25,7 +25,7 @@ class Block extends Component {
         
         return (
             <div className='GroupRow' >
-                <div style ={{display: 'flex'}} onClick={this.toggleTask}>
+                <div style ={{display: 'flex', width: '100%'}} onClick={this.toggleTask}>
                     < FixedCell name= {this.props.block.b_name} isHeader={false} />
                     {days.map( (day, index) => {  
     

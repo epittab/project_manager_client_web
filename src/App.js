@@ -10,6 +10,8 @@ import './App.css';
 import LoginC from './Login/LoginContainer'
 import Navbar from './Navbar/Navbar'
 import Project from './Project/ProjectContainer'
+import AccountCont from './Account/AccountCont';
+import PerformanceCont from './Performance/PerformanceCont';
 
 class App extends React.Component {
 
@@ -23,8 +25,8 @@ class App extends React.Component {
           
           <Switch>
             <Route path='/projects' render={ () => < Project /> } />
-            <Route path='/account' render={ () => < LoginC /> } />
-            <Route path='/performance' render={ () => < LoginC /> } /> 
+            <Route path='/account' render={ () => < AccountCont /> } />
+            <Route path='/performance' render={ () => < PerformanceCont /> } /> 
             <Route exact path='/' render={ () => < LoginC /> } />
             <Route path='' render={ () => <div>404</div> } />
           </Switch>
