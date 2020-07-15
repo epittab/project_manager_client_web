@@ -5,4 +5,21 @@ div.Board {
     height: 60vh;
     width: 80%;
     border-radius: 8px;
+    overflow: scroll;
+}
+
+div.GroupRow {
+    overflow-x: scroll;
+}
+
+.cell {
+
+    height: 4rem;
+    width: 4rem;
+    border: 1px solid gray; 
+
+}
+
+.hide {
+    display: none;
 }

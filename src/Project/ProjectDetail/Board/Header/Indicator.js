@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-class DynamicCell extends Component {
+class Indicator extends Component {
     render() {
         return (
             <div>
-                
+                O
             </div>
         )
     }
 }
-export default DynamicCell
+export default Indicator
