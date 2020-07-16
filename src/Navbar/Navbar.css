@@ -13,4 +13,16 @@ nav.Navbar.close {
 .Navbar-link {
     text-decoration: none;
     color: rgba(31, 23, 64, 1);
+    
+}
+
+.Navbar-link-item {
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    border-bottom: 1px solid lightblue;
+}
+
+.Navbar-link-item:hover {
+    background-color: lightblue;
 }

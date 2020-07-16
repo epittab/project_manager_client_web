@@ -22,14 +22,18 @@ class Navbar extends React.Component {
     }
 
     render(){
-        return (
+        return (    
+            <>            
             <nav className={`Navbar${this.props.isOpen ? '' : ' close'}`}>
-                <Hamburger isOpen={this.props.isOpen} toggle={this.toggleOpen}/>
-                <div><Link className='Navbar-link' to='/projects'>Project</Link></div>
-                <div><Link className='Navbar-link' to='/performance'>Performace</Link></div>
-                <div><Link className='Navbar-link' to='/account'>Avatar</Link></div>
-                
+            <Hamburger isOpen={this.props.isOpen} toggle={this.toggleOpen}/>
+            
+            <Link to='/projects' className='Navbar-link'><div className='Navbar-link-item'>Project</div></Link>
+            <Link to='/performance' className='Navbar-link'><div className='Navbar-link-item'>Performance</div></Link>
+            <Link to='/account' className='Navbar-link'><div className='Navbar-link-item'>Account</div></Link>
+
+
             </nav>
+            </>
         )
     }
 }

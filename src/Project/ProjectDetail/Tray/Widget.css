@@ -26,3 +26,13 @@ div.add-widget {
     background-image: url('../../../images/add-circle-icon.svg');
     
 }
+
+.widget-link {
+    text-decoration: none;
+}
+
+div.widget-text {
+    color: black;
+    
+    
+}
