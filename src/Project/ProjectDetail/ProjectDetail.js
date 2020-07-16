@@ -9,10 +9,10 @@ class ProjectDetail extends Component {
     render() {
         return (
             <div className='ProjectContainer'>
-                <Tray /> 
+                <Tray routeProps={this.props.routeProps}/> 
                 <Switch >
-                    <Route path='/:p_id/budgets' render={ () => < Budget /> } />
-                    <Route path='/' render={ () => < Board /> } />
+                    <Route path='/:p_id/budgets' render={ (props) => < Budget routeProps={props}/> } />
+                    <Route path='/' render={ (props) => < Board routeProps={props} /> } />
                 </Switch>
                 
 

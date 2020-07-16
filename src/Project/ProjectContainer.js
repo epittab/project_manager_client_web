@@ -29,7 +29,7 @@ class ProjectContainer extends Component {
                    < Route path='/projects/:p_id/blocks' render={()=> < BlockCont />}/>
                    < Route path='/projects/:p_id/budget' render={()=> < Budget />}/>
                    < Route path='/projects/:p_id/invite' render={()=> < Invite />}/>
-                   < Route path='/projects/:p_id' render={(props)=> < ProjectDetail />}/>
+                   < Route path='/projects/:p_id' render={(props)=> < ProjectDetail routeProps={props}/>}/>
                 </Switch>
                 
             </div>

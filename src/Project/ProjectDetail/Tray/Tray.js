@@ -10,7 +10,7 @@ class Tray extends Component {
             <div className='Tray transparent'>
                 < Info />
                 <div className = 'Widget-wrapper'>
-                    < BudgetCard />
+                    < BudgetCard routeProps={this.props.routeProps}/>
                     < Widget />
 
                 </div>
