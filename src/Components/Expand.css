@@ -1,6 +1,8 @@
 div.Expand {
-    width: 100%;
+    /* width: 100%; */
+    margin-left: 1rem;
     display: flex;
+    align-items: center;
     justify-content: center;  
 }
 
@@ -18,27 +20,28 @@ div.Expand-wrapper {
 div.e-line {
     transition: ease-in .3s;
     height: .2rem;
-    width: 1rem;
+    width: .8rem;
     border-radius: 3px;
-    background-color: white;
+    background-color:  rgb(35, 108, 198);
 }
 
 div#e-line-1 {
     transition: ease-in .3s;
-    transform: translateY(1rem); 
+    transform: translateY(.55rem) rotate(90deg); 
 }
 
 div#e-line-2  {
     transition: ease-in-out .3s;
-    transform: rotate(90deg);
+    transform: translateY(-.45rem);
 }
 
 div#e-line-1.close {
     transition: ease-in .3s;
-    background-color: rgba(0, 0, 0, 0)
+    transform: translateY(.6rem); 
 }
 
 div#e-line-2.close  {
     transition: ease-in-out .3s;
-    transform: translateX(0rem); 
+    background-color: rgba(0, 0, 0, 0);
+   
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Expand from '../../../../../Components/Expand'
+import EditButton from '../../../../../Components/EditButton'
 
 
 class BlockCell extends Component {
@@ -20,7 +21,9 @@ class BlockCell extends Component {
         return (
             <div className='BlockCell' >
                 <Expand isOpen={this.state.isOpen} toggleOpen={this.toggleOpen} toggle={this.props.toggle} />
-                <span>{this.props.name}</span>
+                <div className='BlockCell-title-disp-name'>{this.props.name}</div>
+                < EditButton size='1.2rem'/>
+                
             </div>
         )
     }

@@ -1,0 +1,8 @@
+button.EditButton {
+    margin: 0 .15rem 0 .15rem;
+    border: none;
+    background-color: rgb(31, 23, 64);
+    border-radius: 5px;   
+    color: white;
+    cursor: pointer;
+}
