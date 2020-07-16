@@ -9,9 +9,9 @@ class Board extends Component {
         super()
         this.state = {
             projectDuration: 21,
-            project: [{b_id: 1, b_name: "Design", tasks: [{t_id: 1, t_name: "test", t_s_date: new Date("03/25/2020"), t_e_date: new Date("03/26/2020")}, {t_id: 2, t_name: "test", t_s_date: new Date("03/25/2020"), t_e_date: new Date("03/27/2020")} ]},
-                        {b_id: 2, b_name: "Implement", tasks: [{t_id: 1, t_name: "test", t_s_date: new Date("03/26/2020"), t_e_date: new Date("03/27/2020")}, {t_id: 2, t_name: "test", t_s_date: new Date("03/27/2020"), t_e_date: new Date("03/29/2020")} ]},
-                        {b_id: 3, b_name: "Monitor and Control", tasks: [{t_id: 1, t_name: "test", t_s_date: new Date("03/28/2020"), t_e_date: new Date("03/29/2020")}, {t_id: 2, t_name: "test", t_s_date: new Date("03/25/2020"), t_e_date: new Date("03/30/2020")} ]}]
+            project: [{b_id: 1, b_name: "Design", b_s_date: new Date("03/25/2020"), b_e_date: new Date("03/27/2020"), tasks: [{t_id: 1, t_name: "test", t_s_date: new Date("03/25/2020"), t_e_date: new Date("03/26/2020")}, {t_id: 2, t_name: "test", t_s_date: new Date("03/25/2020"), t_e_date: new Date("03/27/2020")} ]},
+                        {b_id: 2, b_name: "Implement", b_s_date: new Date("03/26/2020"), b_e_date: new Date("03/29/2020"), tasks: [{t_id: 1, t_name: "test", t_s_date: new Date("03/26/2020"), t_e_date: new Date("03/27/2020")}, {t_id: 2, t_name: "test", t_s_date: new Date("03/27/2020"), t_e_date: new Date("03/29/2020")} ]},
+                        {b_id: 3, b_name: "Monitor and Control", b_s_date: new Date("03/25/2020"), b_e_date: new Date("03/30/2020"), tasks: [{t_id: 1, t_name: "test", t_s_date: new Date("03/28/2020"), t_e_date: new Date("03/29/2020")}, {t_id: 2, t_name: "test", t_s_date: new Date("03/25/2020"), t_e_date: new Date("03/30/2020")} ]}]
         }
     }
     render() {

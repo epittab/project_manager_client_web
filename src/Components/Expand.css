@@ -1,10 +1,10 @@
-div.Hamburger {
+div.Expand {
     width: 100%;
     display: flex;
     justify-content: center;  
 }
 
-div.Hamburger-wrapper {
+div.Expand-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,25 +15,30 @@ div.Hamburger-wrapper {
     cursor: pointer;
 }
 
-div.h-line {
+div.e-line {
     transition: ease-in .3s;
     height: .2rem;
-    width: 1.5rem;
+    width: 1rem;
     border-radius: 3px;
     background-color: white;
 }
 
-div#h-line-1.close {
+div#e-line-1 {
     transition: ease-in .3s;
-    transform: rotate(-45deg) translateX(-.35rem) translateY(.35rem);
+    transform: translateY(1rem); 
 }
 
-div#h-line-2.close  {
+div#e-line-2  {
     transition: ease-in-out .3s;
-    background-color: rgba(255, 255, 255, 0);
+    transform: rotate(90deg);
 }
 
-div#h-line-3.close  {
+div#e-line-1.close {
     transition: ease-in .3s;
-    transform: rotate(45deg) translateX(-.35rem) translateY(-.35rem);
+    background-color: rgba(0, 0, 0, 0)
+}
+
+div#e-line-2.close  {
+    transition: ease-in-out .3s;
+    transform: translateX(0rem); 
 }

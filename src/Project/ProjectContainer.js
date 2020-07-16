@@ -8,6 +8,8 @@ import './ProjectContainer.css'
 
 import ProjectMenu from './ProjectMenu/ProjectMenu'
 import ProjectDetail from './ProjectDetail/ProjectDetail'
+import Budget from '../Budget/Budget'
+
 
 class ProjectContainer extends Component {
     render() {
@@ -16,7 +18,8 @@ class ProjectContainer extends Component {
             <div className={`ProjectContainer${this.props.navIsOpen ? '' : ' close'}`}>
                 <Switch >
                    < Route exact path='/projects' render={() => < ProjectMenu /> }/>
-                   < Route path='/projects/' component={ProjectDetail}/>
+                   < Route path='/projects/:p_id/budgets' render={()=> < Budget />}/>
+                   < Route path='/projects/:p_id' render={(props)=> < ProjectDetail />}/>
                 </Switch>
                 
             </div>

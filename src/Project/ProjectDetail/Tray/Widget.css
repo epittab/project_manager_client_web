@@ -4,4 +4,25 @@ div.Widget {
     background-color: lightgray;
     border-radius: 8px;
     margin: 0 1rem 0 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.Widget:hover {
+    background-color: gray;    
+    cursor: pointer;
+}
+
+div.add-widget {
+
+    height: 2.5rem;
+    width: 2.5rem;
+    
+    
+    background-size: contain;
+    background-image: url('../../../images/add-circle-icon.svg');
+    
 }

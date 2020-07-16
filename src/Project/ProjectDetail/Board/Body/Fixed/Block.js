@@ -26,10 +26,12 @@ class Block extends Component {
             <div className='GroupRow' >
                 <div style ={{display: 'flex', width: '100%'}} >
                     < FixedCell name= {this.props.block.b_name} isHeader={false} handleToggle={this.toggleTask}/>
-                    {days.map( (day, index) => < DynamicCell key={index+1} isHeader={false}  cellDateOffset={index+1}/> )}
+                    {days.map( (day, index) => < DynamicCell key={index+1} isHeader={false} 
+                                                    startDate={this.props.block.b_s_date} endDate={this.props.block.b_e_date} 
+                                                    cellIndex={index}/> )}
                 </div>
                 <div className={`${ this.state.isTaskShowing ? "" : "hide" }`}>
-                    {this.props.block.tasks.map(t => <Row key={t.id} name={t.t_name} time={t} days={days}/>)}
+                    {this.props.block.tasks.map(t => <Row key={t.id} name={t.t_name} task={t} days={days}/>)}
                 </div>
             </div>
         )

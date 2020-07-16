@@ -11,7 +11,7 @@ class Header extends Component {
                 
                 <FixedCell isHeader={true}/>
                  
-                { days.map( (days, index) =>  <DynamicCell key={index+1} isHeader={true} cellDateOffset={index+1}/>)}
+                { days.map( (days, index) =>  <DynamicCell key={index+1} isHeader={true} cellIndex={index}/>)}
                 
             </div>
         )

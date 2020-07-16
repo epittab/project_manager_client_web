@@ -8,7 +8,7 @@ class Row extends Component {
             <div>
                 <div style ={{display: 'flex', width: '100%'}} >
                     < FixedCell name= {this.props.name} isHeader={false} />
-                    {this.props.days.map( (day, index) => < DynamicCell key={index+1} isHeader={false}  cellDateOffset={index+1}/> )}
+                    {this.props.days.map( (day, index) => < DynamicCell key={index+1} isHeader={false} cellIndex={index} startDate={this.props.task.t_s_date} endDate={this.props.task.t_e_date}/> )}
                 </div>
             </div>
         )

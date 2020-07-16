@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import Info from './Info'
 import Widget from './Widget'
+import BudgetCard from './BudgetCard';
 
 class Tray extends Component {
     render() {
@@ -9,6 +10,7 @@ class Tray extends Component {
             <div className='Tray transparent'>
                 < Info />
                 <div className = 'Widget-wrapper'>
+                    < BudgetCard />
                     < Widget />
 
                 </div>
