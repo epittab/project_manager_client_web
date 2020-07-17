@@ -3,7 +3,7 @@ import React, { Component } from 'react'
  class Budget extends Component {
     render() {
         return (
-            <div className='Budget transparent'>
+            <div className='Board transparent'>
                 <h2>Budget</h2>
                 <div className='total-budget-container'>
                     <h4>Total Budget</h4>

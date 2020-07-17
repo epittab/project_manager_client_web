@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import {Link} from 'react-router-dom'
+
 import ProjectCard from './Cards/ProjectCard'
 import NewCard from './Cards/NewCard'
 
@@ -10,7 +12,7 @@ class Board extends Component {
         return (
             <div className='Board transparent'>
                 < NewCard />
-                < ProjectCard />
+                <Link to='/projects/1'>< ProjectCard /></Link>
             </div>
         )
     }

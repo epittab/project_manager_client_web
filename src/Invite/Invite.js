@@ -12,7 +12,7 @@ import React, { Component } from 'react'
 
     render() {
         return (
-            <div className='Invite transparent'>
+            <div className='Board transparent'>
                 <h2>Invite</h2>
                 <div className='total-Invite-container'>
                     <h4>Total Invite</h4>

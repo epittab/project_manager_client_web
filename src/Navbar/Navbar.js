@@ -23,7 +23,7 @@ class Navbar extends React.Component {
 
     render(){
         return (    
-            <>            
+                      
             <nav className={`Navbar${this.props.isOpen ? '' : ' close'}`}>
             <Hamburger isOpen={this.props.isOpen} toggle={this.toggleOpen}/>
             
@@ -33,7 +33,7 @@ class Navbar extends React.Component {
 
 
             </nav>
-            </>
+        
         )
     }
 }

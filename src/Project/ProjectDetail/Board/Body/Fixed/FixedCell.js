@@ -9,8 +9,10 @@ class FixedCell extends Component {
         return (
             <div className={`Project-title-column ${(this.props.handleToggle || this.props.isHeader) ? '' : 'task'}`}  >
                 { this.props.isHeader ? 
-                < Indicator performance={' warning-bulb'} /> : 
-                <BlockCell name={this.props.name} toggle={this.props.handleToggle}/> }
+                (< Indicator performance={' warning-bulb'} /> ): 
+                <BlockCell name={this.props.name} routeProps={this.props.routeProps} 
+                    block={this.props.block} task={this.props.task} 
+                    b_id={this.props.b_id} toggle={this.props.handleToggle}/> }
             </div>
         )
     }

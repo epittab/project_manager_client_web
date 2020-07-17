@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Info from './Info'
 import Widget from './Widget'
 import BudgetCard from './BudgetCard';
+import InviteCard from './InviteCard';
 
 class Tray extends Component {
     render() {
@@ -10,7 +11,8 @@ class Tray extends Component {
             <div className='Tray transparent'>
                 < Info />
                 <div className = 'Widget-wrapper'>
-                    < BudgetCard routeProps={this.props.routeProps}/>
+                    < BudgetCard routeProps={this.props.routeProps} />
+                    < InviteCard routeProps={this.props.routeProps} />
                     < Widget />
 
                 </div>
