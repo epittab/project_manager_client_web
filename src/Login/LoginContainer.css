@@ -63,7 +63,7 @@ div.Register {
     width: 100%;
 }
 
-div form.Login-form-body {
+div form.form-body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,17 +72,17 @@ div form.Login-form-body {
     width: 80%;
 }
 
-label.Login-form-text {
+label.form-text {
     color: rgba(31, 23, 64, 1);
 }
 
-label.Login-form-text input {
+label.form-text input {
     height: 1.5rem;
     margin-left: .5rem;
     font-size: 1.2rem;
 }
 
-button.Login-form-button {
+button.form-button {
     height: 2.5rem;
     width: 40%;
 
@@ -95,7 +95,7 @@ button.Login-form-button {
     color: rgba(31, 23, 64, 1);
 }
 
-button.Login-form-button:hover {
+button.form-button:hover {
     background-color: rgb(30, 162, 185);
     color: whitesmoke;
 }

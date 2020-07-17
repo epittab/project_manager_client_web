@@ -41,32 +41,32 @@ class Register extends React.Component {
         return (
             <div className='Register'>
 
-                <form className='Login-form-body' onSubmit={this.handleSubmit}>
-                    <label className='Login-form-text'  htmlFor='Reg-first_name'> First Name: 
+                <form className='form-body' onSubmit={this.handleSubmit}>
+                    <label className='form-text'  htmlFor='Reg-first_name'> First Name: 
                     <input id='Reg-first_name' name='first_name' 
                         type='text'
                         value={this.props.first_name} 
                         onChange={this.handleChange}/>
                     </label>
-                    <label className='Login-form-text'  htmlFor='Reg-last_name'> Last Name: 
+                    <label className='form-text'  htmlFor='Reg-last_name'> Last Name: 
                     <input id='Reg-last_name' name='last_name' 
                         type='text'
                         value={this.props.last_name} 
                         onChange={this.handleChange}/>
                     </label>
-                    <label  className='Login-form-text' htmlFor='Reg-username'> Username: 
+                    <label  className='form-text' htmlFor='Reg-username'> Username: 
                     <input id='Reg-username' name='username' 
                         type='text'
                         value={this.props.username} 
                         onChange={this.handleChange}/>
                     </label>
-                    <label className='Login-form-text'  htmlFor='Reg-password'> Password: 
+                    <label className='form-text'  htmlFor='Reg-password'> Password: 
                     <input id='Reg-password' name='password' 
                         type='password'
                         value={this.props.password} 
                         onChange={this.handleChange}/>
                     </label>
-                    <button className='Login-form-button' type='submit'>Register</button>
+                    <button className='form-button' type='submit'>Register</button>
                 </form>
 
 

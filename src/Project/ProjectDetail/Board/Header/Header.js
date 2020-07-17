@@ -6,10 +6,11 @@ import FixedCell from '../Body/Fixed/FixedCell'
 class Header extends Component {
     render() {
         const days = new Array(this.props.duration).fill("")
+        console.log(this.props.routeProps)
         return (
             <div className='GroupRow' style ={{display: 'flex'}}>
                 
-                <FixedCell isHeader={true}/>
+                <FixedCell routeProps={this.props.routeProps} isHeader={true}/>
                  
                 { days.map( (days, index) =>  <DynamicCell key={index+1} isHeader={true} cellIndex={index}/>)}
                 

@@ -16,7 +16,7 @@ class UserEditForm extends Component {
     }
 
     handleChangeCost = (e) => {
-
+        this.setState({...this.state, [e.target.name]: e.target.value})
     }
 
     handleSubmit = (e) => {
@@ -31,34 +31,35 @@ class UserEditForm extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label className='user-form-label' htmlFor='uf-first-name'>First Name: </label>
+                <form className='form-body' onSubmit={this.handleSubmit}>
+                    <label className='form-label' htmlFor='uf-first-name'>First Name: </label>
                     <input type='text' value={this.state.form.first_name} 
-                            name='first_name' id='uf-first-name' className='user-form-input' 
+                            name='first_name' id='uf-first-name'  
                             onChange={this.handleChange}/>
-                            <br />
-                    <label className='user-form-label' htmlFor='uf-last-name'>Last Name: </label>
+                           
+                    <label className='form-label' htmlFor='uf-last-name'>Last Name: </label>
                     <input type='text' value={this.state.form.last_name} 
-                            name='last_name' id='uf-last-name' className='user-form-input' 
+                            name='last_name' id='uf-last-name' 
                             onChange={this.handleChange}/>
-                            <br />
-                    <label className='user-form-label' htmlFor='uf-username'>Username: </label>
+                        
+                    <label className='form-label' htmlFor='uf-username'>Username: </label>
                     <input type='text' value={this.state.form.username} 
-                            name='username' id='uf-username' className='user-form-input' 
+                            name='username' id='uf-username' 
                             onChange={this.handleChange}/>
-                            <br />
-                    <label className='user-form-label' htmlFor='uf-password'>Password: </label>
+                        
+                    <label className='form-label' htmlFor='uf-password'>Password: </label>
                     <input type='password' value={this.state.form.password} 
-                            name='password' id='uf-password' className='user-form-input' 
+                            name='password' id='uf-password'  
                             onChange={this.handleChange}/>
-                            <br />
-                    <button type='submit'>Submit</button>
+                      
+                    <button className='form-button' type='submit'>Submit</button>
                 </form>
-                <form onSubmit={this.handleSubmitCost}>
-                    <label className='user-form-label' htmlFor='uf-cost'>Hourly Cost:</label>
+                <form className='form-body'  onSubmit={this.handleSubmitCost}>
+                    <label className='form-label' htmlFor='uf-cost'>Hourly Cost:</label>
                     <input type='number' value={this.state.cost} name='cost' 
-                    id='uf-cost' className='user-form-input' onChange={this.handleChangeCost}/>
-                    <button type='submit'>Submit</button>
+                    id='uf-cost'  onChange={this.handleChangeCost}/>
+                    
+                    <button className='form-button' type='submit'>Submit</button>
                 </form>
             </div>
         )

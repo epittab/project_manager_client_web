@@ -17,12 +17,12 @@ import React, { Component } from 'react'
                 <div className='total-Invite-container'>
                     <h4>Total Invite</h4>
                 </div>
-                <form className='total-Invite-detail-container' onSubmit={this.handleSubmit}>
-                    <label>Username: </label>
+                <form className='form-body' onSubmit={this.handleSubmit}>
+                    <label className='form-text'>Username: </label>
                     <input />
-                    <label>Select Role:</label>
+                    <label className='form-text'>Select Role:</label>
                  
-                    <button type='submit' >Submit</button>
+                    <button className='form-button' type='submit' >Submit</button>
                 </form>
             </div>
         )

@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import Budget from '../../Budget/Budget'
 import Board from './Board/Board'
 import Tray from './Tray/Tray'
+// import NewBlock from '../Block/NewBlock';
 
 class ProjectDetail extends Component {
     render() {
@@ -11,8 +12,8 @@ class ProjectDetail extends Component {
             <div className='ProjectContainer'>
                 <Tray routeProps={this.props.routeProps}/> 
                 <Switch >
-                    <Route path='/:p_id/budgets' render={ (props) => < Budget routeProps={props}/> } />
-                    <Route path='/' render={ (props) => < Board routeProps={props} /> } />
+                    <Route path='/:p_id/budgets' render={ (props) => < Budget routeProps={this.props.routeProps}/> } />
+                    <Route path='/' render={ () => < Board routeProps={this.props.routeProps} /> } />
                 </Switch>
                 
 

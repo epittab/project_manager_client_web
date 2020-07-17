@@ -1,0 +1,10 @@
+button.AddButton {
+    height: 1.2rem;
+    min-width: 1.2rem;
+    margin: 0 .3rem 0 .3rem;
+    border: none;
+    background-color: rgb(66, 184, 127);
+    border-radius: 5px;   
+    color: white;
+    cursor: pointer;
+}

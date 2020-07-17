@@ -44,20 +44,20 @@ class Login extends React.Component {
         return (
             <div className='Login'>
 
-                <form className='Login-form-body' onSubmit={this.handleSubmit}>
-                    <label className='Login-form-text'  htmlFor='Log-username'> Username: 
+                <form className='form-body' onSubmit={this.handleSubmit}>
+                    <label className='form-text'  htmlFor='Log-username'> Username: 
                     <input id='Log-username' name='username' 
                             type='text'
                             value={this.props.username} 
                             onChange={this.handleChange}/>
                     </label>
-                    <label className='Login-form-text'  htmlFor='Log-password'> Password:
+                    <label className='form-text'  htmlFor='Log-password'> Password:
                     <input id='Log-password' name='password' 
                             type='password'
                             value={this.props.password} 
                             onChange={this.handleChange}/>
                      </label>
-                    <button className='Login-form-button' type='submit'>Login</button>
+                    <button className='form-button' type='submit'>Login</button>
                 </form>
 
 

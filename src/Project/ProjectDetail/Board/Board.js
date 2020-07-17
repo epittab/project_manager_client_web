@@ -19,7 +19,7 @@ class Board extends Component {
         return (
             <div className='Board transparent'>
                 <div className='board-data'>
-                    < Header duration={this.state.projectDuration}/>
+                    < Header routeProps={this.props.routeProps} duration={this.state.projectDuration}/>
                     {this.state.project.map((b) => 
                         < GroupRow key = {b.b_id+100} block = {b}
                         routeProps={this.props.routeProps} 
