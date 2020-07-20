@@ -36,7 +36,8 @@ class Block extends Component {
                 </div>
                 <div className={`${ this.state.isTaskShowing ? "" : "hide" }`}>
                     {(this.state.tasks && this.state.tasks.length > 0) ? 
-                        this.state.tasks.map( t => < TaskCell key={t.id} task={t} psd={this.props.psd} days={days}/> ) :
+                        this.state.tasks.map( t => < TaskCell key={t.id} p_id={this.props.block.block.project_id} 
+                            b_id={this.props.block.block.id} task={t} psd={this.props.psd} days={days}/> ) :
                         null}    
                    
                

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import TaskDetail from './TaskDetail'
 import AddCost from './AddCost'
+import AddBudget from './AddBudget'
 
 class TaskCont extends Component {
 
@@ -38,9 +39,14 @@ class TaskCont extends Component {
 
             <h3>Budgeted Cost</h3>
             
-            { this.state.task.budget === undefined || this.state.task.budget === null ? '$0.00' : this.state.task.budget } 
+            { this.state.task.budget_amount === undefined || this.state.task.budget_amount === null ? '$0.00' : this.state.task.budget_amount } 
             
-            { this.state.task.budget === null ? <div>Allocate Funds</div>: null }
+            { this.state.task.budget_amount === null ? 
+            <>
+            <div>Allocate Funds</div>
+            < AddBudget t_id={this.props.routeProps.match.params.t_id} />
+            </>
+            : null }
 
             <h3>Line Items</h3>
 

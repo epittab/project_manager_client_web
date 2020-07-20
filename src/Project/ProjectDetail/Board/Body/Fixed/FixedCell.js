@@ -17,7 +17,8 @@ class FixedCell extends Component {
                 <BlockCell 
                     routeProps={this.props.routeProps} 
                     name = {this.props.name}
-                    block={this.props.block} task={this.props.tasks} p_id={this.props.block.block.project_id} 
+                    // task={this.props.tasks}
+                    block={this.props.block}  p_id={this.props.block.block.project_id} 
                     b_id={this.props.block.block.id} toggle={this.props.handleToggle}/> }
             </div>
         )
