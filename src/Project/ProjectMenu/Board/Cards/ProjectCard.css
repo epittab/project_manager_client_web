@@ -19,16 +19,17 @@ div.card-icon {
 }
 
 div.card-text {
+    text-decoration: none;
     color: #484848;
 }
 
-div.newCard{
+div.ProjectCard{
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-div.newCard:hover{
+div.ProjectCard:hover{
     background-color: #b8b8b8;
     box-shadow: 0 0 10px rgba(80, 80, 80, .3);
     cursor: pointer;

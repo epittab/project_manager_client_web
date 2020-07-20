@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import FixedCell from './FixedCell'
 import DynamicCell from '../Dynamic/DynamicCell'
 import Row from './Row'
+import TaskCell from './TaskCell'
 
 
 class Block extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             isTaskShowing: true,
-            
+            tasks: this.props.block.tasks
         }
     }
 
@@ -20,17 +21,25 @@ class Block extends Component {
 
 
     render() {
+      
         const days = new Array(this.props.duration).fill("")
+        // let tasksList = this.props.block && this.props.block.tasks.length > 0 ? 
+        // this.props.block.tasks.map(t => <Row key={t.id} name={t.task_name} task={t} block={this.props.block} b_id={this.props.block.block.id} routeProps={this.props.routeProps} days={days}/>)
+        // : null
         return (
             <div className='GroupRow' >
                 <div style ={{display: 'flex', width: '100%'}} >
-                    < FixedCell name= {this.props.block.b_name} block={this.props.block} isHeader={false} routeProps={this.props.routeProps} handleToggle={this.toggleTask}/>
-                    {days.map( (day, index) => < DynamicCell key={index+1} isHeader={false} 
+                    < FixedCell name= {this.props.block.block.block_name} block={this.props.block} isHeader={false} routeProps={this.props.routeProps} handleToggle={this.toggleTask}/>
+                    {days.map( (day, index) => < DynamicCell key={index+1} isHeader={false} psd={this.props.psd}
                                                     startDate={this.props.block.b_s_date} endDate={this.props.block.b_e_date} 
                                                     cellIndex={index}/> )}
                 </div>
                 <div className={`${ this.state.isTaskShowing ? "" : "hide" }`}>
-                    {this.props.block.tasks.map(t => <Row key={t.id} name={t.t_name} task={t} b_id={this.props.block.b_id} routeProps={this.props.routeProps} days={days}/>)}
+                    {(this.state.tasks && this.state.tasks.length > 0) ? 
+                        this.state.tasks.map( t => < TaskCell key={t.id} task={t} psd={this.props.psd} days={days}/> ) :
+                        null}    
+                   
+               
                 </div>
             </div>
         )

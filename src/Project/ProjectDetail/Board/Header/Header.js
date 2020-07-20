@@ -12,7 +12,7 @@ class Header extends Component {
                 
                 <FixedCell routeProps={this.props.routeProps} isHeader={true}/>
                  
-                { days.map( (days, index) =>  <DynamicCell key={index+1} isHeader={true} cellIndex={index}/>)}
+                { days.map( (days, index) =>  <DynamicCell key={index+1} isHeader={true} psd={this.props.psd} cellIndex={index}/>)}
                 
             </div>
         )

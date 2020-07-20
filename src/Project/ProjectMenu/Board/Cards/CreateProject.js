@@ -25,7 +25,13 @@ class CreateProject extends Component {
             body: JSON.stringify(this.state)
         })
         .then(r => r.json())
-        .then(data => console.log(data))
+        .then(data => {
+            this.setState({
+                project_name: '',
+                project_description: '',
+                est_start_date: '',
+                est_end_date: ''})
+            console.log(data)})
     }
 
     handleChange = (e) => {

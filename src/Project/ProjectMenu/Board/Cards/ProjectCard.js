@@ -6,7 +6,7 @@ class ProjectCard extends Component {
     render() {
         return (
             <div className='Card ProjectCard'>
-                
+                <div className='card-text'><span >{this.props.name}</span></div>
             </div>
         )
     }

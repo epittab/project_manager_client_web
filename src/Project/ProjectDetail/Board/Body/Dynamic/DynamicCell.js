@@ -5,20 +5,28 @@ class DynamicCell extends Component {
         super(props)
 
         this.state = {
+            currentDate: new Date(),
             cellDate: this.setCellDate(this.props.cellIndex)
         }
     
     }
 
     isActive = () => {
-        return ( this.state.cellDate >= this.props.startDate && this.state.cellDate <= this.props.endDate ) ?
+        console.log()
+        let adjustedStartDate = new Date(this.props.startDate)
+        adjustedStartDate.setTime(adjustedStartDate.getTime() + 4*60*60*1000)
+        let adjustedEndDate = new Date(this.props.endDate)
+        adjustedEndDate.setTime(adjustedEndDate.getTime() + 4*60*60*1000)
+
+        return ( this.state.cellDate >= adjustedStartDate && this.state.cellDate <= adjustedEndDate ) ?
         true :
         false
     }
 
     setCellDate = (pos) => {
-        const currentDate = new Date("03/25/2020") // update to project start date
-        let cellDate = currentDate.setDate(currentDate.getDate()+pos)
+        const projectEstStartDate = new Date(this.props.psd) // update to project start date
+        projectEstStartDate.setTime(projectEstStartDate.getTime() + 4*60*60*1000)
+        let cellDate = projectEstStartDate.setDate(projectEstStartDate.getDate()+pos)
         return cellDate
         }
 

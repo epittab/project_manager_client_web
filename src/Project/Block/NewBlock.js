@@ -1,23 +1,35 @@
 import React, { Component } from 'react'
 
 class NewBlock extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state ={
             block_name: '',
-            block_description: ''
+            block_description: '',
+            project_id: this.props.routeProps.match.params.p_id
         }
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3001/')
+        fetch('http://localhost:3001/blocks', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
+            body: JSON.stringify(this.state)
+        })
         .then(r => r.json())
         .then(data => console.log(data))
-        this.setState()
+        this.setState({...this.state, block_name: '',
+        block_description: ''})
     }
+
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
+    
     render() {
         return (
             <div>
@@ -26,12 +38,12 @@ class NewBlock extends Component {
                     <label className='form-text' >
                         Block Name:
                     </label>
-                    <input name='block_name' type='text' value={this.state.block_} onChange={this.handleChange}/>
+                    <input name='block_name' type='text' value={this.state.block_name} onChange={this.handleChange}/>
                     <br />
                     <label className='form-text' >
                         Block Description:
                     </label>
-                    <textarea name='block_description' type='text' value={this.state.block_} onChange={this.handleChange}/>
+                    <textarea name='block_description' type='text' value={this.state.block_description} onChange={this.handleChange}/>
                     <br />
                     <button  className='form-button' type='submit'>Submit</button>
                 </form>
