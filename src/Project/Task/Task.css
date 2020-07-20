@@ -1,0 +1,6 @@
+.task-wrapper {
+    margin: .5rem 0 .5rem 0;
+    padding: 0 .5rem .5rem .5rem;
+    border: 1px solid gray;
+    border-radius: 8px;
+}

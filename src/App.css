@@ -11,3 +11,7 @@
   
 }
 
+.dark-on-light {
+  background-color: rgb(31, 23, 64);
+  color: rgb(207, 237, 229);
+}

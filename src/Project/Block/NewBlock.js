@@ -6,7 +6,7 @@ class NewBlock extends Component {
         this.state ={
             block_name: '',
             block_description: '',
-            project_id: this.props.routeProps.match.params.p_id
+            project_id: this.props.p_id
         }
     }
     handleSubmit = (e) => {
