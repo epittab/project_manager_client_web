@@ -108,7 +108,7 @@ class BlockDetail extends Component {
                         </div>
                     </div>
                     <div>
-                        <Link to={`/projects/${this.state.p_id}/blocks/${this.state.b_id}`}>< EditButton size='1.2rem' /></Link>
+                        <Link to={`/projects/${this.state.p_id}/blocks/${this.state.b_id}/tasks/${task.id}`}>< EditButton size='1.2rem' /></Link>
                         < DeleteButton size='1.2rem'/>
                     </div>
                     

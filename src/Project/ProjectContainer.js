@@ -13,7 +13,6 @@ import Invite from '../Invite/Invite'
 import BlockCont from './Block/BlockCont'
 import BlockDetail from './Block/BlockDetail'
 import TaskCont from './Task/TaskCont'
-import TaskDetail from './Task/TaskDetail'
 import CreateProject from './ProjectMenu/Board/Cards/CreateProject'
 
 
@@ -25,9 +24,7 @@ class ProjectContainer extends Component {
                 <Switch >
                    < Route exact path='/projects' render={(props) => < ProjectMenu routeProps={props} /> }/>
                    < Route exact path='/projects/new' render={(props)=> < CreateProject routeProps={props} />}/>
-                   < Route path='/projects/:p_id/blocks/new' render={ (props) => < BlockCont routeProps={props}/> } />
-                   < Route path='/projects/:p_id/blocks/:b_id/tasks/:t_id' render={(props)=> < TaskDetail routeProps={props} />}/>
-                   < Route path='/projects/:p_id/blocks/:b_id/tasks' render={(props)=> < TaskCont />}/>
+                   < Route path='/projects/:p_id/blocks/:b_id/tasks/:t_id' render={(props)=> < TaskCont routeProps={props} />}/>
                    < Route path='/projects/:p_id/blocks/:b_id' render={(props)=> < BlockDetail routeProps={props} />}/>
                    < Route path='/projects/:p_id/blocks' render={(props)=> < BlockCont routeProps={props} />}/>
                    < Route path='/projects/:p_id/budget' render={(props)=> < Budget />}/>
