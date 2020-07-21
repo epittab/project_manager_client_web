@@ -87,7 +87,7 @@ class TaskCont extends Component {
                         <div className='add-icon' style={{height: '1rem', width: '1rem'}} onClick={this.toggleForm}>
                         </div>
                     </div>
-                    {this.state.showingForm ? < AddCost /> : null }
+                    {this.state.showingForm ? < AddCost t_id={this.props.routeProps.match.params.t_id} /> : null }
                     
                    {this.state.task ? this.renderBudget() : null }
               

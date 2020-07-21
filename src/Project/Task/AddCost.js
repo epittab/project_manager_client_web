@@ -6,10 +6,9 @@ class AddCost extends Component {
         this.state = {
             cost_name: '',
             cost_description: '',
-            cost_type: '',
+            cost_type: 'Labor',
             cost_amount: '',
-            b_id: this.props.b_id,
-            p_id: this.props.p_id,
+            t_id: this.props.t_id
         }
     }
 
@@ -32,7 +31,7 @@ class AddCost extends Component {
             this.setState({...this.state, 
                 cost_name: '',
                 cost_description: '',
-                cost_type: '',
+                cost_type: 'Labor',
                 cost_amount: '',
             })
         })
@@ -57,11 +56,11 @@ class AddCost extends Component {
                     id='task-cost-form-desc' type='text' onChange={this.handleChange}/>
                     <br />
                     <label htmlFor='task-cost-form-start-date' className='form-text' >Cost Type:</label>
-                    <select name='task_type' 
+                    <select name='cost_type' onChange={this.handleChange}
                     id='task-cost-form-type' type='text' >
-                        <option value='labor' onChange={this.handleChange}>Labor</option>
-                        <option value='material' onChange={this.handleChange}>Material</option>
-                        <option value='service' onChange={this.handleChange}>Service</option>
+                        <option value='Labor'>Labor</option>
+                        <option value='Material'>Material</option>
+                        <option value='Service'>Service</option>
                     </select>
                     <br />
                     <label htmlFor='task-cost-form-amount' className='form-text' >Cost Amount:</label>

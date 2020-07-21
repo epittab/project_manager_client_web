@@ -31,8 +31,10 @@ class Board extends Component {
     render() {
         return (
             <div className='Board transparent'>
-                <Link className='card-link' to='/projects/new'>< NewCard /></Link>
-                { this.state.userProjects.map( (up) => <Link className='card-link' to={`/projects/${up.id}`}>< ProjectCard name={up.project_name}/></Link>)}
+                <div className='card-grid'>
+                    <Link className='card-link' to='/projects/new'>< NewCard /></Link>
+                    { this.state.userProjects.map( (up) => <Link className='card-link' to={`/projects/${up.id}`}>< ProjectCard name={up.project_name}/></Link>)}
+                </div>
                 
             </div>
         )

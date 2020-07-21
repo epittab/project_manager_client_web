@@ -8,7 +8,7 @@ class BudgetCard extends Component {
         return (
             <Link className='widget-link' to={`/projects/${this.props.routeProps.match.params.p_id}/budget`}><div className='Widget '>
                 <div className=' add-widget'></div>
-                <div className='widget-text'>Add a Budget</div>
+                <div className='widget-text'>Check Budget</div>
             </div></Link>
         )
     }

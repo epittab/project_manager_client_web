@@ -13,14 +13,7 @@ import './Tray.css'
                     < Widget />
                     < Widget />
                     < Widget />
-                    < Widget />
-                    < Widget />
-                    < Widget />
-                    < Widget />
-                    < Widget />
-                    < Widget />
-                    < Widget />
-                    < Widget />
+                 
                 </div>
                    
                     
