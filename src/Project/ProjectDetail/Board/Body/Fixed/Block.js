@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import FixedCell from './FixedCell'
 import DynamicCell from '../Dynamic/DynamicCell'
-import Row from './Row'
 import TaskCell from './TaskCell'
 
 

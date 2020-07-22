@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import './Budget.css'
  class Budget extends Component {
 
     constructor(){
@@ -31,23 +32,45 @@ import React, { Component } from 'react'
         return (
             <div className='total-budget-container'>
                 <h4>Total Budget</h4>
-                <p> {this.state.budget.total_budget}</p>
+                <p> ${this.state.budget.total_budget.toFixed(2)}</p>
             </div>
         )
     }
 
     renderTable(){
         return (
-            <tbody>
-                {this.state.budget.budget_per_task.map(bpt => (<tr> 
-                    <td>{bpt.task}</td>
-                    <td>{bpt.budget}</td>
-                    <td>Realized Labor</td>
-                    <td>Realized Service</td>
-                    <td>Realized Material</td>
-                    <td>Difference</td>
-                </tr>))}
-            </tbody>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Budgeted Exp.</th>
+                        <th>Real. Labor Exp.</th>
+                        <th>Real. Service Exp.</th>
+                        <th>Real. Material Exp.</th>
+                        <th>Difference</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.state.budget.budget_per_task.map(bpt => { 
+                        
+                        let budget_total = bpt.budget ? parseFloat(bpt.budget) : 0
+                        let labor_total =  bpt.labor_costs.length > 0 ? bpt.labor_costs.map( lc=> lc.labor_cost ).reduce( (acc, cur) => acc + cur ) : (0.00) 
+                        let serv_total =  bpt.serv_mat_costs.filter( smt => smt.isService ).length > 0 ? bpt.serv_mat_costs.filter( smt => smt.isService).map( sm => sm.serv_mat_cost ).reduce( (acc, cur) => acc + cur ) : (0.00)
+                        let mat_total =  bpt.serv_mat_costs.filter( smt => !smt.isService).length > 0 ? bpt.serv_mat_costs.filter( smt => !smt.isService).map( sm => sm.serv_mat_cost ).reduce( (acc, cur) => acc + cur ) : (0.00)
+                        let difference = budget_total - (labor_total + serv_total + mat_total)
+                        
+                        return (<tr> 
+                        <td>{bpt.task}</td>
+                        <td> ${budget_total.toFixed(2) }</td>
+                        <td> ${labor_total.toFixed(2) }</td>
+                        <td> ${serv_total.toFixed(2) }</td>
+                        <td> ${mat_total.toFixed(2) }</td>
+                        <td> ${ difference.toFixed(2) } </td>
+                    </tr>)}
+                    
+                    )}
+                </tbody>
+            </table>
         )
     }
 
@@ -55,27 +78,11 @@ import React, { Component } from 'react'
         return (
             <div className='Board transparent'>
                 <h2>Budget</h2>
-                { this.state.budget ? this.renderTotal() : null }
+                    { this.state.budget ? this.renderTotal() : null }
                 <div className='total-budget-detail-container'>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Task</th>
-                                <th>Budgeted Exp.</th>
-                                <th>Real. Labor Exp.</th>
-                                <th>Real. Service Exp.</th>
-                                <th>Real. Material Exp.</th>
-                                <th>Difference</th>
-                            </tr>
-                        </thead>
-                        { this.state.budget ? this.renderTable() : null }
-                    </table>
-                    <h4>Labor</h4>
-                    <div>L costs</div>
-                    <h4>Materials</h4>
-                    <div>M costs</div>
-                    <h4>Services</h4>
-                    <div>S costs</div>
+                    { (this.state.budget && this.state.budget.budget_per_task.length > 0)  
+                    ? this.renderTable() 
+                    : null }
                 </div>
             </div>
         )

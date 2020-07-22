@@ -3,7 +3,10 @@ import React, { Component } from 'react'
 import TaskDetail from './TaskDetail'
 import AddCost from './AddCost'
 import AddBudget from './AddBudget'
+import DisplayCost from './DisplayCost'
+import DisplayLCost from './DisplayLCost'
 
+import './Task.css'
 class TaskCont extends Component {
 
 
@@ -25,7 +28,8 @@ class TaskCont extends Component {
         })
         .then( r => r.json() )
         .then( data => {
-            this.setState({...this.state, task: data })
+            let {task, costs, task_status } = data 
+            this.setState({...this.state, task, costs, task_status })
         })
         .catch( err => {console.log(err)})
     }
@@ -34,8 +38,25 @@ class TaskCont extends Component {
         this.setState({showingForm: !this.state.showingForm})
     }
 
+    renderCosts() {
+        return (<div>
+                <h3>Labor</h3>
+                    { this.state.costs.labor_costs.length > 0 ? 
+                        this.state.costs.labor_costs.map((c) => < DisplayLCost cost={c}/>)
+                        : <p className='null-text'> There are currently <strong>no Labor costs</strong> reported. </p>}
+                <h3>Materials</h3>
+                    { this.state.costs.serv_mat_costs.length > 0 ? 
+                        this.state.costs.serv_mat_costs.map((c) => < DisplayCost cost={c}/>)
+                        : <p className='null-text'> There are currently <strong>no Material costs </strong>reported. </p>}
+                <h3>Services</h3>
+                    { this.state.costs.serv_mat_costs.length > 0 ? 
+                    this.state.costs.serv_mat_costs.map((c) => < DisplayCost cost={c}/>)
+                    : <p className='null-text'> There are currently <strong>no Service costs</strong> reported. </p>}
+        </div>)
+    }
+
     renderBudget(){
-        return ( <div> 
+        return ( <div className='task-wrapper'> 
 
             <h3>Budgeted Cost</h3>
             
@@ -49,15 +70,18 @@ class TaskCont extends Component {
             : null }
 
             <h3>Line Items</h3>
-
+            
+            { this.renderCosts() }
             
             </div>)
     }
 
     renderStatus(){
-        return (<div>
+        return (<div className='task-wrapper simple-task'>
                     <h3>Change Status</h3>
-                    {this.state.task.status === 'pending' ? 'start' : 'complete'}
+                    { (this.state.task_status === 'Pending' || this.state.task_status === 'Created') ?
+                        <button className='action-item cta'>Start</button> :
+                        <button className='action-item cta'>Complete</button>}
                 </div>)      
     }
 
@@ -66,14 +90,14 @@ class TaskCont extends Component {
             <div className='block-wrapper dark-on-light'>
                 <p> <strong>Task Name: </strong> {`${this.state.task.task_name}`}</p>
                 <p> <strong>Task Desc:</strong> {`${this.state.task.task_description}`}</p>
-                <p> <strong>Status:</strong> PENDING </p>
+                <p> <strong>Status:</strong> {`${this.state.task_status}`} </p>
             </div>
         )
     }
 
     render() {
         return (
-            <div>
+            <div className='Sheet transparent'>
                 <h2>Task Detail</h2>
                 { this.state.task ? this.renderGeneral() : null }
              
@@ -81,7 +105,7 @@ class TaskCont extends Component {
                     {this.state.task ? this.renderStatus() : null }
                 </div>
 
-                <div>
+                <div className='task-wrapper'>
                     <h3>Cost</h3>
                     <div>
                         <div className='add-icon' style={{height: '1rem', width: '1rem'}} onClick={this.toggleForm}>

@@ -23,10 +23,10 @@ class TaskDetail extends Component {
     render() {
         
         return (
-            <div>
-
+            <div className='task-wrapper simple-task'>
+                <h3>Delete Task</h3>
                 <form onSubmit={this.handleDelete}>
-                    <button className='form-button' type='submit'>Delete</button>
+                    <button className='form-button danger action-item' type='submit'>Delete</button>
                 </form>
             </div>
         )

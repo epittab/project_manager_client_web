@@ -67,7 +67,7 @@ class AddCost extends Component {
                     <input name='cost_amount' value={this.state.cost_amount} 
                     id='task-cost-form-amount' type='number' onChange={this.handleChange}/>
                     <br />
-                    <button  className='form-button' type='submit'>Add Cost</button>
+                    <button  className='form-button primary' type='submit'>Add Cost</button>
                 </form>
             </div>
         )

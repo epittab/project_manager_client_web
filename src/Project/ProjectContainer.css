@@ -16,3 +16,43 @@ div.ProjectContainer.close {
     backdrop-filter: blur(.3rem);
     box-shadow: 0 0 10px rgba(31, 23, 64, .3);
 }
+
+.danger{
+    background-color: rgb(244, 67, 54);
+}
+
+.warning {
+    background-color: rgb(240, 174, 68);
+}
+
+.success {
+    background-color: rgb(66, 184, 127);
+    
+}
+
+.cta {
+    background-color: rgb(240, 174, 68);
+}
+
+.danger:hover {
+    background-color: rgb(190, 50, 40);
+    color: white;
+}
+
+.warning:hover {
+    background-color: rgb(214, 154, 57);
+}
+
+.success:hover {
+    background-color: rgb(52, 151, 103);
+}
+
+.cta:hover {
+    background-color: rgb(199, 143, 53);
+}
+
+.null-text {
+    color: darkslategray;
+    font-weight: lighter;
+    font-size: 1.1rem;
+}

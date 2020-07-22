@@ -44,7 +44,7 @@ class AddBudget extends Component {
                     <input name='budget_amount' value={this.state.budget_amount} 
                     id='task-budget-form-amount' type='number' onChange={this.handleChange}/>
                     <br />
-                    <button  className='form-button' type='submit'>Add Budget</button>
+                    <button  className='form-button primary' type='submit'>Add Budget</button>
                 </form>
             </div>
         )

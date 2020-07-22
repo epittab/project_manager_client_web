@@ -60,7 +60,7 @@ class BlockCont extends Component {
 
     render() {
         return (
-            <div>
+            <div className='Sheet transparent'>
 
                 <h2>Project</h2>
 

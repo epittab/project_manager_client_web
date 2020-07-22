@@ -123,7 +123,7 @@ class BlockDetail extends Component {
     
     render() {
         return (
-            <div>
+            <div className='Sheet transparent'>
                 <h2>Block Detail</h2>
 
                     {this.state.block ? this.renderGeneral() : null }

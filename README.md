@@ -1,8 +1,13 @@
 This is a simple online project management tool
 
+To Do List:
 
-
-
+1) change status from Created > In Progress > Completed
+2) Redefine how to calculate project days considering current_date and actual_start and actual_end dates from the tasks
+3) "Reactive" or SPA front end on submit and delete actions on forms
+4) implement Redirects
+5) add "Totals" Row to budget
+7) fix Project Card Text styling
 
 
 

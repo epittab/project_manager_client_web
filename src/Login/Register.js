@@ -66,7 +66,7 @@ class Register extends React.Component {
                         value={this.props.password} 
                         onChange={this.handleChange}/>
                     </label>
-                    <button className='form-button' type='submit'>Register</button>
+                    <button className='form-button primary' type='submit'>Register</button>
                 </form>
 
 

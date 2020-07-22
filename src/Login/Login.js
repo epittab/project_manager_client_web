@@ -57,7 +57,7 @@ class Login extends React.Component {
                             value={this.props.password} 
                             onChange={this.handleChange}/>
                      </label>
-                    <button className='form-button' type='submit'>Login</button>
+                    <button className='form-button primary' type='submit'>Login</button>
                 </form>
 
 

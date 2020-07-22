@@ -4,3 +4,28 @@
     border: 1px solid gray;
     border-radius: 8px;
 }
+
+.simple-task {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.action-item {
+    margin: auto;
+    font-size: 1.3rem;
+    height: 2rem;
+    width: 150px;
+    border: none;
+    border-radius: 8px;
+}
+
+div.line-item-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+span.line-item {
+    font-weight: bold;
+}
