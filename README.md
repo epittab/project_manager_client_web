@@ -10,17 +10,17 @@ To Do List:
 6) filter by completed and not completed
 7) fix Project Card Text styling
 8) KPIs > 
-    a) percent completion
-    b) total blocks
-    c) total tasks
-    d) percent delayed => new column was delayed
-    e) total days
-    f) days until completion
-    g) tasks in progress
-    h) tasks pending 
-    i) team members
-    j) total budget
-    l) number of tasks over budget
+    a) percent completion => count of tasks with completed status / count of tasks 
+    b) total blocks => count of blocks
+    c) total tasks => count of tasks
+    d) percent delayed => new column was_delayed / count of tasks
+    e) total days => project_length
+    f) days until completion => 
+    g) tasks in progress => count of tasks with in progress status
+    h) tasks pending => count of tasks with pending status
+    i) team members => count from join table
+    j) total budget => total_budget
+    l) number of tasks over budget => 
     m) amount over budget
     n) unused budget
 
