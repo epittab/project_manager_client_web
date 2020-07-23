@@ -2,13 +2,27 @@ This is a simple online project management tool
 
 To Do List:
 
-1) change status from Created > In Progress > Completed
-2) Redefine how to calculate project days considering current_date and actual_start and actual_end dates from the tasks
+<!-- 1) change status from Created > In Progress > Completed -->
+<!-- 2) Redefine how to calculate project days considering current_date and actual_start and actual_end dates from the tasks -->
 3) "Reactive" or SPA front end on submit and delete actions on forms
 4) implement Redirects
 5) add "Totals" Row to budget
+6) filter by completed and not completed
 7) fix Project Card Text styling
-
+8) KPIs > 
+    a) percent completion
+    b) total blocks
+    c) total tasks
+    d) percent delayed => new column was delayed
+    e) total days
+    f) days until completion
+    g) tasks in progress
+    h) tasks pending 
+    i) team members
+    j) total budget
+    l) number of tasks over budget
+    m) amount over budget
+    n) unused budget
 
 
 

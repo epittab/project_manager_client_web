@@ -13,8 +13,47 @@ class TaskCont extends Component {
     constructor(){
         super()
         this.state = {
-            showingForm: false
+            showingForm: false,
+            task_status:''
         }
+    }
+
+    handleComplete = () => {
+        fetch(`http://localhost:3001/tasks/${this.props.routeProps.match.params.t_id}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                field: 'status_id',
+                payload: 5
+            })
+        })
+        .then(r => r.json() )
+        .then(data => {
+            console.log(data)
+        })
+    }
+
+    handleStart = () => {
+        fetch(`http://localhost:3001/tasks/${this.props.routeProps.match.params.t_id}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                field: 'status_id',
+                payload: 3
+            })
+        })
+        .then(r => r.json() )
+        .then(data => {
+            console.log(data)
+        })
     }
 
     componentDidMount(){
@@ -79,9 +118,11 @@ class TaskCont extends Component {
     renderStatus(){
         return (<div className='task-wrapper simple-task'>
                     <h3>Change Status</h3>
-                    { (this.state.task_status === 'Pending' || this.state.task_status === 'Created') ?
-                        <button className='action-item cta'>Start</button> :
-                        <button className='action-item cta'>Complete</button>}
+                    { (this.state.task_status === 'Completed') ?
+                          <button className='action-item'>Done</button> :
+                         (this.state.task_status === 'Pending' || this.state.task_status === 'Created') ?
+                        <button onClick={this.handleStart} className='action-item cta'>Start</button> :
+                        <button onClick={this.handleComplete} className='action-item cta'>Complete</button>}
                 </div>)      
     }
 

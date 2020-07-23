@@ -11,6 +11,8 @@ class BlockDetail extends Component {
         super(props)
         this.state = {
             showingForm: false,
+            block: {block: {},
+                    tasks: []},
             b_id: this.props.routeProps.match.params.b_id,
             p_id: this.props.routeProps.match.params.p_id,
         }
@@ -66,11 +68,16 @@ class BlockDetail extends Component {
         .then( r => r.json() )
         .then( data => {
             console.log(data)
+            let {tasks} = this.state.block
+            tasks = [...tasks, data]
+            
             this.setState({...this.state, 
+                block: {...this.state.block.block, tasks: tasks},
                 task_name: '',
                 task_description: '',
                 task_start_date: '',
                 task_end_date: '',
+                
             })
         })
     }

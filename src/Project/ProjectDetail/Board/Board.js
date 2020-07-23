@@ -17,9 +17,10 @@ class Board extends Component {
 
     deriveProjectLength() {
         if (this.state.project_array) {
-            let {est_end_date, est_start_date} = this.state.project_array.project
-            let timeDelta = new Date(est_end_date).getTime() - new Date(est_start_date).getTime()
-            return timeDelta / (1000 * 3600 * 24)
+            // let {est_end_date, est_start_date} = this.state.project_array.project
+            // let timeDelta = new Date(est_end_date).getTime() - new Date(est_start_date).getTime()
+            // return timeDelta / (1000 * 3600 * 24)
+            return this.state.project_array.days + 1
         } else 
         { return 0}
     }
@@ -44,7 +45,7 @@ class Board extends Component {
         
         return (this.state.project_array.blocks.map((b) => 
             < GroupRow key = {b.b_id+100} block = {b} 
-            psd={this.state.project_array.project.est_start_date}
+            psd={this.state.project_array.display_start}
             routeProps={this.props.routeProps} 
             duration={this.deriveProjectLength()}/> ))
     }
@@ -52,7 +53,7 @@ class Board extends Component {
     renderHeader() {
         
         return  < Header routeProps={this.props.routeProps} 
-            psd={this.state.project_array.project.est_start_date}
+            psd={this.state.project_array.display_start}
             duration={this.deriveProjectLength()}/>
     }
 
