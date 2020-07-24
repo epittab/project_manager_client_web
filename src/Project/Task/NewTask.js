@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class BlockDetail extends Component {
+class NewTask extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -70,4 +70,4 @@ class BlockDetail extends Component {
         )
     }
 }
-export default BlockDetail
+export default NewTask

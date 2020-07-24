@@ -26,3 +26,31 @@ nav.Navbar.close {
 .Navbar-link-item:hover {
     background-color: lightblue;
 }
+
+div.nav-icon {
+    transition: ease-in-out .3s;
+    height: 80%;
+    width: 80%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../images/icon-project.svg);
+}
+
+span.nav-text.open {
+    transition: ease-in 3s;
+    color: rgba(31, 25, 68, 1);
+    background: none;
+    width: 100%;
+    transition: ease-out .3s;
+}
+
+span.nav-text {
+    transition: ease-in-out .3s;
+    height: 80%;
+    width: 80%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../images/icon-project.svg);
+    color: rgba(255, 255, 255, 0);
+    
+}

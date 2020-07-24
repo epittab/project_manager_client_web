@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #1f1740;
+      }
+    </style>
+  </defs>
+  <path id="Icon_open-graph" data-name="Icon open-graph" class="cls-1" d="M87.875,0,50,37.5,37.5,25,0,62.875l12.5,12.5L37.5,50,50,62.5l50-50ZM0,87.5V100H100V87.5Z"/>
+</svg>

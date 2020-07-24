@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
+import {toggleNav} from '../Redux/Actions/navbar'
+
 import './Hamburger.css'
 
 class Hamburger extends Component {
 
-    
     render() {
         return (
             <div className='Hamburger'>
@@ -18,4 +21,16 @@ class Hamburger extends Component {
     }
 }
 
-export default Hamburger;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggle: () => dispatch(toggleNav())
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        isOpen: state.navbar.isOpen
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hamburger);

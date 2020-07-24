@@ -9,27 +9,15 @@ import Hamburger from '../Components/Hamburger'
 import './Navbar.css'
 
 class Navbar extends React.Component {
-  
-
-    toggleOpen = () => {
-        this.props.dispatch({
-            type: 'TOGGLE_NAV',
-            payload: {
-                isOpen: !this.props.isOpen
-            }
-        })
-        
-    }
 
     render(){
         return (    
                       
             <nav className={`Navbar${this.props.isOpen ? '' : ' close'}`}>
-            <Hamburger isOpen={this.props.isOpen} toggle={this.toggleOpen}/>
-            
-            <Link to='/projects' className='Navbar-link'><div className='Navbar-link-item'>Project</div></Link>
-            <Link to='/performance' className='Navbar-link'><div className='Navbar-link-item'>Performance</div></Link>
-            <Link to='/account' className='Navbar-link'><div className='Navbar-link-item'>Account</div></Link>
+            <Hamburger/>
+            <Link to='/projects' className='Navbar-link'><div className='Navbar-link-item'>{this.props.isOpen ? 'Projects' : 'Pro'}</div></Link>
+            <Link to='/performance' className='Navbar-link'><div className='Navbar-link-item'>{ this.props.isOpen ? 'Performance' : 'Perf' }</div></Link>
+            <Link to='/account' className='Navbar-link'><div className='Navbar-link-item'>{ this.props.isOpen ? 'Account' : 'Acc'}</div></Link>
 
 
             </nav>
