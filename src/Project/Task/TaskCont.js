@@ -9,6 +9,7 @@ import DisplayCost from './DisplayCost'
 import DisplayLCost from './DisplayLCost'
 
 import './Task.css'
+import { TOGGLE_TASK_COSTS } from '../../Redux/Actions/types'
 class TaskCont extends Component {
 
 
@@ -73,10 +74,6 @@ class TaskCont extends Component {
             this.setState({...this.state, task, costs, task_status })
         })
         .catch( err => {console.log(err)})
-    }
-
-    toggleForm = () => {
-        this.setState({showingForm: !this.state.showingForm})
     }
 
     renderCosts() {
@@ -151,10 +148,10 @@ class TaskCont extends Component {
                 <div className='task-wrapper'>
                     <h3>Cost</h3>
                     <div>
-                        <div className='add-icon' style={{height: '1rem', width: '1rem'}} onClick={this.toggleForm}>
+                        <div className='add-icon' style={{height: '1rem', width: '1rem'}} onClick={this.props.toggleCost}>
                         </div>
                     </div>
-                    {this.state.showingForm ? < AddCost t_id={this.props.routeProps.match.params.t_id} /> : null }
+                    {this.props.isCostOpen ? < AddCost t_id={this.props.routeProps.match.params.t_id} /> : null }
                     
                    {this.state.task ? this.renderBudget() : null }
               
@@ -167,10 +164,15 @@ class TaskCont extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        toggleCost: () => {dispatch({type: TOGGLE_TASK_COSTS})}
+    }
 }
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        isCostOpen: state.task.isCostOpen
+        
+    }
 }
 
 

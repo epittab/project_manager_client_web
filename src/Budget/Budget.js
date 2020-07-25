@@ -1,40 +1,20 @@
 import React, { Component } from 'react'
 
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { fetchBudget } from '../Redux/Actions/budget'
 
 import './Budget.css'
- class Budget extends Component {
-
-    constructor(){
-        super()
-        this.state = {
-
-        }
-    }
+class Budget extends Component {
 
     componentDidMount(){
-
-        fetch(`http://localhost:3001/projects/${this.props.routeProps.match.params.p_id}/budget`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            }
-        })
-        .then( r => r.json() )
-        .then( data => {
-            this.setState({budget: data})
-        })
-        .catch((err) => {console.log(err)})
-
+        this.props.fetchBudget(this.props.routeProps.match.params.p_id)
     }
 
     renderTotal(){
         return (
             <div className='total-budget-container'>
                 <h4>Total Budget</h4>
-                <p> ${this.state.budget.total_budget.toFixed(2)}</p>
+                <p> ${this.props.budget.total_budget.toFixed(2)}</p>
             </div>
         )
     }
@@ -53,7 +33,7 @@ import './Budget.css'
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.budget.budget_per_task.map(bpt => { 
+                    {this.props.budget.budget_per_task.map(bpt => { 
                         
                         let budget_total = bpt.budget ? parseFloat(bpt.budget) : 0
                         let labor_total =  bpt.labor_costs.length > 0 ? bpt.labor_costs.map( lc=> lc.labor_cost ).reduce( (acc, cur) => acc + cur ) : (0.00) 
@@ -80,9 +60,9 @@ import './Budget.css'
         return (
             <div className='Board transparent'>
                 <h2>Budget</h2>
-                    { this.state.budget ? this.renderTotal() : null }
+                    { this.props.budget ? this.renderTotal() : null }
                 <div className='total-budget-detail-container'>
-                    { (this.state.budget && this.state.budget.budget_per_task.length > 0)  
+                    { (this.props.budget && this.props.budget.budget_per_task.length > 0)  
                     ? this.renderTable() 
                     : null }
                 </div>
@@ -92,11 +72,15 @@ import './Budget.css'
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
-}
-const mapStateToProps = (state) => {
-    return {}
+    return {
+        fetchBudget: (project_id) => {dispatch(fetchBudget(project_id))}
+    }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        budget: state.budget.budget
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Budget)

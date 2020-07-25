@@ -11,3 +11,11 @@ export const TOGGLE_NAV = 'TOGGLE_NAV';
 
 //Projects
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
+
+//Tasks
+export const TOGGLE_TASK_COSTS = 'TOGGLE_TASK_COSTS';
+export const CHANGE_TASK_BUDGET = 'CHANGE_TASK_BUDGET';
+export const SUBMIT_TASK_BUDGET = 'SUBMIT_TASK_BUDGET';
+
+//Budget
+export const FETCH_BUDGET = 'FETCH_BUDGET';

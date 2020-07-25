@@ -1,10 +1,9 @@
+import { TOGGLE_NAV }  from './types'
+
 function toggleNav() {
     return (dispatch, getState) => {
-        //use getState
-        let {isOpen} = getState().navbar
         dispatch({
-            type: "TOGGLE_NAV",
-            payload: !isOpen
+            type: TOGGLE_NAV
         })
 
     }

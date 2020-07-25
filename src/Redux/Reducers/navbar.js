@@ -8,7 +8,7 @@ const reducer = (oldState = initialState, action) => {
 
     switch (action.type) {
         case TOGGLE_NAV: 
-            return {isOpen: action.payload}
+            return {isOpen: !oldState.isOpen}
         default:
             return oldState
     }
