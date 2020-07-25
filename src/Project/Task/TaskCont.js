@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
 import TaskDetail from './TaskDetail'
 import AddCost from './AddCost'
 import AddBudget from './AddBudget'
@@ -163,4 +165,13 @@ class TaskCont extends Component {
         )
     }
 }
-export default TaskCont
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskCont)

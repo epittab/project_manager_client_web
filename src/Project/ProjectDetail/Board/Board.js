@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
 import './Board.css'
 import Header from './Header/Header'
 import GroupRow from './Body/Fixed/GroupRow'
@@ -70,4 +72,12 @@ class Board extends Component {
         )
     }
 }
-export default Board;
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

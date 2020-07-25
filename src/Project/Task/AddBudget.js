@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
 class AddBudget extends Component {
     constructor(props) {
         super(props)
@@ -12,7 +13,7 @@ class AddBudget extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3001/tasks/${this.props.t_id}`, {
+        fetch(`http://localhost:3001/tasks/${this.props.t_id}/budget`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
@@ -50,4 +51,12 @@ class AddBudget extends Component {
         )
     }
 }
-export default AddBudget
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddBudget)

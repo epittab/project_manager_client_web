@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
 class AddCost extends Component {
     constructor(props) {
         super(props)
@@ -73,4 +74,13 @@ class AddCost extends Component {
         )
     }
 }
-export default AddCost
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddCost)

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { connect } from 'react-redux'
+
 class DynamicCell extends Component {
     constructor(props) {
         super(props)
@@ -44,4 +46,13 @@ class DynamicCell extends Component {
         )
     }
 }
-export default DynamicCell
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(DynamicCell)

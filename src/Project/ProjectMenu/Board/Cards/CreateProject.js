@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
 import './CreateProject.css'
 
 class CreateProject extends Component {
@@ -74,5 +76,12 @@ class CreateProject extends Component {
         }
     }
 
+    const mapDispatchToProps = (dispatch) => {
+        return {}
+    }
+    const mapStateToProps = (state) => {
+        return {}
+    }
+    
 
-export default CreateProject;
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
 class NewTask extends Component {
     constructor(props) {
         super(props)
@@ -70,4 +72,13 @@ class NewTask extends Component {
         )
     }
 }
-export default NewTask
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewTask)

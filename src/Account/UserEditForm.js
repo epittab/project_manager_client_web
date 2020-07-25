@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
 class UserEditForm extends Component {
 
     constructor(){
@@ -65,4 +66,11 @@ class UserEditForm extends Component {
         )
     }
 }
-export default UserEditForm
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserEditForm)

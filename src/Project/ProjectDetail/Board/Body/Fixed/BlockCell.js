@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+
 
 import Expand from '../../../../../Components/Expand'
 import EditButton from '../../../../../Components/EditButton'
@@ -38,4 +41,12 @@ class BlockCell extends Component {
     }
 }
 
-export default BlockCell
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlockCell)

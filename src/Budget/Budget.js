@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
 import './Budget.css'
  class Budget extends Component {
 
@@ -88,4 +90,13 @@ import './Budget.css'
         )
     }
 }
-export default Budget
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Budget)

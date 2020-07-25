@@ -4,6 +4,8 @@ import EditButton from '../../Components/EditButton'
 import DeleteButton from '../../Components/DeleteButton'
 import NewTask from '../Task/NewTask'
 
+import {connect} from 'react-redux'
+
 import {Link} from 'react-router-dom'
 
 class BlockDetail extends Component {
@@ -155,4 +157,12 @@ class BlockDetail extends Component {
         )
     }
 }
-export default BlockDetail
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlockDetail)

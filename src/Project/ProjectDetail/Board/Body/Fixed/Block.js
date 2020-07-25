@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+
+import {connect } from 'react-redux'
+
 import FixedCell from './FixedCell'
 import DynamicCell from '../Dynamic/DynamicCell'
 import TaskCell from './TaskCell'
@@ -45,4 +48,11 @@ class Block extends Component {
         )
     }
 }
-export default Block
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Block)

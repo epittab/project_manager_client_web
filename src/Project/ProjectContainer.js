@@ -37,8 +37,14 @@ class ProjectContainer extends Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
 const mapStateToProps = (state) => {
     return { navIsOpen: state.navbar.isOpen}
 }
 
-export default connect(mapStateToProps)(ProjectContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectContainer);

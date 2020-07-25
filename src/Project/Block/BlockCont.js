@@ -3,6 +3,8 @@ import NewBlock from './NewBlock'
 import EditButton from '../../Components/EditButton'
 import DeleteButton from '../../Components/DeleteButton'
 
+import {connect} from 'react-redux'
+
 import {Link} from 'react-router-dom'
 
 import './Block.css'
@@ -86,4 +88,12 @@ class BlockCont extends Component {
         )
     }
 }
-export default BlockCont
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlockCont)

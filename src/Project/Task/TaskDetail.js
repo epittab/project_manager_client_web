@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { connect } from 'react-redux'
+
 class TaskDetail extends Component {
 
     handleDelete = (e) => {
@@ -32,4 +34,13 @@ class TaskDetail extends Component {
         )
     }
 }
-export default TaskDetail
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+const mapStateToProps = (state) => {
+    return {}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskDetail)

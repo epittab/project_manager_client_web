@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import {connect} from 'react-redux'
+
 class NewBlock extends Component {
     constructor(props){
         super(props)
@@ -51,4 +53,13 @@ class NewBlock extends Component {
         )
     }
 }
-export default NewBlock
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+const mapStateToProps = (state) => {
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewBlock)
