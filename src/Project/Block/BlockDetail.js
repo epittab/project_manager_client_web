@@ -5,44 +5,17 @@ import DeleteButton from '../../Components/DeleteButton'
 import NewTask from '../Task/NewTask'
 
 import {connect} from 'react-redux'
+import { fetchBlock, fetchDeleteBlock } from '../../Redux/Actions/blocks'
+import { toggleTaskForm } from '../../Redux/Actions/tasks'
 
 import {Link} from 'react-router-dom'
 
 class BlockDetail extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            showingForm: false,
-            block: {block: {},
-                    tasks: []},
-            b_id: this.props.routeProps.match.params.b_id,
-            p_id: this.props.routeProps.match.params.p_id
-        }
-    }
-
-   
+      
     componentDidMount() {
-        
+        this.props.getBlock(this.props.routeProps.match.params.b_id)
+        //fetch current block
     }
-
-    handleDelete = (e) => {
-        e.preventDefault()
-        fetch(`http://localhost:3001/blocks/${this.props.routeProps.match.params.b_id}`,{
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then( r => r.json() )
-        .then( data => {
-            // ELIMINATE block from state
-            this.setState({...this.state, block: data })
-        })
-        .catch( err => {console.log(err)})
-    }
-
     
     handleSubmit = (e) => {
         e.preventDefault()
@@ -76,27 +49,26 @@ class BlockDetail extends Component {
         this.setState({[e.target.name]: e.target.value })
     }
 
-    toggleForm = () => {
-        this.setState({showingForm: !this.state.showingForm})
-    }
 
     renderGeneral(){
         return (
             <div className='block-wrapper dark-on-light'>
-                <p> <strong>Block Name: </strong> {`${this.state.block.block.block_name}`}</p>
-                <p> <strong>Block Desc:</strong> {`${this.state.block.block.block_description}`}</p>
+                <p> <strong>Block Name: </strong> {`${this.props.block.block_name}`}</p>
+                <p> <strong>Block Desc:</strong> {`${this.props.block.block_description}`}</p>
                 <p> <strong>Status:</strong> PENDING </p>
             </div>
         )
     }
 
     renderTasks(){
+        let p_id = this.props.routeProps.match.params.p_id
+        let b_id = this.props.routeProps.match.params.b_id
         return (
             <div className=''>
-                { (this.state.block.tasks.length > 0) ?
-                this.state.block.tasks.map( task => 
-                 <div className='block-wrapper transparent'>
-                    <div>
+                { (this.props.tasks.length > 0) ?
+                this.props.tasks.map( task => 
+                 <div className='block-task-wrapper transparent'>
+                    <div className='task-info-wrapper'>
                         <p> <strong>Task Name: </strong> {`${task.task_name}`}</p>
                         <p> <strong>Task Description:</strong> {`${task.task_description}`}</p>
                         <div className='time-wrapper'>
@@ -104,9 +76,9 @@ class BlockDetail extends Component {
                             <p> <strong>Est. End Date:</strong> {`${task.est_end_date}`}</p>
                         </div>
                     </div>
-                    <div>
-                        <Link to={`/projects/${this.state.p_id}/blocks/${this.state.b_id}/tasks/${task.id}`}>< EditButton size='1.2rem' /></Link>
-                        < DeleteButton size='1.2rem'/>
+                    <div className='block-wrapper-grid-buttons'>
+                        <Link to={`/projects/${p_id}/blocks/${b_id}/tasks/${task.id}`}>< EditButton size={2} /></Link>
+                        < DeleteButton size={2}/>
                     </div>
                     
                  
@@ -123,23 +95,26 @@ class BlockDetail extends Component {
             <div className='Sheet transparent'>
                 <h2>Block Detail</h2>
 
-                    {this.state.block ? this.renderGeneral() : null }
+                    {this.props.block ? this.renderGeneral() : null }
 
                 <div>
                     Task List
                 </div>
 
                 <div>
-                    <div className='add-icon' style={{height: '1rem', width: '1rem'}} onClick={this.toggleForm}>
+                    <div className='add-icon' style={{height: '1rem', width: '1rem'}} onClick={this.props.toggleNewTask}>
                     </div>
-                    { this.state.showingForm 
-                    ? <NewTask p_id={this.props.p_id} b_id={this.state.b_id}/> 
+                    { this.props.isTaskFormOpen 
+                    ? <NewTask p_id={this.props.p_id} b_id={this.props.routeProps.match.params.b_id}/> 
                     : null}
-                    {this.state.block ? this.renderTasks() : null }
+                    {this.props.block ? this.renderTasks() : null }
                 </div>
                 <div className='block-wrapper transparent'>
-                        <p>DELETE BLOCK</p>
-                        <button onClick={this.handleDelete}>Delete</button>
+                        <form onSubmit={ () => this.props.deleteBlock(this.props.routeProps.match.params.b_id) }>
+                            <p>DELETE BLOCK</p>
+                            <button className='form-button danger action-item' type='submit'>Delete</button>
+                        </form>
+
                 </div>
             </div>
         )
@@ -147,12 +122,18 @@ class BlockDetail extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        getBlock: (b_id) => {dispatch(fetchBlock(b_id))},
+        deleteBlock: (b_id) => {dispatch(fetchDeleteBlock(b_id))},
+        toggleNewTask: () => {dispatch(toggleTaskForm())},
+    }
 }
 const mapStateToProps = (state) => {
     return {
-        p_id: state.projects.currProject.project.id,
-        blocks: state.projects.currProject.blocks
+        blocks: state.projects.currProject,
+        block: state.blocks.currBlock.block,
+        tasks: state.blocks.currBlock.tasks,
+        isTaskFormOpen: state.tasks.isNewTaskOpen,
     }
 }
 

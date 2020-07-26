@@ -1,4 +1,4 @@
-import {FETCH_ALL_PROJECTS, FETCH_PROJECT, POST_PROJECT_FORM, PROJECT_FORM_CLEANUP, CHANGE_PROJECT_FORM, PROJECT_CLEANUP} from '../Actions/types'
+import {FETCH_ALL_PROJECTS, FETCH_PROJECT, POST_PROJECT_FORM, PROJECT_FORM_CLEANUP, CHANGE_PROJECT_FORM, PROJECT_CLEANUP, POST_BLOCK_FORM} from '../Actions/types'
 
 const initialState = {
     userProjects: [],
@@ -27,6 +27,8 @@ const reducer = (oldState = initialState, action) => {
             return {...oldState, currProject: action.payload}
         case PROJECT_CLEANUP:
             return {...oldState, currProject: initialState.currProject}
+        case POST_BLOCK_FORM:
+            return {...oldState, currProject: {...oldState.currProject, blocks: [...oldState.currProject.blocks, action.payload]}}
         default:
             return oldState
     }

@@ -66,6 +66,7 @@ const mapDispatchToProps = (dispatch) => {
         toggleForm: () => { dispatch(toggleNewBlock())}
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         blocks: state.projects.currProject.blocks,

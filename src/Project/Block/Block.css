@@ -8,6 +8,11 @@
     border-radius: 8px;
 }
 
+div.block-task-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
 div.block-wrapper-grid-text{
     width: 100%;
     overflow-x: scroll;
@@ -19,6 +24,13 @@ div.block-wrapper-grid-buttons {
     align-self: center;
     justify-self: center;
 }
+
+
+div.time-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 
 div.add-icon {
     margin-bottom: 1rem;

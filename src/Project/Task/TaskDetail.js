@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { deleteTask } from '../../Redux/Actions/task'
+import { deleteTask } from '../../Redux/Actions/tasks'
 
 class TaskDetail extends Component {
 

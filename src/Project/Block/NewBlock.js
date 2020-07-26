@@ -1,35 +1,15 @@
 import React, { Component } from 'react'
 
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { changeBlockForm, postBlockForm, blockFormCleanup } from '../../Redux/Actions/blocks'
 
 class NewBlock extends Component {
-    constructor(props){
-        super(props)
-        this.state ={
-            block_name: '',
-            block_description: '',
-            project_id: this.props.p_id
-        }
-    }
-    handleSubmit = (e) => {
-        e.preventDefault()
-        fetch('http://localhost:3001/blocks', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(r => r.json())
-        .then(data => console.log(data))
-        this.setState({...this.state, block_name: '',
-        block_description: ''})
-    }
 
-    handleChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
+    componentWillUnmount = () => {this.props.handleCleanup()}
+   
+    handleSubmit = (e) => {
+        this.props.submitBlockForm(e, this.props.newBlockForm, this.props.p_id)
+        this.props.handleCleanup()
     }
     
     render() {
@@ -40,12 +20,12 @@ class NewBlock extends Component {
                     <label className='form-text' >
                         Block Name:
                     </label>
-                    <input name='block_name' type='text' value={this.state.block_name} onChange={this.handleChange}/>
+                    <input name='block_name' type='text' value={this.props.newBlockForm.block_name} onChange={this.props.handleChange}/>
                     <br />
                     <label className='form-text' >
                         Block Description:
                     </label>
-                    <textarea name='block_description' type='text' value={this.state.block_description} onChange={this.handleChange}/>
+                    <textarea name='block_description' type='text' value={this.props.newBlockForm.block_description} onChange={this.props.handleChange}/>
                     <br />
                     <button  className='form-button' type='submit'>Submit</button>
                 </form>
@@ -55,11 +35,18 @@ class NewBlock extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        handleChange: (e) => {dispatch(changeBlockForm(e))},
+        submitBlockForm: (e, form, p_id) => {dispatch(postBlockForm(e, form, p_id))},
+        handleCleanup: () => {dispatch(blockFormCleanup())}
+    }
 }
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        // blocks: state.projects.currProject.blocks,
+        newBlockForm: state.blocks.newBlockForm
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewBlock)

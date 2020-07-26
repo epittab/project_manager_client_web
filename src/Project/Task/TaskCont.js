@@ -10,7 +10,7 @@ import DisplayLCost from './DisplayLCost'
 
 import './Task.css'
 import { TOGGLE_TASK_COSTS } from '../../Redux/Actions/types'
-import { fetchTask } from '../../Redux/Actions/task'
+import { fetchTask } from '../../Redux/Actions/tasks'
 class TaskCont extends Component {
 
 
@@ -163,10 +163,10 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
     return {
-        isCostOpen: state.task.isCostOpen,
-        task: state.task.task,
-        costs: state.task.costs,
-        task_status: state.task.task_status
+        isCostOpen: state.tasks.currTask.isCostOpen,
+        task: state.tasks.currTask.task,
+        costs: state.tasks.currTask.costs,
+        task_status: state.tasks.currTask.task_status
     }
 }
 

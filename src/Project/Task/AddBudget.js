@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import {connect} from 'react-redux'
-import { changeTaskBudget } from '../../Redux/Actions/task'
+import { changeTaskBudget } from '../../Redux/Actions/tasks'
 
 class AddBudget extends Component {
     constructor(props) {
@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        budget_amount: state.task.budget_amount
+        budget_amount: state.tasks.currTask.budget_amount
     }
 }
 
