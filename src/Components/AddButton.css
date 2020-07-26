@@ -1,10 +1,21 @@
-button.AddButton {
-    height: 1.2rem;
-    min-width: 1.2rem;
+div.AddButton {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     margin: 0 .3rem 0 .3rem;
     border: none;
     background-color: rgb(66, 184, 127);
-    border-radius: 5px;   
-    color: white;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+div.add-image {
+    height: .55rem;
+    width: .55rem;
+    background-image: url('../images/icon-add.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }

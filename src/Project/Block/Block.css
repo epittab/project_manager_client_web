@@ -1,8 +1,23 @@
-.block-wrapper {
+.block-wrapper-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-auto-flow: column;
     margin: .5rem 0 .5rem 0;
     padding: 0 .5rem .5rem .5rem;
     border: 1px solid gray;
     border-radius: 8px;
+}
+
+div.block-wrapper-grid-text{
+    width: 100%;
+    overflow-x: scroll;
+}
+
+div.block-wrapper-grid-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-self: center;
+    justify-self: center;
 }
 
 div.add-icon {

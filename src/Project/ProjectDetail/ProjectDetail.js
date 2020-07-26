@@ -15,8 +15,6 @@ class ProjectDetail extends Component {
                     <Route path='/:p_id/budgets' render={ (props) => < Budget routeProps={this.props.routeProps}/> } />
                     <Route path='/' render={ () => < Board routeProps={this.props.routeProps} /> } />
                 </Switch>
-                
-
             </div>
         )
     }

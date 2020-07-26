@@ -4,52 +4,31 @@ import EditButton from '../../Components/EditButton'
 import DeleteButton from '../../Components/DeleteButton'
 
 import {connect} from 'react-redux'
+import { fetchProject } from '../../Redux/Actions/projects'
+import { toggleNewBlock } from '../../Redux/Actions/blocks'
 
 import {Link} from 'react-router-dom'
 
 import './Block.css'
 class BlockCont extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-            showingForm: false
-        }
-    }
-
     componentDidMount() {
-        fetch(`http://localhost:3001/projects/${this.props.routeProps.match.params.p_id}`,{
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then( r => r.json() )
-        .then( data => {
-            this.setState({...this.state, project_array: data })
-        })
-        .catch( err => {console.log(err)})
+        this.props.getProject(this.props.routeProps.match.params.p_id)
     }
 
-    toggleForm = () => {
-        this.setState({showingForm: !this.state.showingForm})
-    }
-    
     renderBlocks(){
         return(
         <div>
-            { (this.state.project_array.blocks.length > 0) ?
-            this.state.project_array.blocks.map(block => 
-                <div className='block-wrapper'>
-                    <div>
+            { (this.props.blocks.length > 0) ?
+            this.props.blocks.map(block => 
+                <div className='block-wrapper-grid'>
+                    <div className='block-wrapper-grid-text'>
                         <p> <strong>Block Name: </strong> {`${block.block.block_name}`}</p>
-                        <p> <strong>Block Desc:</strong> {`${block.block.block_description}`}</p>
+                        <p className='block-text'> <strong>Block Desc:</strong> {`${block.block.block_description}`}</p>
                     </div>
-                    <div>
-                    <Link to={`/projects/${this.props.routeProps.match.params.p_id}/blocks/${block.block.id}`}>< EditButton size='1.2rem' /></Link>
-                        < DeleteButton size='1.2rem'/>
+                    <div className='block-wrapper-grid-buttons'>
+                        < Link to={`/projects/${this.props.routeProps.match.params.p_id}/blocks/${block.block.id}`}> < EditButton size={2} /> </Link>
+                        < DeleteButton size={2}/>
                     </div>
                     
                     
@@ -63,23 +42,15 @@ class BlockCont extends Component {
     render() {
         return (
             <div className='Sheet transparent'>
-
                 <h2>Project</h2>
-
-                
-
                 <div>
                     <h3>All Blocks</h3>
                     <div>
-                        <div className='add-icon' style={{height: '1rem', width: '1rem'}} onClick={this.toggleForm}>
+                        <div className='add-icon' style={{height: '1rem', width: '1rem'}} onClick={this.props.toggleForm}>
                         </div>
                     </div>
-                
-                
-                    {this.state.showingForm ? < NewBlock p_id={this.props.routeProps.match.params.p_id} /> : null}
-
-                    {this.state.project_array ? this.renderBlocks() : null}
-                
+                    {this.props.isOpen ? < NewBlock p_id={this.props.routeProps.match.params.p_id} /> : null}
+                    {this.props.blocks ? this.renderBlocks() : null}
                 </div>
 
 
@@ -90,10 +61,16 @@ class BlockCont extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        getProject: (p_id) => {dispatch(fetchProject(p_id))},
+        toggleForm: () => { dispatch(toggleNewBlock())}
+    }
 }
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        blocks: state.projects.currProject.blocks,
+        isOpen: state.blocks.isNewBlockOpen
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlockCont)

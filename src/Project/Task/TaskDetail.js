@@ -1,25 +1,13 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
+import { deleteTask } from '../../Redux/Actions/task'
 
 class TaskDetail extends Component {
 
     handleDelete = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3001/tasks/${this.props.routeProps.match.params.t_id}`,{
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then( r => r.json() )
-        .then( data => {
-            // ELIMINATE block from state
-            this.setState({...this.state, block: data })
-        })
-        .catch( err => {console.log(err)})
+       
     }
 
     render() {
@@ -27,7 +15,7 @@ class TaskDetail extends Component {
         return (
             <div className='task-wrapper simple-task'>
                 <h3>Delete Task</h3>
-                <form onSubmit={this.handleDelete}>
+                <form onSubmit={ () => {this.props.fetchDelete(this.props.routeParams.match.params.t_id)}}>
                     <button className='form-button danger action-item' type='submit'>Delete</button>
                 </form>
             </div>
@@ -36,11 +24,10 @@ class TaskDetail extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
-}
-const mapStateToProps = (state) => {
-    return {}
+    return {
+        fetchDelete: (task_id) => dispatch(deleteTask(task_id))
+    }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskDetail)
+export default connect(null, mapDispatchToProps)(TaskDetail)

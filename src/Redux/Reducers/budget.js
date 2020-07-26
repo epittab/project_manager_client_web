@@ -1,5 +1,4 @@
 
-
 import { FETCH_BUDGET } from '../Actions/types'
 
 const initialState = {

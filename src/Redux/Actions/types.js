@@ -10,12 +10,32 @@ export const CONTAINER_TOGGLE = 'CONTAINER_TOGGLE';
 export const TOGGLE_NAV = 'TOGGLE_NAV';
 
 //Projects
-export const FETCH_PROJECTS = 'FETCH_PROJECTS';
+export const FETCH_ALL_PROJECTS = 'FETCH_ALL_PROJECTS';
+export const FETCH_PROJECT = 'FETCH_PROJECT';
+export const PROJECT_CLEANUP = 'PROJECT_CLEANUP';
+export const POST_PROJECT_FORM = 'POST_PROJECT_FORM';
+export const PROJECT_FORM_CLEANUP = 'PROJECT_FORM_CLEANUP';
+export const CHANGE_PROJECT_FORM = 'CHANGE_PROJECT_FORM';
+
+//Blocks
+export const FETCH_ALL_BLOCKS = 'FETCH_ALL_BLOCKS';
+export const FETCH_BLOCK = 'FETCH_BLOCK';
+export const TOGGLE_NEW_BLOCK = 'TOGGLE_NEW_BLOCK';
+export const BLOCK_CLEANUP = 'BLOCK_CLEANUP';
+export const POST_BLOCK_FORM = 'POST_BLOCK_FORM';
+export const BLOCK_FORM_CLEANUP = 'BLOCK_FORM_CLEANUP';
+
 
 //Tasks
+export const FETCH_TASK = 'FETCH_TASK';
+export const DELETE_TASK = 'DELETE_TASK';
 export const TOGGLE_TASK_COSTS = 'TOGGLE_TASK_COSTS';
 export const CHANGE_TASK_BUDGET = 'CHANGE_TASK_BUDGET';
 export const SUBMIT_TASK_BUDGET = 'SUBMIT_TASK_BUDGET';
+
+//Task Budgeting
+
+export const ADD_TASK = 'ADD_TASK';
 
 //Budget
 export const FETCH_BUDGET = 'FETCH_BUDGET';

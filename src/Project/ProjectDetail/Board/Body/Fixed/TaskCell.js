@@ -21,7 +21,7 @@ class TaskCell extends Component {
 
                     {/* need to access task id, block id, est_start_Date, est_end_date: DONE */}
 
-                    <Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}/tasks/${this.props.task.id}`}>< EditButton size='1.2rem'/></Link>< EmptySpace size='1.2rem' />
+                    <Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}/tasks/${this.props.task.id}`}>< EditButton size={1.2}/></Link>< EmptySpace size='1.2rem' />
 
                 </div>
         

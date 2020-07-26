@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="35" viewBox="0 0 30 35">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fffdfd;
+      }
+    </style>
+  </defs>
+  <path id="Icon_material-delete" data-name="Icon material-delete" class="cls-1" d="M9.643,35.611A4.114,4.114,0,0,0,13.929,39.5H31.071a4.114,4.114,0,0,0,4.286-3.889V12.278H9.643ZM37.5,6.444H30L27.857,4.5H17.143L15,6.444H7.5v3.889h30Z" transform="translate(-7.5 -4.5)"/>
+</svg>

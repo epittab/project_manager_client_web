@@ -10,6 +10,7 @@ import DisplayLCost from './DisplayLCost'
 
 import './Task.css'
 import { TOGGLE_TASK_COSTS } from '../../Redux/Actions/types'
+import { fetchTask } from '../../Redux/Actions/task'
 class TaskCont extends Component {
 
 
@@ -60,35 +61,26 @@ class TaskCont extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3001/tasks/${this.props.routeProps.match.params.t_id}`,{
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then( r => r.json() )
-        .then( data => {
-            let {task, costs, task_status } = data 
-            this.setState({...this.state, task, costs, task_status })
-        })
-        .catch( err => {console.log(err)})
+       this.props.fetchTask(this.props.routeProps.match.params.t_id)
     }
 
     renderCosts() {
+
+        let serv_total =  this.props.costs.serv_mat_costs.filter( smt => smt.isService )
+        let mat_total =  this.props.costs.serv_mat_costs.filter( smt => !smt.isService )
+
         return (<div>
                 <h3>Labor</h3>
-                    { this.state.costs.labor_costs.length > 0 ? 
-                        this.state.costs.labor_costs.map((c) => < DisplayLCost cost={c}/>)
+                    { this.props.costs.labor_costs.length > 0 ? 
+                        this.props.costs.labor_costs.map((c) => < DisplayLCost cost={c}/>)
                         : <p className='null-text'> There are currently <strong>no Labor costs</strong> reported. </p>}
                 <h3>Materials</h3>
-                    { this.state.costs.serv_mat_costs.length > 0 ? 
-                        this.state.costs.serv_mat_costs.map((c) => < DisplayCost cost={c}/>)
+                    { mat_total.length > 0 ? 
+                        mat_total.map((c) => < DisplayCost cost={c}/>)
                         : <p className='null-text'> There are currently <strong>no Material costs </strong>reported. </p>}
                 <h3>Services</h3>
-                    { this.state.costs.serv_mat_costs.length > 0 ? 
-                    this.state.costs.serv_mat_costs.map((c) => < DisplayCost cost={c}/>)
+                    { serv_total.length > 0 ? 
+                    serv_total.map((c) => < DisplayCost cost={c}/>)
                     : <p className='null-text'> There are currently <strong>no Service costs</strong> reported. </p>}
         </div>)
     }
@@ -98,9 +90,9 @@ class TaskCont extends Component {
 
             <h3>Budgeted Cost</h3>
             
-            { this.state.task.budget_amount === undefined || this.state.task.budget_amount === null ? '$0.00' : this.state.task.budget_amount } 
+            { this.props.task.budget_amount === undefined || this.props.task.budget_amount === null ? '$0.00' : this.props.task.budget_amount } 
             
-            { this.state.task.budget_amount === null ? 
+            { this.props.task.budget_amount === null ? 
             <>
             <div>Allocate Funds</div>
             < AddBudget t_id={this.props.routeProps.match.params.t_id} />
@@ -117,9 +109,9 @@ class TaskCont extends Component {
     renderStatus(){
         return (<div className='task-wrapper simple-task'>
                     <h3>Change Status</h3>
-                    { (this.state.task_status === 'Completed') ?
+                    { (this.props.task_status === 'Completed') ?
                           <button className='action-item'>Done</button> :
-                         (this.state.task_status === 'Pending' || this.state.task_status === 'Created') ?
+                         (this.props.task_status === 'Pending' || this.props.task_status === 'Created') ?
                         <button onClick={this.handleStart} className='action-item cta'>Start</button> :
                         <button onClick={this.handleComplete} className='action-item cta'>Complete</button>}
                 </div>)      
@@ -128,9 +120,9 @@ class TaskCont extends Component {
     renderGeneral(){
         return (
             <div className='block-wrapper dark-on-light'>
-                <p> <strong>Task Name: </strong> {`${this.state.task.task_name}`}</p>
-                <p> <strong>Task Desc:</strong> {`${this.state.task.task_description}`}</p>
-                <p> <strong>Status:</strong> {`${this.state.task_status}`} </p>
+                <p> <strong>Task Name: </strong> {`${this.props.task.task_name}`}</p>
+                <p> <strong>Task Desc:</strong> {`${this.props.task.task_description}`}</p>
+                <p> <strong>Status:</strong> {`${this.props.task_status}`} </p>
             </div>
         )
     }
@@ -139,10 +131,10 @@ class TaskCont extends Component {
         return (
             <div className='Sheet transparent'>
                 <h2>Task Detail</h2>
-                { this.state.task ? this.renderGeneral() : null }
+                { this.props.task ? this.renderGeneral() : null }
              
                 <div>
-                    {this.state.task ? this.renderStatus() : null }
+                    {this.props.task ? this.renderStatus() : null }
                 </div>
 
                 <div className='task-wrapper'>
@@ -153,7 +145,7 @@ class TaskCont extends Component {
                     </div>
                     {this.props.isCostOpen ? < AddCost t_id={this.props.routeProps.match.params.t_id} /> : null }
                     
-                   {this.state.task ? this.renderBudget() : null }
+                   {this.props.task ? this.renderBudget() : null }
               
                 </div>
 
@@ -165,13 +157,16 @@ class TaskCont extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        toggleCost: () => {dispatch({type: TOGGLE_TASK_COSTS})}
+        toggleCost: () => {dispatch({type: TOGGLE_TASK_COSTS})},
+        fetchTask: (t_id) => {dispatch(fetchTask(t_id))}
     }
 }
 const mapStateToProps = (state) => {
     return {
-        isCostOpen: state.task.isCostOpen
-        
+        isCostOpen: state.task.isCostOpen,
+        task: state.task.task,
+        costs: state.task.costs,
+        task_status: state.task.task_status
     }
 }
 

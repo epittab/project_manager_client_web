@@ -16,25 +16,13 @@ class BlockDetail extends Component {
             block: {block: {},
                     tasks: []},
             b_id: this.props.routeProps.match.params.b_id,
-            p_id: this.props.routeProps.match.params.p_id,
+            p_id: this.props.routeProps.match.params.p_id
         }
     }
 
    
     componentDidMount() {
-        fetch(`http://localhost:3001/blocks/${this.props.routeProps.match.params.b_id}`,{
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then( r => r.json() )
-        .then( data => {
-            this.setState({...this.state, block: data })
-        })
-        .catch( err => {console.log(err)})
+        
     }
 
     handleDelete = (e) => {
@@ -145,7 +133,7 @@ class BlockDetail extends Component {
                     <div className='add-icon' style={{height: '1rem', width: '1rem'}} onClick={this.toggleForm}>
                     </div>
                     { this.state.showingForm 
-                    ? <NewTask p_id={this.state.p_id} b_id={this.state.b_id}/> 
+                    ? <NewTask p_id={this.props.p_id} b_id={this.state.b_id}/> 
                     : null}
                     {this.state.block ? this.renderTasks() : null }
                 </div>
@@ -162,7 +150,10 @@ const mapDispatchToProps = (dispatch) => {
     return {}
 }
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        p_id: state.projects.currProject.project.id,
+        blocks: state.projects.currProject.blocks
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlockDetail)

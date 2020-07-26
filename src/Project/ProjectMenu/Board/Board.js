@@ -8,25 +8,13 @@ import ProjectCard from './Cards/ProjectCard'
 import NewCard from './Cards/NewCard'
 
 import './Board.css'
+import { fetchAllProjects, projectCleanup } from '../../../Redux/Actions/projects'
 
 class Board extends Component {
     
-    componentDidMount(){
-        fetch('http://localhost:3001/projects', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then(r => r.json())
-        .then(user_projects => {
-            this.props.dispatch({
-                type: 'FETCH_PROJECTS',
-                payload: user_projects })
-            // this.setState({userProjects: user_projects})
-        })
+    componentDidMount(){ 
+        this.props.getProjects()
+        this.props.projectCleanup()
     }
 
     render() {
@@ -42,10 +30,17 @@ class Board extends Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getProjects: () => { dispatch(fetchAllProjects()) },
+        projectCleanup: () => { dispatch(projectCleanup())}
+    }
+}
+
 const mapStateToProps = (state) => {
     return {
         userProjects: state.projects.userProjects
     }
 }
 
-export default connect(mapStateToProps)(Board);
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

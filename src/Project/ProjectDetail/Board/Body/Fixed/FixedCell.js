@@ -12,7 +12,7 @@ class FixedCell extends Component {
         return (
             <div className={`Project-title-column ${(this.props.handleToggle || this.props.isHeader) ? '' : 'task'}`}  >
                 { this.props.isHeader ? 
-                (<> < EmptySpace size={'1rem'}/> <Link to={`/projects/${this.props.routeProps.match.params.p_id}/blocks`}>< AddButton size={'1.2rem'} /> </Link> < Indicator performance={' default-bulb'} /> < EmptySpace size={'4rem'} /></>): 
+                (<> < EmptySpace size={'1rem'}/> <Link to={`/projects/${this.props.routeProps.match.params.p_id}/blocks`}>< AddButton size={1.2} /> </Link> < Indicator performance={' default-bulb'} /> < EmptySpace size={'4rem'} /></>): 
                 <BlockCell 
                     routeProps={this.props.routeProps} 
                     name = {this.props.name}

@@ -1,10 +1,19 @@
-button.DeleteButton {
-    height: 1.2rem;
-    min-width: 1.2rem;
+div.DeleteButton {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     margin: 0 .3rem 0 .3rem;
     border: none;
     background-color: rgb(244, 67, 54);
     border-radius: 5px;   
-    color: white;
     cursor: pointer;
+}
+
+div.delete-image {
+    background-image: url('../images/icon-delete.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }

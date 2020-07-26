@@ -1,72 +1,38 @@
 import React, { Component } from 'react'
 
 import {connect} from 'react-redux'
+import { fetchProject, projectCleanup } from '../../../Redux/Actions/projects'
 
 import './Board.css'
 import Header from './Header/Header'
 import GroupRow from './Body/Fixed/GroupRow'
 
 class Board extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            p_id: this.props.routeProps.match.params.p_id
-        }
-    }
-    componentDidMount(){
-        this.getBoard()
-    }   
 
-    deriveProjectLength() {
-        if (this.state.project_array) {
-            // let {est_end_date, est_start_date} = this.state.project_array.project
-            // let timeDelta = new Date(est_end_date).getTime() - new Date(est_start_date).getTime()
-            // return timeDelta / (1000 * 3600 * 24)
-            return this.state.project_array.days + 1
-        } else 
-        { return 0}
-    }
+    componentDidMount(){this.props.getProject(this.props.routeProps.match.params.p_id)}   
 
-    getBoard(){
-        fetch(`http://localhost:3001/projects/${this.state.p_id}`,{
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        .then( r => r.json() )
-        .then( data => {
-            this.setState({...this.state, project_array: data })
-        })
-        .catch( err => {console.log(err)})
-    }
+    deriveProjectLength() { return this.props.days ? (this.props.days + 1) : 0 }
 
     renderBoard(){ 
-        
-        return (this.state.project_array.blocks.map((b) => 
-            < GroupRow key = {b.b_id+100} block = {b} 
-            psd={this.state.project_array.display_start}
+        return (this.props.blocks.map((b) => 
+            < GroupRow key = {`Block${b.b_id}`} block = {b} 
+            psd={this.props.start}
             routeProps={this.props.routeProps} 
             duration={this.deriveProjectLength()}/> ))
     }
 
     renderHeader() {
-        
         return  < Header routeProps={this.props.routeProps} 
-            psd={this.state.project_array.display_start}
+            psd={this.props.start}
             duration={this.deriveProjectLength()}/>
     }
 
     render() {
-       
         return (
             <div className='Board transparent'>
                 <div className='board-data'>
-                   
-                    { this.state.project_array ? this.renderHeader() : null }
-                    { this.state.project_array ? this.renderBoard() : null }
+                    { this.props.project ? this.renderHeader() : null }
+                    { this.props.project ? this.renderBoard() : null }
                 </div>
             </div>
         )
@@ -74,10 +40,18 @@ class Board extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        getProject: (p_id) => {dispatch(fetchProject(p_id))},
+        projectCleanup: ()=>{dispatch(projectCleanup())}
+    }
 }
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        project: state.projects.currProject.project,
+        blocks: state.projects.currProject.blocks,
+        days: state.projects.currProject.days,
+        start: state.projects.currProject.display_start,
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

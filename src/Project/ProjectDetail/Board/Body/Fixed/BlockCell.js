@@ -31,8 +31,8 @@ class BlockCell extends Component {
                 < EmptySpace size={'0px'} /> }  
                 <div className='BlockCell-title-disp-name'>{this.props.name}</div>
                 { this.props.block ? 
-                (<><Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}`}>< EditButton size='1.2rem'/></Link>< EmptySpace size='1.2rem'/> </>) :
-                <><Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}/tasks/${this.props.task.t_id}`}>< EditButton size='1.2rem'/></Link>< EmptySpace size='1.2rem' /> </>}
+                (<><Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}`}>< EditButton size={1.2}/></Link>< EmptySpace size='1.2rem'/> </>) :
+                <><Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}/tasks/${this.props.task.t_id}`}>< EditButton size={1.2}/></Link>< EmptySpace size='1.2rem' /> </>}
                 
                 {/* consider wrapping buttons in a single container and switching to grid*/}
                 

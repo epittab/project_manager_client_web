@@ -5,8 +5,9 @@ import './AddButton.css'
 class AddButton extends Component {
     render() {
         return (
-            <button className='AddButton' style={{height: this.props.size, minWidth: this.props.size}}>
-            </button>
+            <div className='AddButton' style={{height: `${this.props.size}rem`, width: `${this.props.size}rem`}}>
+                <div className='add-image' style={{height: `${this.props.size*.6}rem`, width: `${this.props.size*.6}rem`}}></div>
+            </div>
         )
     }
 }
