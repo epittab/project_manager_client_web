@@ -1,5 +1,64 @@
-import { POST_TASK_FORM, CHANGE_TASK_FORM, TASK_FORM_CLEANUP, TOGGLE_TASK_FORM, FETCH_TASK, DELETE_TASK, TOGGLE_TASK_COSTS, CHANGE_TASK_BUDGET, SUBMIT_TASK_BUDGET } from './types'
+import { POST_TASK_FORM, CHANGE_TASK_FORM, TASK_FORM_CLEANUP, TOGGLE_TASK_FORM, FETCH_TASK, DELETE_TASK, FETCH_START_TASK, FETCH_COMPLETE_TASK, TOGGLE_TASK_COSTS, CHANGE_TASK_BUDGET, SUBMIT_TASK_BUDGET } from './types'
 
+// Patch Task
+
+function startTask(data) {
+    return {
+        type: FETCH_START_TASK,
+        payload: data
+    }
+}
+
+function fetchStartTask(t_id){
+    return (dispatch) => {
+        fetch(`http://localhost:3001/tasks/${t_id}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                field: 'status_id',
+                payload: 3
+            })
+        })
+        .then(r => r.json() )
+        .then(data => {
+            let {status} = data
+            dispatch(startTask(status.status_name))
+        })
+    }
+}
+
+function completeTask(data) {
+    return {
+        type: FETCH_COMPLETE_TASK,
+        payload: data
+    }
+}
+
+function fetchCompleteTask(t_id){
+    return (dispatch) => {
+        fetch(`http://localhost:3001/tasks/${t_id}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                field: 'status_id',
+                payload: 5
+            })
+        })
+        .then(r => r.json() )
+        .then(data => {
+            let {status} = data
+            dispatch(completeTask(status.status_name))
+        })
+    }
+}
 
 // Post Task
 
@@ -19,7 +78,7 @@ function postTaskForm(e, form, b_id){
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('token')},
-            body: JSON.stringify({block_id: b_id, ...form})}
+            body: JSON.stringify({b_id: b_id, ...form})}
         )
         .then( r => r.json() )
         .then( data => dispatch(postTask(data)))
@@ -100,7 +159,7 @@ function fetchTask(t_id) {
 //Costs
 
 function toggleTaskCosts() {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch({
             type: TOGGLE_TASK_COSTS
         })
@@ -129,4 +188,4 @@ function submitTaskBudget() {
     }
 }
 
-export { postTaskForm, changeTaskForm, toggleTaskForm, taskFormCleanup, deleteTask, fetchTask, toggleTaskCosts, changeTaskBudget, submitTaskBudget }
+export { fetchStartTask, fetchCompleteTask, postTaskForm, changeTaskForm, toggleTaskForm, taskFormCleanup, deleteTask, fetchTask, toggleTaskCosts, changeTaskBudget, submitTaskBudget }

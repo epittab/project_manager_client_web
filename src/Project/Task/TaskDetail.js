@@ -5,11 +5,6 @@ import { deleteTask } from '../../Redux/Actions/tasks'
 
 class TaskDetail extends Component {
 
-    handleDelete = (e) => {
-        e.preventDefault()
-       
-    }
-
     render() {
         
         return (

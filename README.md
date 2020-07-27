@@ -24,7 +24,7 @@ To Do List:
     m) amount over budget
     n) unused budget
 9) Derive Block status
-
+10) add labor functionality
 
 
 

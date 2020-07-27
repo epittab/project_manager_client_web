@@ -38,7 +38,8 @@ export const POST_TASK_FORM = 'POST_TASK_FORM';
 export const CHANGE_TASK_FORM = 'CHANGE_TASK_FORM';
 export const TASK_FORM_CLEANUP = 'TASK_FORM_CLEANUP';
 export const TOGGLE_TASK_FORM = 'TOGGLE_TASK_FORM';
-
+export const FETCH_START_TASK = 'FETCH_START_TASK';
+export const FETCH_COMPLETE_TASK = 'FETCH_COMPLETE_TASK';
 
 //Task Budgeting
 
@@ -46,3 +47,10 @@ export const ADD_TASK = 'ADD_TASK';
 
 //Budget
 export const FETCH_BUDGET = 'FETCH_BUDGET';
+
+//Cost
+export const POST_COST_FORM = 'POST_COST_FORM';
+export const CHANGE_COST_FORM = 'CHANGE_COST_FORM';
+export const COST_FORM_CLEANUP = 'COST_FORM_CLEANUP';
+export const POST_LABOR_COST = 'POST_LABOR_COST';
+export const POST_SM_COST = 'POST_SM_COST';

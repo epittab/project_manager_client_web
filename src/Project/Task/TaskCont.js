@@ -9,56 +9,8 @@ import DisplayCost from './DisplayCost'
 import DisplayLCost from './DisplayLCost'
 
 import './Task.css'
-import { TOGGLE_TASK_COSTS } from '../../Redux/Actions/types'
-import { fetchTask } from '../../Redux/Actions/tasks'
+import { fetchTask, fetchStartTask, fetchCompleteTask, toggleTaskCosts } from '../../Redux/Actions/tasks'
 class TaskCont extends Component {
-
-
-    constructor(){
-        super()
-        this.state = {
-            showingForm: false,
-            task_status:''
-        }
-    }
-
-    handleComplete = () => {
-        fetch(`http://localhost:3001/tasks/${this.props.routeProps.match.params.t_id}`, {
-            method: 'PATCH',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify({
-                field: 'status_id',
-                payload: 5
-            })
-        })
-        .then(r => r.json() )
-        .then(data => {
-            console.log(data)
-        })
-    }
-
-    handleStart = () => {
-        fetch(`http://localhost:3001/tasks/${this.props.routeProps.match.params.t_id}`, {
-            method: 'PATCH',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify({
-                field: 'status_id',
-                payload: 3
-            })
-        })
-        .then(r => r.json() )
-        .then(data => {
-            console.log(data)
-        })
-    }
 
     componentDidMount(){
        this.props.fetchTask(this.props.routeProps.match.params.t_id)
@@ -112,8 +64,8 @@ class TaskCont extends Component {
                     { (this.props.task_status === 'Completed') ?
                           <button className='action-item'>Done</button> :
                          (this.props.task_status === 'Pending' || this.props.task_status === 'Created') ?
-                        <button onClick={this.handleStart} className='action-item cta'>Start</button> :
-                        <button onClick={this.handleComplete} className='action-item cta'>Complete</button>}
+                        <button onClick={() => this.props.handleStart(this.props.routeProps.match.params.t_id)} className='action-item cta'>Start</button> :
+                        <button onClick={() => this.props.handleComplete(this.props.routeProps.match.params.t_id)} className='action-item cta'>Complete</button>}
                 </div>)      
     }
 
@@ -157,8 +109,10 @@ class TaskCont extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        toggleCost: () => {dispatch({type: TOGGLE_TASK_COSTS})},
-        fetchTask: (t_id) => {dispatch(fetchTask(t_id))}
+        toggleCost: () => {dispatch(toggleTaskCosts())},
+        fetchTask: (t_id) => {dispatch(fetchTask(t_id))},
+        handleStart: (t_id) => {dispatch(fetchStartTask(t_id))},
+        handleComplete: (t_id) => {dispatch(fetchCompleteTask(t_id))},
     }
 }
 const mapStateToProps = (state) => {

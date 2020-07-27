@@ -5,47 +5,11 @@ import {connect} from 'react-redux'
 import {postTaskForm, changeTaskForm, taskFormCleanup} from '../../Redux/Actions/tasks'
 
 class NewTask extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            task_name: '',
-            task_description: '',
-            task_start_date: '',
-            task_end_date: '',
-            b_id: this.props.b_id,
-            p_id: this.props.p_id,
-        }
-    }
-
+  
     componentWillUnmount(){
         this.props.cleanup()
     }
    
-    
-    handleSubmit = (e) => {
-        e.preventDefault()
-        fetch('http://localhost:3001/tasks', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then( r => r.json() )
-        .then( data => {
-            console.log(data)
-            this.setState({...this.state, 
-                task_name: '',
-                task_description: '',
-                task_start_date: '',
-                task_end_date: '',
-            })
-        })
-    }
-
-
     render() {
         return (
             <div>
@@ -76,7 +40,7 @@ class NewTask extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleSubmit: (e, b_id) => {dispatch(postTaskForm(e, b_id))},
+        handleSubmit: (e, form, b_id) => {dispatch(postTaskForm(e, form, b_id))},
         handleChange: (e) => {dispatch(changeTaskForm(e))},
         cleanup: () => {dispatch(taskFormCleanup())}
     }

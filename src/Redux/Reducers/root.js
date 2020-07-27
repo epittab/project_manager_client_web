@@ -7,7 +7,8 @@ import projects from './projects'
 import blocks from './blocks'
 import tasks from './tasks'
 import budget from './budget'
+import costs from './costs'
 
 export default combineReducers({
-    register, login, loginContainer, navbar, projects, blocks, budget, tasks
+    register, login, loginContainer, navbar, projects, blocks, budget, tasks, costs
 });
