@@ -11,6 +11,7 @@ const initialState = {
 
 const reducer = (oldState = initialState, action) => {
     switch (action.type) {
+
         case POST_TASK_FORM:
             return {...oldState, currBlock: {...oldState.currBlock, tasks: [...oldState.currBlock.tasks, action.payload]}}
         case BLOCK_CLEANUP:
