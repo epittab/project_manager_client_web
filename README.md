@@ -8,7 +8,7 @@ To Do List:
 4) implement Redirects
 5) add "Totals" Row to budget
 6) filter by completed and not completed
-7) fix Project Card Text styling
+7) fix Project Card Text styling, go view by view
 8) KPIs > 
     a) percent completion => count of tasks with completed status / count of tasks 
     b) total blocks => count of blocks
@@ -25,7 +25,7 @@ To Do List:
     n) unused budget
 9) Derive Block status
 10) add labor functionality
-
+11) add more User indications/instructions
 
 
 

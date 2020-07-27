@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import {connect} from 'react-redux'
-import { changeTaskBudget } from '../../Redux/Actions/tasks'
+import { changeTaskBudget, submitTaskBudget } from '../../Redux/Actions/tasks'
 
 class AddBudget extends Component {
     constructor(props) {
@@ -16,34 +16,13 @@ class AddBudget extends Component {
 
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-        fetch(`http://localhost:3001/tasks/${this.props.t_id}/budget`, {
-            method: 'PATCH',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify({b_id: this.state.b_id, 
-                                p_id: this.state.p_id, 
-                                budget_amount: this.props.budget_amount})
-        })
-        .then( r => r.json() )
-        .then( data => {
-            console.log(data)
-            this.setState({...this.state, 
-                budget_amount: '',
-            })
-        })
-    }
     
     render() {
         return (
             <div>
                 
                 <h3>Add a Budget</h3>
-                <form className='form-body' onSubmit={this.handleSubmit}>
+                <form className='form-body' onSubmit={ (e) => this.props.onSubmitBudget(e, this.props.budget_amount, this.props.t_id) }>
                     <label htmlFor='task-budget-form-amount' className='form-text' >Budget Amount:</label>
                     <input name='budget_amount' value={this.props.budget_amount} 
                     id='task-budget-form-amount' type='number' onChange={this.props.onChangeBudget}/>
@@ -57,7 +36,8 @@ class AddBudget extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onChangeBudget: (e) => { dispatch(changeTaskBudget(e.target.value)) }
+        onChangeBudget: (e) => { dispatch(changeTaskBudget(e.target.value)) },
+        onSubmitBudget: (e, form, t_id) => { dispatch(submitTaskBudget(e, form, t_id)) },
     }
 }
 

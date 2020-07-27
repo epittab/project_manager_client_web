@@ -177,12 +177,30 @@ function changeTaskBudget(budget) {
     }
 }
 
-function submitTaskBudget() {
-    return (dispatch, getState) => {
-        let {budget} = getState().task
-        dispatch({
+function postBudget(budget) {
+    return {
             type: SUBMIT_TASK_BUDGET,
             payload: budget
+        }
+}
+
+function submitTaskBudget(e, budget, t_id) {
+    return (dispatch) => {
+        e.preventDefault()
+        fetch(`http://localhost:3001/tasks/${t_id}/budget`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({id: t_id,
+                                budget_amount: budget})
+        })
+        .then( r => r.json() )
+        .then( data => {
+            let {budget_amount} = data
+            dispatch(postBudget(budget_amount))
         })
 
     }

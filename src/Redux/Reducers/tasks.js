@@ -44,9 +44,9 @@ const reducer = (oldState = initialState, action) => {
         case TOGGLE_TASK_FORM:
             return {...oldState, isNewTaskOpen: !oldState.isNewTaskOpen} 
         case CHANGE_TASK_BUDGET:
-            return {...oldState, currTask: { ...oldState.currTask, budget_amount: action.payload}}
+            return {...oldState, currTask: { ...oldState.currTask, budget_amount: action.payload } }
         case SUBMIT_TASK_BUDGET:
-            return {...oldState, budget_amount: !oldState.isCostOpen} 
+            return {...oldState, currTask: { ...oldState.currTask, budget_amount: action.payload, task: {...oldState.currTask.task, budget_amount: action.payload} } }
         default:
             return oldState
     }
