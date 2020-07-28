@@ -13,8 +13,13 @@ class Tray extends Component {
                 <div className = 'Widget-wrapper'>
                     < BudgetCard routeProps={this.props.routeProps} />
                     < InviteCard routeProps={this.props.routeProps} />
-                    < Widget />
-
+                    < Widget wid_type={'perc_complete'} />
+                    < Widget wid_type={'task_dist'}/>
+                    < Widget wid_type={'budget'}/>
+                    < Widget wid_type={'cost'}/>
+                    < Widget wid_type={'duration'}/>
+                    < Widget wid_type={'days_left'}/>
+                    < Widget wid_type={'team'}/>
                 </div>
             </div>
         )

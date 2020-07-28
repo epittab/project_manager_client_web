@@ -25,9 +25,10 @@ To Do List:
 
 <!-- 9) Derive Block status -->
 <!-- 12) Derive Delayed and Pending statuses for tasks -->
+<!-- 15) Charts -->
+
 6) filter by completed and not completed
 10) add labor functionality
-15) Charts
 7) fix Project Card Text styling, go view by view
 
 11) add more User indications/instructions

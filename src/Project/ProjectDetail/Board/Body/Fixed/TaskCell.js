@@ -13,15 +13,15 @@ class TaskCell extends Component {
         
         return (
             <div className='TaskCell' >
-                <div className='Project-title-column '>
+                <div className='Project-title-column ' style={{backgroundColor: 'rgba(187, 217, 209, 1)'}}>
 
-                    < EmptySpace size={'1rem'} />
+                    < EmptySpace size={'1rem'} task={true}/>
 
                     <div className='BlockCell-title-disp-name'> {this.props.task.task_name}</div>
 
                     {/* need to access task id, block id, est_start_Date, est_end_date: DONE */}
 
-                    <Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}/tasks/${this.props.task.id}`}>< EditButton size={1.2}/></Link>< EmptySpace size='1.2rem' />
+                    <Link className='BlockCell-title-link' to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}/tasks/${this.props.task.id}`}>< EditButton size={1.2}/></Link>< EmptySpace size='1.2rem' />
 
                 </div>
         

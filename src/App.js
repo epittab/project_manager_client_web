@@ -17,7 +17,6 @@ import PerformanceCont from './Performance/PerformanceCont';
 
 class App extends React.Component {
   componentDidMount(){
-    console.log('hi')
     this.props.onReload()
   }
 

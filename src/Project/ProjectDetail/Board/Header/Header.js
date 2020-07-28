@@ -6,7 +6,7 @@ import FixedCell from '../Body/Fixed/FixedCell'
 class Header extends Component {
     render() {
         const days = new Array(this.props.duration).fill("")
-        console.log(this.props.routeProps)
+        
         return (
             <div className='GroupRow' style ={{display: 'flex'}}>
                 

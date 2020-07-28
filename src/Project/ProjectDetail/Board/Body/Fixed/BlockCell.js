@@ -23,18 +23,17 @@ class BlockCell extends Component {
     }
 
     render() {
-        console.log( this.props.block)
         return (
             <div className='BlockCell' >
                 { (this.props.block && this.props.block.tasks.length > 0) ?  
                 <Expand isOpen={this.state.isOpen} toggleOpen={this.toggleOpen} toggle={this.props.toggle} /> :
                 < EmptySpace size={'0px'} /> }  
                 <div className='BlockCell-title-disp-name'>{this.props.name}</div>
+                <div style={{height: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                 { this.props.block ? 
                 (<><Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}`}>< EditButton size={1.2}/></Link>< EmptySpace size='1.2rem'/> </>) :
-                <><Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}/tasks/${this.props.task.t_id}`}>< EditButton size={1.2}/></Link>< EmptySpace size='1.2rem' /> </>}
-                
-                {/* consider wrapping buttons in a single container and switching to grid*/}
+                (<><Link to={`/projects/${this.props.p_id}/blocks/${this.props.b_id}/tasks/${this.props.task.t_id}`}>< EditButton size={1.2}/></Link>< EmptySpace size='1.2rem' /> </>)}
+                </div>
                 
             </div>
         )

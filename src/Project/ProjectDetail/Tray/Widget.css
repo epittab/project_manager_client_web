@@ -12,7 +12,7 @@ div.Widget {
 }
 
 div.Widget:hover {
-    background-color: gray;    
+    background-color: rgb(200, 200, 200);    
     cursor: pointer;
 }
 
@@ -32,7 +32,23 @@ div.add-widget {
 }
 
 div.widget-text {
-    color: black;
-    
-    
+    color: black;   
+}
+
+p.widget-score-text {
+    text-align: center;
+    padding: 0 .2rem 0 .2rem;
+    font-size: 2rem;
+    color: rgb(66, 184, 127);
+    border: 1px solid white;
+}
+
+p.bad {
+    color: rgb(244, 67, 54);
+}
+
+p.widget-text {
+    width: 100%;
+    text-align: center;
+    margin: auto;
 }
