@@ -1,4 +1,4 @@
-import { FETCH_PROJECT_PERF } from '../Actions/performance'
+import { FETCH_PROJECT_PERF } from '../Actions/types'
 
 const initialState = {
     currProjStat: {},
