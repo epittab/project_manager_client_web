@@ -20,20 +20,19 @@ To Do List:
     <!-- o) total expenses
     p) distribution of expenses -->
 <!-- 3) "Reactive" or SPA front end on submit and delete actions on forms -->
+<!-- 4) implement Redirects -->
+<!-- 14) Custom spinner -->
 
-
-13) number of tasks over budget => 
-4) implement Redirects
-5) add "Totals" Row to budget
+<!-- 9) Derive Block status -->
+<!-- 12) Derive Delayed and Pending statuses for tasks -->
 6) filter by completed and not completed
-9) Derive Block status
-7) fix Project Card Text styling, go view by view
 10) add labor functionality
+15) Charts
+7) fix Project Card Text styling, go view by view
+
 11) add more User indications/instructions
-12) Derive Delayed and Pending statuses for tasks
-14) Custom spinner
-
-
+13) number of tasks over budget => 
+5) add "Totals" Row to budget
 
 
 

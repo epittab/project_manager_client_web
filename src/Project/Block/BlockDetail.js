@@ -35,7 +35,7 @@ class BlockDetail extends Component {
             <div className='block-wrapper dark-on-light'>
                 <p> <strong>Block Name: </strong> {`${this.props.block.block_name}`}</p>
                 <p> <strong>Block Desc:</strong> {`${this.props.block.block_description}`}</p>
-                <p> <strong>Status:</strong> PENDING </p>
+                <p> <strong>Status:</strong> {`${this.props.block_status}`} </p>
             </div>
         )
     }
@@ -117,6 +117,7 @@ const mapStateToProps = (state) => {
     return {
         blocks: state.projects.currProject,
         block: state.blocks.currBlock.block,
+        block_status: state.blocks.currBlock.block_status,
         tasks: state.blocks.currBlock.tasks,
         isTaskFormOpen: state.tasks.isNewTaskOpen,
     }
