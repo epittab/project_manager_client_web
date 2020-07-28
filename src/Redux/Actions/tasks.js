@@ -105,17 +105,15 @@ function toggleTaskForm(){
     }
 }
 
-function handleDeleteTask(delTask) {
-    return (dispatch, getState) => {
-        dispatch({
-            type: DELETE_TASK,
-            payload: delTask
-        })
+function handleDeleteTask(filteredArray) {
+    return {
+        type: DELETE_TASK,
+        payload: filteredArray
     }
 }
 
 function deleteTask(t_id) {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         fetch(`http://localhost:3001/tasks/${t_id}`,{
                 method: 'DELETE',
                 headers: {
@@ -126,7 +124,10 @@ function deleteTask(t_id) {
             })
             .then( r => r.json() )
             .then( data => {
-                dispatch(handleDeleteTask(data))
+                let taskArray = getState().blocks.currBlock.tasks.filter( task => task.id !== data.id )
+                console.log(taskArray)
+                console.log(data)
+                dispatch(handleDeleteTask(taskArray))
             })
     }
 }

@@ -25,8 +25,8 @@ class BlockDetail extends Component {
     }
 
     handleDelete = () => {
-        this.props.deleteBlock(this.props.routeProps.match.params.b_id)
         this.setState({shouldRedirect: true})
+        this.props.deleteBlock(this.props.routeProps.match.params.b_id)
         // Redirect? look up Browser history 
     }
 
@@ -58,7 +58,7 @@ class BlockDetail extends Component {
                     </div>
                     <div className='block-wrapper-grid-buttons'>
                         <Link to={`/projects/${p_id}/blocks/${b_id}/tasks/${task.id}`}>< EditButton size={2} /></Link>
-                        < DeleteButton size={2}/>
+                        < DeleteButton buttonType={'task'} type_id={task.id} size={2}/>
                     </div>
                     
                  
@@ -72,7 +72,6 @@ class BlockDetail extends Component {
     
     render() {
         let p_id = this.props.routeProps.match.params.p_id
-        let b_id = this.props.routeProps.match.params.b_id
 
         if (this.state.shouldRedirect) {
             return < Redirect to={`/projects/${p_id}`}/>

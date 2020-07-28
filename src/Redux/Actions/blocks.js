@@ -1,15 +1,15 @@
 
 import { FETCH_DELETE_BLOCK, FETCH_BLOCK, BLOCK_CLEANUP, POST_BLOCK_FORM, BLOCK_FORM_CLEANUP, TOGGLE_NEW_BLOCK, CHANGE_BLOCK_FORM } from './types'
 
-function deleteBlock(data){
-    return {
-        type: FETCH_DELETE_BLOCK,
-        payload: data
-    }
+function deleteBlock(filteredArray){
+        return {
+            type: FETCH_DELETE_BLOCK,
+            payload: filteredArray
+        }
 }
 
 function fetchDeleteBlock(b_id){
-    return (dispatch) => {
+    return (dispatch, getState) => {
         fetch(`http://localhost:3001/blocks/${b_id}`, {
             method: 'DELETE',
             headers: {
@@ -19,7 +19,10 @@ function fetchDeleteBlock(b_id){
             }
         })
         .then( r =>  r.json() )
-        .then( data => dispatch(deleteBlock(data)))
+        .then( data => {
+            let blockArray = getState().projects.currProject.blocks.filter( block => block.block.id !== data.id )
+            dispatch(deleteBlock(blockArray))
+        })
     }
 }
 

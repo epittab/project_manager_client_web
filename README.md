@@ -4,7 +4,7 @@ To Do List:
 
 <!-- 1) change status from Created > In Progress > Completed -->
 <!-- 2) Redefine how to calculate project days considering current_date and actual_start and actual_end dates from the tasks -->
-8) KPIs > 
+8) KPIs
     <!-- a) percent completion => count of tasks with completed status / count of tasks  -->
     <!-- b) total blocks => count of blocks
     c) total tasks => count of tasks -->
@@ -19,8 +19,10 @@ To Do List:
     n) unused budget -->
     <!-- o) total expenses
     p) distribution of expenses -->
-    l) number of tasks over budget => 
-3) "Reactive" or SPA front end on submit and delete actions on forms
+<!-- 3) "Reactive" or SPA front end on submit and delete actions on forms -->
+
+
+13) number of tasks over budget => 
 4) implement Redirects
 5) add "Totals" Row to budget
 6) filter by completed and not completed
@@ -29,6 +31,7 @@ To Do List:
 10) add labor functionality
 11) add more User indications/instructions
 12) Derive Delayed and Pending statuses for tasks
+14) Custom spinner
 
 
 

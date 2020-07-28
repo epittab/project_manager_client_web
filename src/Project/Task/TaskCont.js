@@ -1,19 +1,34 @@
 import React, { Component } from 'react'
 
-import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
-import TaskDetail from './TaskDetail'
+import {connect} from 'react-redux'
+import { fetchTask, fetchStartTask, fetchCompleteTask, toggleTaskCosts, deleteTask } from '../../Redux/Actions/tasks'
+
 import AddCost from './AddCost'
 import AddBudget from './AddBudget'
 import DisplayCost from './DisplayCost'
 import DisplayLCost from './DisplayLCost'
 
 import './Task.css'
-import { fetchTask, fetchStartTask, fetchCompleteTask, toggleTaskCosts } from '../../Redux/Actions/tasks'
+
 class TaskCont extends Component {
+    
+    constructor() {
+        super()
+        this.state = {
+            shouldRedirect: false
+        }
+    }
 
     componentDidMount(){
        this.props.fetchTask(this.props.routeProps.match.params.t_id)
+    }
+
+    handleDelete = (e) => {
+        e.preventDefault()
+        this.props.fetchDelete(this.props.routeProps.match.params.t_id)
+        this.setState({shouldRedirect: true})
     }
 
     renderCosts() {
@@ -80,6 +95,11 @@ class TaskCont extends Component {
     }
 
     render() {
+        let p_id = this.props.routeProps.match.params.p_id
+        let b_id = this.props.routeProps.match.params.b_id
+        if ( this.state.shouldRedirect ) {
+            return < Redirect to={`/projects/${p_id}/blocks/${b_id}`} />
+        }
         return (
             <div className='Sheet transparent'>
                 <h2>Task Detail</h2>
@@ -101,7 +121,12 @@ class TaskCont extends Component {
               
                 </div>
 
-                < TaskDetail />
+                <div className='task-wrapper simple-task'>
+                    <h3>Delete Task</h3>
+                    <form onSubmit={ (e) => this.handleDelete(e) }>
+                        <button className='form-button danger action-item' type='submit'>Delete</button>
+                    </form>
+             </div>
             </div>
         )
     }
@@ -113,6 +138,7 @@ const mapDispatchToProps = (dispatch) => {
         fetchTask: (t_id) => {dispatch(fetchTask(t_id))},
         handleStart: (t_id) => {dispatch(fetchStartTask(t_id))},
         handleComplete: (t_id) => {dispatch(fetchCompleteTask(t_id))},
+        fetchDelete: (t_id) => {dispatch(deleteTask(t_id))}
     }
 }
 const mapStateToProps = (state) => {

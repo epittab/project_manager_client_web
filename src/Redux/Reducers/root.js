@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 import register from './register'
 import login from './login'
+import auth from './auth'
 import navbar from './navbar'
 import loginContainer from './loginContainer'
 import projects from './projects'
@@ -10,5 +11,5 @@ import budget from './budget'
 import costs from './costs'
 
 export default combineReducers({
-    register, login, loginContainer, navbar, projects, blocks, budget, tasks, costs
+    register, login, auth, loginContainer, navbar, projects, blocks, budget, tasks, costs
 });

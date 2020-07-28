@@ -1,4 +1,4 @@
-import {LOGIN_FORM, LOGIN_FORM_CLEANUP} from '../Actions/types'
+import { LOGIN_FORM_CLEANUP, CHANGE_LOGIN_FORM } from '../Actions/types'
 
 const initialState = {
     username: '',
@@ -8,8 +8,7 @@ const initialState = {
 const reducer = (oldState = initialState, action) => {
     
     switch (action.type) {
-        
-        case LOGIN_FORM:
+        case CHANGE_LOGIN_FORM:
             return {...oldState, ...action.payload}
         case LOGIN_FORM_CLEANUP:
                 return initialState

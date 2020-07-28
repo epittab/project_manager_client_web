@@ -28,7 +28,7 @@ class BlockCont extends Component {
                     </div>
                     <div className='block-wrapper-grid-buttons'>
                         < Link to={`/projects/${this.props.routeProps.match.params.p_id}/blocks/${block.block.id}`}> < EditButton size={2} /> </Link>
-                        < DeleteButton size={2}/>
+                        < DeleteButton buttonType={'Block'} type_id={block.block.id} size={2}/>
                     </div>
                     
                     

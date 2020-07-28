@@ -1,7 +1,6 @@
-import {TOGGLE_TASK_COSTS, CHANGE_TASK_BUDGET, SUBMIT_TASK_BUDGET, FETCH_TASK, TOGGLE_TASK_FORM, CHANGE_TASK_FORM, TASK_FORM_CLEANUP, FETCH_START_TASK, FETCH_COMPLETE_TASK, POST_LABOR_COST, POST_SM_COST} from '../Actions/types'
+import {TOGGLE_TASK_COSTS, CHANGE_TASK_BUDGET, SUBMIT_TASK_BUDGET, FETCH_TASK, TOGGLE_TASK_FORM, CHANGE_TASK_FORM, POST_TASK_FORM, TASK_FORM_CLEANUP, FETCH_START_TASK, FETCH_COMPLETE_TASK, POST_LABOR_COST, POST_SM_COST} from '../Actions/types'
 
 const initialState = {
-    tasks: [],
     isNewTaskOpen: false,
     newTaskForm: {
         task_name: '',
@@ -29,6 +28,8 @@ const reducer = (oldState = initialState, action) => {
         case POST_SM_COST:
             return {...oldState, currTask: {...oldState.currTask, costs: {...oldState.currTask.costs, serv_mat_costs: [...oldState.currTask.costs.serv_mat_costs, action.payload]}}}
         case TASK_FORM_CLEANUP:
+            return {...oldState, newTaskForm: {...initialState.newTaskForm}}
+        case POST_TASK_FORM:
             return {...oldState, newTaskForm: {...initialState.newTaskForm}}
         case CHANGE_TASK_FORM:
             return {...oldState, newTaskForm: {...oldState.newTaskForm, ...action.payload}}

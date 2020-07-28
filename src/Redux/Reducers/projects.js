@@ -30,7 +30,7 @@ const reducer = (oldState = initialState, action) => {
         case POST_BLOCK_FORM:
             return {...oldState, currProject: {...oldState.currProject, blocks: [...oldState.currProject.blocks, action.payload]}}
         case FETCH_DELETE_BLOCK:
-            return {...oldState} // filter array of blocks in currProject
+            return {...oldState, currProject: {...oldState.currProject, blocks: [...action.payload]}} // filter array of blocks in currProject
         default:
             return oldState
     }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import Register from './Register'
 import Login from './Login'
+import Loading from '../Components/Loading'
 
 import './LoginContainer.css'
 
@@ -21,7 +22,9 @@ class LoginContainer extends React.Component {
     }
 
     render(){
-        console.log(this.props.showingRegister)
+        if (this.props.loading) {
+            return <Loading />
+        }
         return (
             <div className='LoginContainer'>
                 <div className='Login-cont-toggle-bar'>
@@ -41,7 +44,8 @@ class LoginContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        showingRegister: state.loginContainer.showingRegister
+        showingRegister: state.loginContainer.showingRegister,
+        loading: state.auth.loading
     }
 }
 

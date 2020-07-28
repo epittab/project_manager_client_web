@@ -1,4 +1,4 @@
-import { FETCH_BLOCK, TOGGLE_NEW_BLOCK, BLOCK_CLEANUP, BLOCK_FORM_CLEANUP, CHANGE_BLOCK_FORM, POST_TASK_FORM } from '../Actions/types'
+import { FETCH_BLOCK, TOGGLE_NEW_BLOCK, BLOCK_CLEANUP, BLOCK_FORM_CLEANUP, CHANGE_BLOCK_FORM, POST_TASK_FORM, DELETE_TASK } from '../Actions/types'
 
 const initialState = {
     currBlock: {},
@@ -14,6 +14,8 @@ const reducer = (oldState = initialState, action) => {
 
         case POST_TASK_FORM:
             return {...oldState, currBlock: {...oldState.currBlock, tasks: [...oldState.currBlock.tasks, action.payload]}}
+        case DELETE_TASK:
+            return {...oldState, currBlock: {...oldState.currBlock, tasks: [...action.payload]}}
         case BLOCK_CLEANUP:
             return {...oldState, currBlock: {}}
         case CHANGE_BLOCK_FORM:
