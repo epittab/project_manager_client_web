@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import {connect} from 'react-redux'
 import { fetchProject, projectCleanup } from '../../../Redux/Actions/projects'
+import { fetchProjectPerf } from '../../../Redux/Actions/performance'
 
 import './Board.css'
 import Header from './Header/Header'
@@ -9,7 +10,10 @@ import GroupRow from './Body/Fixed/GroupRow'
 
 class Board extends Component {
 
-    componentDidMount(){this.props.getProject(this.props.routeProps.match.params.p_id)}   
+    componentDidMount(){
+        this.props.getProject(this.props.routeProps.match.params.p_id)
+        this.props.getProjectPerf(this.props.routeProps.match.params.p_id)
+    }   
 
     deriveProjectLength() { return this.props.days ? (this.props.days + 1) : 0 }
 
@@ -42,6 +46,7 @@ class Board extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         getProject: (p_id) => {dispatch(fetchProject(p_id))},
+        getProjectPerf: (p_id) => {dispatch(fetchProjectPerf(p_id))},
         projectCleanup: ()=>{dispatch(projectCleanup())}
     }
 }

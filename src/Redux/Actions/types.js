@@ -61,3 +61,7 @@ export const CHANGE_COST_FORM = 'CHANGE_COST_FORM';
 export const COST_FORM_CLEANUP = 'COST_FORM_CLEANUP';
 export const POST_LABOR_COST = 'POST_LABOR_COST';
 export const POST_SM_COST = 'POST_SM_COST';
+
+//Performance
+export const FETCH_PROJECT_PERF = 'FETCH_PROJECT_PERF';
+export const FETCH_GENERAL_PERF = 'FETCH_GENERAL_PERF';
