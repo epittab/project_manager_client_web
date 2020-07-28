@@ -7,6 +7,7 @@ import { checkAuthorization } from './Redux/Actions/auth'
 
 import './App.css';
 
+import ProtectedRoute from './Components/ProtectedRoute'
 import Logout from './Login/Logout'
 import LoginC from './Login/LoginContainer'
 import Navbar from './Navbar/Navbar'
@@ -27,9 +28,9 @@ class App extends React.Component {
           <Navbar />
           
           <Switch>
-            <Route path='/projects' render={ () => < Project /> } />
-            <Route path='/account' render={ () => < AccountCont /> } />
-            <Route path='/performance' render={ () => < PerformanceCont /> } />
+            <ProtectedRoute isAuth={this.props.isAuth} path='/projects' component={ Project  } />
+            <ProtectedRoute isAuth={this.props.isAuth}  path='/account' component={ AccountCont  } />
+            <ProtectedRoute isAuth={this.props.isAuth}  path='/performance' component={  PerformanceCont } />
             <Route path='/logout' component={ Logout } /> 
             <Route exact path='/' render={ () => < LoginC /> } />
             <Route path='*' render={ () => <div>404</div> } />
@@ -46,4 +47,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.token !== null
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
