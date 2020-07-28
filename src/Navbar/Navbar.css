@@ -3,6 +3,9 @@ nav.Navbar {
     height: 100vh;
     width: 15vw;
     background-color: rgba(41, 206, 235, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 nav.Navbar.close {
@@ -16,14 +19,21 @@ nav.Navbar.close {
     
 }
 
-.Navbar-link-item {
+div.Navbar-link-item {
     height: 3rem;
     line-height: 3rem;
     text-align: center;
     border-bottom: 1px solid lightblue;
 }
+div.Navbar-link-item-logout {
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    border-top: 1px solid lightblue;
+}
 
-.Navbar-link-item:hover {
+
+.Navbar-link-item:hover, .Navbar-link-item-logout:hover {
     background-color: lightblue;
 }
 

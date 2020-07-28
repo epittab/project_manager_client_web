@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-
+import { Redirect } from 'react-router-dom'
 import Register from './Register'
 import Login from './Login'
 import Loading from '../Components/Loading'
@@ -25,6 +25,9 @@ class LoginContainer extends React.Component {
         if (this.props.loading) {
             return <Loading />
         }
+        if (this.props.isAuthenticated) {
+            return < Redirect to='/projects'/>
+        }
         return (
             <div className='LoginContainer'>
                 <div className='Login-cont-toggle-bar'>
@@ -45,7 +48,8 @@ class LoginContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         showingRegister: state.loginContainer.showingRegister,
-        loading: state.auth.loading
+        loading: state.auth.loading,
+        isAuthenticated: state.auth.token !== null
     }
 }
 

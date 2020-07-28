@@ -1,5 +1,5 @@
 
-//Login/Register
+//Login/Register/Auth
 export const REGISTER_FORM = 'REGISTER_FORM';
 export const REGISTER_FORM_CLEANUP = 'REGISTER_FORM_CLEANUP';
 export const LOGIN_FORM = 'LOGIN_FORM';
@@ -9,6 +9,9 @@ export const CHANGE_LOGIN_FORM = 'CHANGE_LOGIN_FORM';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const CONTAINER_TOGGLE = 'CONTAINER_TOGGLE';
+export const LOGOUT = 'LOGOUT';
+export const CHECK_AUTH_TIME = 'CHECK_AUTH_TIME';
+
 
 //Navbar
 export const TOGGLE_NAV = 'TOGGLE_NAV';

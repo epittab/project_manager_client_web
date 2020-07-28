@@ -1,4 +1,5 @@
 import { LOGIN_FORM, LOGIN_FORM_CLEANUP, POST_LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, CHANGE_LOGIN_FORM } from './types'
+import { checkAuthTime } from './auth'
 
 function loginFailure(err) {
     return {
@@ -55,6 +56,7 @@ function postLogin(e, form) {
                     localStorage.setItem('first_name', user.first_name)
                 }
                 dispatch(loginSuccess(user))
+                dispatch(checkAuthTime())
                 dispatch(loginFormCleanup())
             })
             .catch( (err) =>  { 
