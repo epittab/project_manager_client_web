@@ -1,4 +1,4 @@
- import { FETCH_GENERAL_PERF, FETCH_PROJECT_PERF, FETCH_ALL_PROJECT_INDICATORS } from './types'
+ import { FETCH_GENERAL_PERF, FETCH_PROJECT_PERF, FETCH_ALL_PROJECT_INDICATORS, GET_INDICATORS } from './types'
 
 
  function fetchGeneralPerf() {
@@ -49,8 +49,16 @@ function fetchProjectPerf(p_id) {
     }
 }
 
+function fetchIndicators() {
+    return {
+        type: GET_INDICATORS,
+        payload: {loading: true}
+    }
+}
+
 function fetchAllProjectIndicators(){
     return (dispatch) => {
+        dispatch(fetchIndicators())
         fetch(`http://localhost:3001/projects/performance`,{
             method: 'GET',
             headers: {

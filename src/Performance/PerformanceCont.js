@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import Widget from '../Project/ProjectDetail/Tray/Widget'
+import Loading from '../Components/Loading'
 
 import { fetchAllProjectIndicators } from '../Redux/Actions/performance'
 
@@ -13,6 +14,9 @@ class PerformanceCont extends Component {
     componentDidMount(){ this.props.getProjects() }
 
     render() {
+        if (this.props.loading) {
+            return <Loading />
+        }
         return (
             <div className={`ProjectContainer${this.props.navIsOpen ? '' : ' close'}`}>
                 <div className='Sheet transparent'>
@@ -43,7 +47,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return { 
         userProjectInds: state.performance.allProjStats,
-        navIsOpen: state.navbar.isOpen
+        loading: state.performance.loading,
+        navIsOpen: state.navbar.isOpen,
     }
 } 
 export default connect(mapStateToProps, mapDispatchToProps)(PerformanceCont);

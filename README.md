@@ -27,17 +27,20 @@ To Do List:
 <!-- 12) Derive Delayed and Pending statuses for tasks -->
 <!-- 15) Charts -->
 <!-- 7) fix Project Card Text styling, go view by view -->
+<!-- 16) Performance Page -->
+<!-- 19) Performance Loader -->
 
 6) filter by completed and not completed
+18) Polish every view (CSS) and handling unmounting
+17) User Page
 10) add labor functionality
-16) Performance and Account Page
 11) add more User indications/instructions
-13) number of tasks over budget => 
 5) add "Totals" Row to budget
 
 
 
 
+13) number of tasks over budget => 
 
 
 
