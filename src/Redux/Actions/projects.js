@@ -1,4 +1,12 @@
-import {FETCH_ALL_PROJECTS, FETCH_PROJECT, PROJECT_CLEANUP, POST_PROJECT_FORM, PROJECT_FORM_CLEANUP, CHANGE_PROJECT_FORM} from './types'
+import {FETCH_ALL_PROJECTS, FETCH_PROJECT, PROJECT_CLEANUP, POST_PROJECT_FORM, PROJECT_FORM_CLEANUP, CHANGE_PROJECT_FORM, TOGGLE_COMPLETED_PROJECTS} from './types'
+
+
+function toggleCompleteProjects(){
+    return {
+        type: TOGGLE_COMPLETED_PROJECTS
+    }
+}
+
 
 function changeProjectForm(e){
     return {
@@ -91,4 +99,4 @@ function projectCleanup(){
     }
 }
 
-export {fetchAllProjects, fetchProject, postProjectForm, projectFormCleanup, changeProjectForm, projectCleanup}
+export {fetchAllProjects, toggleCompleteProjects, fetchProject, postProjectForm, projectFormCleanup, changeProjectForm, projectCleanup}

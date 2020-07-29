@@ -18,11 +18,12 @@ class Board extends Component {
     }
 
     render() {
+        let projects_array = this.props.showAll ? this.props.userProjects : this.props.userProjects.filter( up => !up.isComplete )
         return (
             <div className='Board transparent'>
                 <div className='card-grid'>
                     <Link className='card-link' to='/projects/new'>< NewCard /></Link>
-                    { this.props.userProjects.map( (up) => <Link className='card-link' to={`/projects/${up.id}`}>< ProjectCard name={up.project_name}/></Link>)}
+                    { projects_array.map( (up) => <Link className='card-link' to={`/projects/${up.project.id}`}>< ProjectCard name={up.project.project_name}/></Link>)}
                 </div>
                 
             </div>
@@ -39,7 +40,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        userProjects: state.projects.userProjects
+        userProjects: state.projects.userProjects,
+        showAll: state.projects.showAll,
     }
 }
 

@@ -1,6 +1,7 @@
-import {FETCH_ALL_PROJECTS, FETCH_PROJECT, POST_PROJECT_FORM, PROJECT_FORM_CLEANUP, CHANGE_PROJECT_FORM, PROJECT_CLEANUP, POST_BLOCK_FORM, FETCH_DELETE_BLOCK} from '../Actions/types'
+import {FETCH_ALL_PROJECTS, FETCH_PROJECT, POST_PROJECT_FORM, PROJECT_FORM_CLEANUP, CHANGE_PROJECT_FORM, PROJECT_CLEANUP, POST_BLOCK_FORM, FETCH_DELETE_BLOCK, TOGGLE_COMPLETED_PROJECTS} from '../Actions/types'
 
 const initialState = {
+    showAll: true,
     userProjects: [],
     currProject: {},
     newProjectForm: {
@@ -14,7 +15,8 @@ const initialState = {
 const reducer = (oldState = initialState, action) => {
 
     switch (action.type) {
-
+        case TOGGLE_COMPLETED_PROJECTS:
+            return {...oldState, showAll: !oldState.showAll}
         case POST_PROJECT_FORM:
             return {...oldState, newProjectForm: action.payload}
         case CHANGE_PROJECT_FORM:

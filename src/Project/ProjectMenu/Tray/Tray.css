@@ -19,3 +19,36 @@ div.Widget-wrapper {
     align-items: center;
 
 }
+
+div.toggle {
+    height: 100%;
+    width: 100%;
+}
+
+div.toggle-router {
+    
+    width: 4rem;
+    height: 2.1rem;
+    background-color: rgb(35, 108, 198);
+    border-radius: 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+div.toggle-router.filter {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+div.toggle-button {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background-image: radial-gradient( rgb(41, 206, 235) 50%, rgb(35, 108, 198) 65%, rgb(31, 23, 64) 95%);
+
+    /* background-color: rgb(41, 206, 235); */
+}
