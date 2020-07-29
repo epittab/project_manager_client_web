@@ -9,3 +9,11 @@ div.total-budget-container {
     align-items: center;
     justify-content: space-between;
 }
+
+td.null-text {
+    color: gray;
+}
+
+td.bad-text {
+    color: rgb(244, 67, 54);
+}

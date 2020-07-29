@@ -1,5 +1,11 @@
-import {FETCH_ALL_PROJECTS, FETCH_PROJECT, PROJECT_CLEANUP, POST_PROJECT_FORM, PROJECT_FORM_CLEANUP, CHANGE_PROJECT_FORM, TOGGLE_COMPLETED_PROJECTS} from './types'
+import {FETCH_ALL_PROJECTS, FETCH_PROJECT, PROJECT_CLEANUP, POST_PROJECT_FORM, PROJECT_FORM_CLEANUP, CHANGE_PROJECT_FORM, TOGGLE_COMPLETED_PROJECTS, GET_PROJECTS} from './types'
 
+function fetchingProj(){
+    return {
+        type: GET_PROJECTS,
+        payload: {loading: true}
+    }
+}
 
 function toggleCompleteProjects(){
     return {
@@ -52,6 +58,7 @@ function getAllProjects(data){
 
 function fetchAllProjects(){
     return (dispatch) => {
+        dispatch(fetchingProj())
         fetch(`http://localhost:3001/projects/`,{
             method: 'GET',
             headers: {
@@ -77,6 +84,7 @@ function getProject(data){
 
 function fetchProject(p_id){
     return (dispatch) => {
+        dispatch(fetchingProj())
         fetch(`http://localhost:3001/projects/${p_id}`,{
             method: 'GET',
             headers: {

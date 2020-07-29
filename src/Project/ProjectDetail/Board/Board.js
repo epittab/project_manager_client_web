@@ -7,6 +7,7 @@ import { fetchProjectPerf } from '../../../Redux/Actions/performance'
 import './Board.css'
 import Header from './Header/Header'
 import GroupRow from './Body/Fixed/GroupRow'
+import Loading from '../../../Components/Loading'
 
 class Board extends Component {
 
@@ -32,6 +33,8 @@ class Board extends Component {
     }
 
     render() {
+        if (this.props.isLoading) { return < Loading /> }
+        
         return (
             <div className='Board transparent'>
                 <div className='board-data'>
@@ -53,6 +56,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         project: state.projects.currProject.project,
+        isLoading: state.projects.loading,
         blocks: state.projects.currProject.blocks,
         days: state.projects.currProject.days,
         start: state.projects.currProject.display_start,

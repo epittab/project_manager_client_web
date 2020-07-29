@@ -29,16 +29,14 @@ To Do List:
 <!-- 7) fix Project Card Text styling, go view by view -->
 <!-- 16) Performance Page -->
 <!-- 19) Performance Loader -->
+<!-- 6) filter by completed and not completed -->
+<!-- 17) User Page -->
 
-6) filter by completed and not completed
+
 18) Polish every view (CSS) and handling unmounting
-17) User Page
 10) add labor functionality
 11) add more User indications/instructions
 5) add "Totals" Row to budget
-
-
-
 
 13) number of tasks over budget => 
 

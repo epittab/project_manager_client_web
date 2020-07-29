@@ -54,6 +54,7 @@ function postLogin(e, form) {
                 if (user.token !== undefined ) {
                     localStorage.setItem('token', user.token)
                     localStorage.setItem('first_name', user.first_name)
+                    localStorage.setItem('hourly_cost', user.user_cost)
                 }
                 dispatch(loginSuccess(user))
                 dispatch(checkAuthTime())

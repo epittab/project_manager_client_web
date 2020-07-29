@@ -1,76 +1,147 @@
 import React, { Component } from 'react'
 
+import EditButton from '../Components/EditButton'
+
 import {connect} from 'react-redux'
+import { patchUserCostForm, fetchUserDetails, toggleUser, toggleUserCost, changeUser, changeUserCost, cleanupUser, cleanupUserCost} from '../Redux/Actions/edituser'
 class UserEditForm extends Component {
 
-    constructor(){
-        super()
-        this.state = {
-            cost: 0.00,
-            form: {}
+   componentWillUnmount(){
+       this.props.cleanupUserCostForm()
+       this.props.cleanupUserForm()
 
+   }
+
+    componentDidMount(){
+        this.props.getUserDetails()
+    }
+
+    toggleUserForm = () => {
+        if (this.props.isEditUser) {
+            this.props.cleanupUserForm()
         }
+        this.props.toggleUserEdit()
+       
+    }
+    
+    toggleCost = () => {
+        this.props.cleanupUserCostForm()
+        this.props.toggleUserCostEdit()
+       
     }
 
-    handleChange = (e) => {
-        
+    handleSubmit = () => {
+        console.log('to do')
     }
 
-    handleChangeCost = (e) => {
-        this.setState({...this.state, [e.target.name]: e.target.value})
+    renderUser(){
+        return (<div>
+                    <h3>User Details:</h3>
+
+                    <p><span>Name: </span> {`${this.props.d_first_name} ${this.props.d_last_name}`}</p>
+                    <p><span>User Name: </span> {`${this.props.d_username}`}</p>
+                    
+
+                    <div className='Account-Edit-button' onClick={this.toggleUserForm}>< EditButton size={2}  /></div>
+
+                </div>)
+    }
+    
+    renderCost(){
+        let userCost = '';
+        this.props.cost ? userCost = `$ ${this.props.cost}` : userCost = `You are priceless, so you must have a cost greater than 0. Please submit your hourly cost.`
+        return (
+            <div>
+                <p><span>Cost per hour: </span> { this.props.cost ? `${userCost}` : <span className='null-text'>{`${userCost}`}</span>}</p>
+                <div className='Account-Edit-button' onClick={this.toggleCost}>< EditButton size={2}  /></div>
+            
+            </div>
+            )
     }
 
-    handleSubmit = (e) => {
 
+    renderEditUser(){
+        return (<form className='form-body' onSubmit={this.handleSubmit}>
+                    <label className='form-label' htmlFor='uf-first-name'>First Name: </label>
+                    <input type='text' value={this.props.first_name} 
+                            name='first_name' id='uf-first-name'  
+                            onChange={(e) => this.props.handleChangeUser(e)}/>
+                        
+                    <label className='form-label' htmlFor='uf-last-name'>Last Name: </label>
+                    <input type='text' value={this.props.last_name} 
+                            name='last_name' id='uf-last-name' 
+                            onChange={(e) => this.props.handleChangeUser(e)}/>
+                   
+                    <label className='form-label' htmlFor='uf-password'>Password: </label>
+                    <input type='password' value={this.props.password} 
+                            name='password' id='uf-password'  
+                            onChange={(e) => this.props.handleChangeUser(e)}/>
+                    
+                    < br />
+                    <button className='form-button' onClick={this.toggleUserForm}>Cancel</button>
+                    < br />
+                    <button className='form-button' type='submit'>Submit</button>
+                </form>)
     }
 
-    handleSubmitCost = (e) => {
-
+    renderEditCost(){
+        return (<form className='form-body'  onSubmit={(e) => this.props.submitUserCost(e, this.props.form_cost)}>
+                    <label className='form-label' htmlFor='uf-cost'>Hourly Cost:</label>
+                    <input type='number' value={this.props.form_cost} name='form_cost' 
+                    id='uf-cost'  onChange={(e) => this.props.handleChangeUserCost(e)}/>
+                    < br />
+                    <button className='form-button' onClick={this.toggleCost}>Cancel</button>
+                    < br />
+                    <button className='form-button' type='submit'>Submit</button>
+                </form>)
     }
     
 
     render() {
         return (
             <div>
-                <form className='form-body' onSubmit={this.handleSubmit}>
-                    <label className='form-label' htmlFor='uf-first-name'>First Name: </label>
-                    <input type='text' value={this.state.form.first_name} 
-                            name='first_name' id='uf-first-name'  
-                            onChange={this.handleChange}/>
-                           
-                    <label className='form-label' htmlFor='uf-last-name'>Last Name: </label>
-                    <input type='text' value={this.state.form.last_name} 
-                            name='last_name' id='uf-last-name' 
-                            onChange={this.handleChange}/>
-                        
-                    <label className='form-label' htmlFor='uf-username'>Username: </label>
-                    <input type='text' value={this.state.form.username} 
-                            name='username' id='uf-username' 
-                            onChange={this.handleChange}/>
-                        
-                    <label className='form-label' htmlFor='uf-password'>Password: </label>
-                    <input type='password' value={this.state.form.password} 
-                            name='password' id='uf-password'  
-                            onChange={this.handleChange}/>
-                      
-                    <button className='form-button' type='submit'>Submit</button>
-                </form>
-                <form className='form-body'  onSubmit={this.handleSubmitCost}>
-                    <label className='form-label' htmlFor='uf-cost'>Hourly Cost:</label>
-                    <input type='number' value={this.state.cost} name='cost' 
-                    id='uf-cost'  onChange={this.handleChangeCost}/>
-                    
-                    <button className='form-button' type='submit'>Submit</button>
-                </form>
+                
+                { this.props.isEditUser ? this.renderEditUser() : this.renderUser()}
+                { this.props.isEditCost ? this.renderEditCost() : this.renderCost()}
+                
+                <div className='block-wrapper transparent'>
+                        <form onSubmit={ this.handleDelete }>
+                            <p>DELETE ACCOUNT</p>
+                            <button className='form-button danger action-item' type='submit'>Delete</button>
+                        </form>
+
+                </div>
+
             </div>
         )
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        getUserDetails: ()=>{ dispatch(fetchUserDetails()) },
+        toggleUserEdit: ()=>{ dispatch(toggleUser()) },
+        toggleUserCostEdit: ()=>{ dispatch(toggleUserCost()) },
+        handleChangeUser: (e)=>{ dispatch(changeUser(e)) },
+        handleChangeUserCost: (e)=>{ dispatch(changeUserCost(e)) }, 
+        cleanupUserForm: (e)=>{ dispatch(cleanupUser(e)) }, 
+        cleanupUserCostForm: (e)=>{ dispatch(cleanupUserCost(e)) }, 
+        submitUserCost: (e, form)=>{ dispatch(patchUserCostForm(e, form)) }, 
+    }
 }
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        d_first_name: state.edituser.first_name,
+        d_last_name: state.edituser.last_name,
+        d_username: state.edituser.username,
+        first_name: state.edituser.form.first_name,
+        last_name: state.edituser.form.last_name,
+        password: state.edituser.form.password,
+        cost: state.edituser.cost,
+        form_cost: state.edituser.form_cost,
+        isEditUser: state.edituser.isEditingUser,
+        isEditCost: state.edituser.isEditingUserCost,
+        
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserEditForm)
