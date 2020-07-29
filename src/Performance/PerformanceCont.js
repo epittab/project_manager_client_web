@@ -10,8 +10,6 @@ import { fetchAllProjectIndicators } from '../Redux/Actions/performance'
 
 class PerformanceCont extends Component {
 
-
-
     componentDidMount(){ this.props.getProjects() }
 
     render() {
@@ -38,8 +36,7 @@ class PerformanceCont extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getProjects: () => { dispatch(fetchAllProjectIndicators()) },
-        // perfCleanup: () => { dispatch(perfCleanup())}
+        getProjects: () => { dispatch(fetchAllProjectIndicators()) }
     }
 }
 

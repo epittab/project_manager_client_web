@@ -25,9 +25,7 @@ class Block extends Component {
     render() {
       
         const days = new Array(this.props.duration).fill("")
-        // let tasksList = this.props.block && this.props.block.tasks.length > 0 ? 
-        // this.props.block.tasks.map(t => <Row key={t.id} name={t.task_name} task={t} block={this.props.block} b_id={this.props.block.block.id} routeProps={this.props.routeProps} days={days}/>)
-        // : null
+      
         return (
             <div className='GroupRow' >
                 <div style ={{display: 'flex', width: '100%'}} >
