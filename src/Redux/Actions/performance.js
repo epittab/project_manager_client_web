@@ -1,4 +1,4 @@
- import { FETCH_GENERAL_PERF, FETCH_PROJECT_PERF } from './types'
+ import { FETCH_GENERAL_PERF, FETCH_PROJECT_PERF, FETCH_ALL_PROJECT_INDICATORS } from './types'
 
 
  function fetchGeneralPerf() {
@@ -42,4 +42,30 @@ function fetchProjectPerf(p_id) {
      }
  }
 
- export { fetchGeneralPerf, fetchProjectPerf}
+ function getAllProjectIndicators(data){
+    return {
+        type: FETCH_ALL_PROJECT_INDICATORS,
+        payload: data
+    }
+}
+
+function fetchAllProjectIndicators(){
+    return (dispatch) => {
+        fetch(`http://localhost:3001/projects/performance`,{
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then( r => r.json() )
+        .then( data => {
+            dispatch(getAllProjectIndicators(data))
+        })
+        .catch( err => {console.log(err)})
+    }
+}
+
+
+ export { fetchGeneralPerf, fetchProjectPerf, fetchAllProjectIndicators}

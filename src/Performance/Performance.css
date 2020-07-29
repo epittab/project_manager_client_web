@@ -1,0 +1,12 @@
+div.ProjectContainer{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85vw;
+}
+
+div.ProjectContainer.close {
+    transition: ease-in .3s;
+    width: 95vw;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { PieChart, Pie, Tooltip, Cell} from 'recharts';
 
 import './Widget.css'
@@ -86,7 +86,7 @@ class Widget extends Component {
 
         let array = Object.entries(newObj).map( (el) => {return {name: el[0], value: el[1]} })
         return array
-    //    return [newObj]
+    
     }
     renderCost(){
         let data = this.cleanCostDist(this.props.total_cost)
@@ -122,7 +122,7 @@ class Widget extends Component {
         return (
             <div className='Widget'>
                 { (this.props.wid_type === 'task_dist' && this.props.task_dist) ? this.renderTaskDist() : null }
-                { (this.props.wid_type === 'perc_complete' && this.props.task_dist) ? this.renderPercComplete() : null }
+                { (this.props.wid_type === 'perc_complete' && this.props.pc) ? this.renderPercComplete() : null }
                 { (this.props.wid_type === 'duration' && this.props.duration) ? this.renderDuration() : null }
                 { (this.props.wid_type === 'days_left' && this.props.days_left) ? this.renderDaysLeft() : null }
                 { (this.props.wid_type === 'cost' && this.props.total_cost) ? this.renderCost() : null }
@@ -133,17 +133,4 @@ class Widget extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        task_dist: state.performance.currProjStat.task_dist,
-        pc: state.performance.currProjStat.percent_complete,
-        duration: state.performance.currProjStat.duration,
-        days_left: state.performance.currProjStat.days_remaining,
-        days_worked: state.performance.currProjStat.days_worked,
-        team: state.performance.currProjStat.team_members,
-        total_cost: state.performance.currProjStat.total_cost,
-        overBudget: state.performance.currProjStat.isOverBudget,
-    }
-}
-
-export default connect(mapStateToProps, null)(Widget);
+export default Widget;
