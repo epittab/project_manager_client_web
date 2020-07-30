@@ -11,7 +11,8 @@ import budget from './budget'
 import costs from './costs'
 import performance from './performance'
 import edituser from './edituser'
+import invite from './invite'
 
 export default combineReducers({
-    register, login, auth, loginContainer, navbar, projects, blocks, budget, tasks, costs, performance, edituser
+    register, login, auth, loginContainer, navbar, projects, blocks, budget, tasks, costs, performance, edituser, invite
 });
