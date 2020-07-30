@@ -20,7 +20,7 @@ class Tray extends Component {
                     < Widget overBudget={this.props.overBudget} wid_type={'budget'}/>
                     < Widget total_cost={this.props.total_cost} wid_type={'cost'}/>
                     < Widget duration={this.props.duration} wid_type={'duration'}/>
-                    < Widget days_left={this.props.days_left} wid_type={'days_left'}/>
+                    < Widget days_left={this.props.days_left} days_worked={this.props.days_worked} wid_type={'days_left'}/>
                     < Widget team={this.props.team} wid_type={'team'}/>
                 </div>
             </div>

@@ -65,6 +65,16 @@ class Widget extends Component {
             <p className='widget-text'>Days Remaining</p>
         </div>)
     }
+    renderDaysWorked(){
+
+        return ( <div>
+            <p className='widget-score-text'>{(this.props.days_worked)}</p>
+            <p className='widget-text'>Days Worked</p>
+        </div>)
+    }
+    renderSwitch(){
+        return this.props.days_left ? this.renderDaysLeft() : this.renderDaysWorked()
+    }
     renderTeam(){
 
         return ( <div>
@@ -89,6 +99,12 @@ class Widget extends Component {
     
     }
     renderCost(){
+        if (this.props.total_cost.total_cost === 0) {
+            return (<>
+                    <p className='widget-score-text bad'>$0</p>
+                    <p className='widget-text'>Costs{ this.props.team > 1 ? 's' : ''}</p>
+                </>)        
+        }
         let data = this.cleanCostDist(this.props.total_cost)
         
         return ( <div>
@@ -122,9 +138,9 @@ class Widget extends Component {
         return (
             <div className='Widget'>
                 { (this.props.wid_type === 'task_dist' && this.props.task_dist) ? this.renderTaskDist() : null }
-                { (this.props.wid_type === 'perc_complete' && this.props.pc) ? this.renderPercComplete() : null }
+                { (this.props.wid_type === 'perc_complete' && this.props.pc !== undefined ) ? this.renderPercComplete() : null }
                 { (this.props.wid_type === 'duration' && this.props.duration) ? this.renderDuration() : null }
-                { (this.props.wid_type === 'days_left' && this.props.days_left) ? this.renderDaysLeft() : null }
+                { (this.props.wid_type === 'days_left' ) ? this.renderSwitch() : null }
                 { (this.props.wid_type === 'cost' && this.props.total_cost) ? this.renderCost() : null }
                 { (this.props.wid_type === 'budget' && this.props.overBudget) ? this.renderBudget() : null }
                 { (this.props.wid_type === 'team' && this.props.team) ? this.renderTeam() : null }

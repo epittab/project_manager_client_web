@@ -32,7 +32,7 @@ class PerformanceCont extends Component {
                             < Widget overBudget={up.indicators.isOverBudget} wid_type={'budget'}/>
                             < Widget total_cost={up.indicators.total_cost} wid_type={'cost'}/>
                             < Widget duration={up.indicators.duration} wid_type={'duration'}/>
-                            < Widget days_left={up.indicators.days_remaining} wid_type={'days_left'}/>
+                            < Widget days_left={up.indicators.days_remaining} days_worked={up.indicators.days_worked} wid_type={'days_left'}/>
                             < Widget team={up.indicators.team_members} wid_type={'team'}/>
                         </div>
                         </div> 

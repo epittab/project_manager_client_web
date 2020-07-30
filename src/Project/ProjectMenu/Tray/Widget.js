@@ -34,7 +34,7 @@ class Widget extends Component {
     renderDelayed(){
 
         return ( <div>
-            <p className='widget-score-text'>{(this.props.delayed.length)}</p>
+            <p className='widget-score-text bad'>{(this.props.delayed.length)}</p>
             <p className='widget-text'>Delayed Task{ this.props.delayed.length > 1 ? 's' : ''}</p>
         </div>)
     }
