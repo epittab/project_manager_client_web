@@ -15,24 +15,25 @@ class CreateProject extends Component {
         return (<div className = 'Sheet transparent'> 
                 
                 <form className='form-body' onSubmit={ (e) => this.props.handlePostProjectForm(e, this.props.new_project) }>
-                    <h2>New Project</h2>
+                    <h3>New Project</h3>
                     <label className='form-text' htmlFor='new-project-form-name'>Project Name: </label>
                     <input id='new-project-form-name' type='text' name='project_name' 
                     value={this.props.project_name}
                     onChange={this.props.handleChangeProjectForm}
                     />
-                    <br />
+                 
                     <label className='form-text' htmlFor='new-project-form-description'>Project Description: </label>
                     <textarea id='new-project-form-name' type='text' name='project_description'  
+                    rows="5" cols="60"
                     value={this.props.project_description}
                     onChange={this.props.handleChangeProjectForm} />
-                    <br />
+                    
 
                     <label className='form-text' htmlFor='new-project-form-start-date'>Project Est. Start Date: </label>
                     <input id='new-project-form-start-date' type='date' name='est_start_date' 
                     value={this.props.est_start_date}
                     onChange={this.props.handleChangeProjectForm} />
-                    <br />
+                   
 
                     <label className='form-text' htmlFor='new-project-form-end-date'>Project Est. End Date: </label>
                     <input id='new-project-form-end-date' type='date' name='est_end_date' 
@@ -40,7 +41,7 @@ class CreateProject extends Component {
                     onChange={this.props.handleChangeProjectForm} />
                     <br />
 
-                    <button className='form-button' type='submit' >Submit</button>
+                    <button className='form-button primary' type='submit' >Submit</button>
                 </form>
             </div> )
         }

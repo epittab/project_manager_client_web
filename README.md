@@ -31,16 +31,22 @@ To Do List:
 <!-- 19) Performance Loader -->
 <!-- 6) filter by completed and not completed -->
 <!-- 17) User Page -->
+<!-- 10) add labor functionality -->
 
 
 18) Polish every view (CSS) and handling unmounting
-10) add labor functionality
 11) add more User indications/instructions
 5) add "Totals" Row to budget
 
 13) number of tasks over budget => 
 
-
+general KPI
+> Project count
+> Completed Projects
+> Contributors
+> Managed Budget
+>
+>
 
 
 

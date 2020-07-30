@@ -8,6 +8,7 @@ import Loading from '../Components/Loading'
 
 import { fetchAllProjectIndicators } from '../Redux/Actions/performance'
 
+import './Performance.css'
 
 class PerformanceCont extends Component {
 
@@ -20,18 +21,24 @@ class PerformanceCont extends Component {
         return (
             <div className={`ProjectContainer${this.props.navIsOpen ? '' : ' close'}`}>
                 <div className='Sheet transparent'>
-                    { this.props.userProjectInds.map( up => <div className='Tray transparent'>
-                <Link to={`/projects/${up.id}`} >GO</Link>
-                <div className = 'Widget-wrapper'>
-                    < Widget pc={up.indicators.percent_complete} wid_type={'perc_complete'} />
-                    < Widget task_dist={up.indicators.task_dist} wid_type={'task_dist'}/>
-                    < Widget overBudget={up.indicators.isOverBudget} wid_type={'budget'}/>
-                    < Widget total_cost={up.indicators.total_cost} wid_type={'cost'}/>
-                    < Widget duration={up.indicators.duration} wid_type={'duration'}/>
-                    < Widget days_left={up.indicators.days_remaining} wid_type={'days_left'}/>
-                    < Widget team={up.indicators.team_members} wid_type={'team'}/>
-                </div>
-            </div> )}
+                    { this.props.userProjectInds.map( up => 
+                    <div>
+                        <h3>{up.proj_name}</h3>
+                        <div className='Tray transparent'>
+                            <Link to={`/projects/${up.id}`} ><div className='link-bubble'></div></Link>
+                        <div className = 'Widget-wrapper'>
+                            < Widget pc={up.indicators.percent_complete} wid_type={'perc_complete'} />
+                            < Widget task_dist={up.indicators.task_dist} wid_type={'task_dist'}/>
+                            < Widget overBudget={up.indicators.isOverBudget} wid_type={'budget'}/>
+                            < Widget total_cost={up.indicators.total_cost} wid_type={'cost'}/>
+                            < Widget duration={up.indicators.duration} wid_type={'duration'}/>
+                            < Widget days_left={up.indicators.days_remaining} wid_type={'days_left'}/>
+                            < Widget team={up.indicators.team_members} wid_type={'team'}/>
+                        </div>
+                        </div> 
+                    </div>
+                    
+                    )}
                 </div>
             </div>
         )
@@ -46,6 +53,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return { 
+        userProjects: state.projects.userProjects,
         userProjectInds: state.performance.allProjStats,
         loading: state.performance.loading,
         navIsOpen: state.navbar.isOpen,

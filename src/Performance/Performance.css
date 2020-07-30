@@ -10,3 +10,14 @@ div.ProjectContainer.close {
     transition: ease-in .3s;
     width: 95vw;
 }
+
+div.link-bubble {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background-color:  rgb(240, 174, 68);
+    background-image: url('../images/arrow-up-right.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
+}
