@@ -36,11 +36,11 @@ To Do List:
 
 18) Polish every view (CSS) and handling unmounting
 
-general KPI
-> Project count
-> Completed Projects
-> Contributors
-> Managed Budget
+<!-- general KPI -->
+<!-- > Project count -->
+<!-- > Completed Projects -->
+<!-- > Contributors -->
+<!-- > Managed Budget -->
 >
 >
 

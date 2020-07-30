@@ -1,20 +1,52 @@
- import { FETCH_GENERAL_PERF, FETCH_PROJECT_PERF, FETCH_ALL_PROJECT_INDICATORS, GET_INDICATORS } from './types'
+import { FETCH_GENERAL_PERF, FETCH_PROJECT_PERF, FETCH_ALL_PROJECT_INDICATORS, GET_INDICATORS, GENERAL_CLEANUP } from './types'
 
-
- function fetchGeneralPerf() {
-     return (dispatch) => {
-         fetch()
-         .then()
-         .then()
-     }
- }
-
-function projectPerfSuccess(data){
+function generalCleanup(){
     return {
-        type: FETCH_PROJECT_PERF,
+        type: GENERAL_CLEANUP
+    }
+}
+
+
+function generalPerfSuccess(data){
+    return {
+        type: FETCH_GENERAL_PERF,
         payload: data
     }
 }
+
+
+ function fetchGeneralPerf() {
+    return (dispatch) => {
+        fetch(`http://localhost:3001/dashboard`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
+            }
+        })
+        .then( r => {
+            if (r.ok) {
+               return r.json()
+            } else {
+               throw new Error('Error fetching performance')
+            }
+        })
+        .then( data => {
+           dispatch(generalPerfSuccess(data))
+        })
+        .catch((err) => {
+           console.log(err)
+        })
+    }
+ }
+ 
+ function projectPerfSuccess(data){
+     return {
+         type: FETCH_PROJECT_PERF,
+         payload: data
+     }
+ }
 
 function fetchProjectPerf(p_id) {
      return (dispatch) => {
@@ -76,4 +108,4 @@ function fetchAllProjectIndicators(){
 }
 
 
- export { fetchGeneralPerf, fetchProjectPerf, fetchAllProjectIndicators}
+ export { generalCleanup, fetchGeneralPerf, fetchProjectPerf, fetchAllProjectIndicators}

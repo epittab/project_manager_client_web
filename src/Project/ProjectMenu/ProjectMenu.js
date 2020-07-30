@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { connect } from 'react-redux'
+
 import Board from './Board/Board'
 import Tray from './Tray/Tray'
 
@@ -15,4 +17,4 @@ class ProjectMenu extends Component {
         )
     }
 }
-export default ProjectMenu
+export default connect()(ProjectMenu)
