@@ -102,16 +102,16 @@ class Widget extends Component {
     }
     renderBudget(){
         
-        return ( <div>
+        return ( <div >
             { this.props.overBudget[0] ? 
             (<>
-                <p className='widget-score-text bad'>${(this.props.overBudget[1].info.amount).toFixed(2)}</p>
+                <p className='widget-score-text bad'>${(this.props.overBudget[1].info.amount).toFixed(0)}</p>
                 <p className='widget-text'>Over Budget</p> 
                 </>)
             :
             
            (<> 
-            <p className='widget-score-text'>${(this.props.overBudget[1].info.amount).toFixed(2)}</p>
+            <p className='widget-score-text'>${(this.props.overBudget[1].info.amount).toFixed(0)}</p>
             <p className='widget-text'>Budget Left</p> 
             </>)}
         </div>)

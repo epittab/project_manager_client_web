@@ -25,9 +25,9 @@ class NewBlock extends Component {
                     <label className='form-text' >
                         Block Description:
                     </label>
-                    <textarea name='block_description' type='text' value={this.props.newBlockForm.block_description} onChange={this.props.handleChange}/>
+                    <textarea rows="5" cols="60" name='block_description' type='text' value={this.props.newBlockForm.block_description} onChange={this.props.handleChange}/>
                     <br />
-                    <button  className='form-button' type='submit'>Submit</button>
+                    <button  className='form-button primary' type='submit'>Submit</button>
                 </form>
             </div>
         )

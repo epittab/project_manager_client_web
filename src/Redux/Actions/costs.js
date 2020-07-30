@@ -32,6 +32,7 @@ function postCostForm(e, form, t_id){
             data.hasOwnProperty("isService") ? 
             dispatch(postSmCost(data)) :
             dispatch(postLaborCost(data))
+            dispatch(costFormCleanup())
         })
     }
 }

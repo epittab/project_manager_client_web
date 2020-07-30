@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import {connect} from 'react-redux'
 import {changeProjectForm, postProjectForm, projectFormCleanup} from '../../../../Redux/Actions/projects'
 
@@ -13,9 +15,12 @@ class CreateProject extends Component {
 
     render() {
         return (<div className = 'Sheet transparent'> 
-                
+                <h3>New Project</h3>
+                <br />
+                <br />
+                <Link to={`/projects`} ><div className='back-bubble'></div></Link>
+            
                 <form className='form-body' onSubmit={ (e) => this.props.handlePostProjectForm(e, this.props.new_project) }>
-                    <h3>New Project</h3>
                     <label className='form-text' htmlFor='new-project-form-name'>Project Name: </label>
                     <input id='new-project-form-name' type='text' name='project_name' 
                     value={this.props.project_name}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import {connect} from 'react-redux'
 import { fetchTask, fetchStartTask, fetchCompleteTask, toggleTaskCosts, deleteTask } from '../../Redux/Actions/tasks'
@@ -86,7 +86,7 @@ class TaskCont extends Component {
 
     renderGeneral(){
         return (
-            <div className='block-wrapper dark-on-light'>
+            <div className='general-block-wrapper dark-on-light'>
                 <p> <strong>Task Name: </strong> {`${this.props.task.task_name}`}</p>
                 <p> <strong>Task Desc:</strong> {`${this.props.task.task_description}`}</p>
                 <p> <strong>Status:</strong> {`${this.props.task_status}`} </p>
@@ -103,6 +103,11 @@ class TaskCont extends Component {
         return (
             <div className='Sheet transparent'>
                 <h2>Task Detail</h2>
+
+                < br />
+                <Link to={`/projects/${p_id}/blocks/${b_id}`} ><div className='back-bubble'></div></Link>
+                < br />
+
                 { this.props.task ? this.renderGeneral() : null }
              
                 <div>

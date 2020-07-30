@@ -11,7 +11,7 @@ class Tray extends Component {
     render() {
         return (
             <div className='Tray transparent'>
-                < Info />
+                
                 <div className = 'Widget-wrapper'>
                     < BudgetCard routeProps={this.props.routeProps} />
                     < InviteCard routeProps={this.props.routeProps} />

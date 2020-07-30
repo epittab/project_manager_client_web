@@ -32,7 +32,7 @@ class BlockDetail extends Component {
 
     renderGeneral(){
         return (
-            <div className='block-wrapper dark-on-light'>
+            <div className='general-block-wrapper dark-on-light'>
                 <p> <strong>Block Name: </strong> {`${this.props.block.block_name}`}</p>
                 <p> <strong>Block Desc:</strong> {`${this.props.block.block_description}`}</p>
                 <p> <strong>Status:</strong> {`${this.props.block_status}`} </p>
@@ -47,7 +47,7 @@ class BlockDetail extends Component {
             <div className=''>
                 { (this.props.tasks.length > 0) ?
                 this.props.tasks.map( task => 
-                 <div className='block-task-wrapper transparent'>
+                 <div className='new-task-wrapper transparent'>
                     <div className='task-info-wrapper'>
                         <p> <strong>Task Name: </strong> {`${task.task_name}`}</p>
                         <p> <strong>Task Description:</strong> {`${task.task_description}`}</p>
@@ -80,6 +80,10 @@ class BlockDetail extends Component {
             <div className='Sheet transparent'>
                 <h2>Block Detail</h2>
 
+                < br />
+                <Link to={`/projects/${this.props.routeProps.match.params.p_id}`} ><div className='back-bubble'></div></Link>
+                < br />
+
                     {this.props.block ? this.renderGeneral() : null }
 
                 <div>
@@ -94,8 +98,8 @@ class BlockDetail extends Component {
                     : null}
                     {this.props.block ? this.renderTasks() : null }
                 </div>
-                <div className='block-wrapper transparent'>
-                        <form onSubmit={ this.handleDelete }>
+                <div className='delete-section-wrapper transparent'>
+                        <form className='form-wrapper' onSubmit={ this.handleDelete }>
                             <p>DELETE BLOCK</p>
                             <button className='form-button danger action-item' type='submit'>Delete</button>
                         </form>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { fetchBudget } from '../Redux/Actions/budget'
 
 import './Budget.css'
@@ -60,6 +61,10 @@ class Budget extends Component {
         return (
             <div className='Sheet transparent'>
                 <h2>Budget</h2>
+                < br />
+                <Link to={`/projects/${this.props.routeProps.match.params.p_id}`} ><div className='back-bubble'></div></Link>
+                < br />
+
                     { this.props.budget ? this.renderTotal() : null }
                 <div className='total-budget-detail-container'>
                     { (this.props.budget && this.props.budget.budget_per_task.length > 0)  

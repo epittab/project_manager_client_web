@@ -35,10 +35,6 @@ To Do List:
 
 
 18) Polish every view (CSS) and handling unmounting
-11) add more User indications/instructions
-5) add "Totals" Row to budget
-
-13) number of tasks over budget => 
 
 general KPI
 > Project count
@@ -50,6 +46,9 @@ general KPI
 
 
 
+13) number of tasks over budget => 
+11) add more User indications/instructions
+5) add "Totals" Row to budget
 
 
 

@@ -8,14 +8,38 @@
     border-radius: 8px;
 }
 
+div.general-block-wrapper{
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
 div.block-task-wrapper {
     display: grid;
     grid-template-columns: 3fr 1fr;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+div.new-task-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 1rem;
+    margin-top: 1rem;
+   
+    border-radius: 8px;
 }
 
 div.block-wrapper-grid-text{
     width: 100%;
     overflow-x: scroll;
+}
+
+div.delete-section-wrapper {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
 }
 
 div.block-wrapper-grid-buttons {
@@ -39,4 +63,15 @@ div.add-icon {
     background-image: url('../../images/add-circle-icon.svg');
 
     cursor: pointer;
+}
+
+div.back-bubble {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background-color:  rgb(240, 174, 68);
+    background-image: url('../../images/arrow-left.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
 }

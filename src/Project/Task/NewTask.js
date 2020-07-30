@@ -21,6 +21,7 @@ class NewTask extends Component {
                     <br />
                     <label htmlFor='task-create-form-desc' className='form-text' >Task Description:</label>
                     <textarea name='task_description' value={this.props.task_description} 
+                    rows="5" cols="60"
                     id='task-create-form-desc' type='text' onChange={this.props.handleChange}/>
                     <br />
                     <label htmlFor='task-create-form-start-date' className='form-text' >Task Start Date:</label>
@@ -31,7 +32,7 @@ class NewTask extends Component {
                     <input name='task_end_date' value={this.props.task_end_date} 
                     id='task-create-form-end-date' type='date' onChange={this.props.handleChange}/>
                     <br />
-                    <button  className='form-button' type='submit'>Add</button>
+                    <button  className='form-button primary' type='submit'>Add</button>
                 </form>
             </div>
         )

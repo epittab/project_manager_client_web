@@ -43,6 +43,11 @@ class BlockCont extends Component {
         return (
             <div className='Sheet transparent'>
                 <h2>Project</h2>
+
+                < br />
+                < br />
+                <Link to={`/projects/${this.props.routeProps.match.params.p_id}`} ><div className='back-bubble'></div></Link>
+                < br />
                 <div>
                     <h3>All Blocks</h3>
                     <div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-
+import { Link} from 'react-router-dom'
 import { fetchAllContributors, inviteFormCleanup, changeInviteForm, postInviteForm } from '../Redux/Actions/invite'
 
 import './Invite.css'
@@ -16,16 +16,23 @@ import './Invite.css'
 
     renderTeam(){
         return(
-        this.props.contributors.map((cont) => {return <div> 
-                <h4>Name: {cont.first_name} {cont.last_name}</h4>
-             </div>})
-        )
+        <div>
+            <h4> Team Members: </h4>
+            {this.props.contributors.map((cont) => {return <div> 
+                    <p style={{color: 'darkslategrey'}}><strong>Name:</strong> {cont.first_name} {cont.last_name}</p>
+                 </div>})}
+        </div>)
     }
    
     render() {
         return (
             <div className='Sheet transparent'>
                 <h2>Invite</h2>
+
+                < br />
+                <Link to={`/projects/${this.props.routeProps.match.params.p_id}`} ><div className='back-bubble'></div></Link>
+                < br />
+
                 <div className='total-Invite-container'>
                     <h4>Total Contributors</h4>
                     <p>{this.props.contributors.length}</p>
