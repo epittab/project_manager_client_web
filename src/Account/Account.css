@@ -1,3 +1,41 @@
 div.Account-Edit-button {
     width: 2rem;
 }
+
+div.Account-Section {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+div.subsection-wrapper {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    padding: 1rem 2rem 1rem 2rem;
+    
+}
+
+form.form-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-between;
+}
+
+div.dividing-line {
+    margin: 2rem 0 2rem 0;
+    height: 1px;
+    background-color: gray;
+    width: 80%;
+    border-radius: 50%;
+}
+
+span.text-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}

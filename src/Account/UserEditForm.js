@@ -37,9 +37,10 @@ class UserEditForm extends Component {
     renderUser(){
         return (<div>
                     <h3>User Details:</h3>
-
-                    <p><span>Name: </span> {`${this.props.d_first_name} ${this.props.d_last_name}`}</p>
-                    <p><span>User Name: </span> {`${this.props.d_username}`}</p>
+                        < br/>
+                        < br/>
+                    <p><span className='text-title'>Name: </span> {`${this.props.d_first_name} ${this.props.d_last_name}`}</p>
+                    <p><span className='text-title'>User Name: </span> {`${this.props.d_username}`}</p>
                     
 
                     <div className='Account-Edit-button' onClick={this.toggleUserForm}>< EditButton size={2}  /></div>
@@ -52,7 +53,7 @@ class UserEditForm extends Component {
         this.props.cost ? userCost = `$ ${this.props.cost}` : userCost = `You are priceless, so you must have a cost greater than 0. Please submit your hourly cost.`
         return (
             <div>
-                <p><span>Cost per hour: </span> { this.props.cost ? `${userCost}` : <span className='null-text'>{`${userCost}`}</span>}</p>
+                <p><span className='text-title'>Cost per hour: </span> { this.props.cost ? `${userCost}` : <span className='null-text'>{`${userCost}`}</span>}</p>
                 <div className='Account-Edit-button' onClick={this.toggleCost}>< EditButton size={2}  /></div>
             
             </div>
@@ -80,36 +81,38 @@ class UserEditForm extends Component {
                     < br />
                     <button className='form-button' onClick={this.toggleUserForm}>Cancel</button>
                     < br />
-                    <button className='form-button' type='submit'>Submit</button>
+                    <button className='form-button primary' type='submit'>Submit</button>
                 </form>)
     }
 
     renderEditCost(){
         return (<form className='form-body'  onSubmit={(e) => this.props.submitUserCost(e, this.props.form_cost)}>
-                    <label className='form-label' htmlFor='uf-cost'>Hourly Cost:</label>
+                    <label className='form-label' htmlFor='uf-cost'>Cost per hour:</label>
                     <input type='number' value={this.props.form_cost} name='form_cost' 
                     id='uf-cost'  onChange={(e) => this.props.handleChangeUserCost(e)}/>
                     < br />
                     <button className='form-button' onClick={this.toggleCost}>Cancel</button>
                     < br />
-                    <button className='form-button' type='submit'>Submit</button>
+                    <button className='form-button primary' type='submit'>Submit</button>
                 </form>)
     }
     
 
     render() {
         return (
-            <div>
+            < div className='Account-Section'>
+               
+                <div className='subsection-wrapper'>
+                    { this.props.isEditUser ? this.renderEditUser() : this.renderUser()}
+                <div className='dividing-line'></div>
+                    { this.props.isEditCost ? this.renderEditCost() : this.renderCost()}
+                </div>
                 
-                { this.props.isEditUser ? this.renderEditUser() : this.renderUser()}
-                { this.props.isEditCost ? this.renderEditCost() : this.renderCost()}
-                
-                <div className='block-wrapper transparent'>
-                        <form onSubmit={ this.handleDelete }>
-                            <p>DELETE ACCOUNT</p>
+                <div className='subsection-wrapper'>
+                        <form className='form-wrapper' onSubmit={ this.handleDelete }>
+                            <p>DELETE ACCOUNT:</p>
                             <button className='form-button danger action-item' type='submit'>Delete</button>
                         </form>
-
                 </div>
 
             </div>
