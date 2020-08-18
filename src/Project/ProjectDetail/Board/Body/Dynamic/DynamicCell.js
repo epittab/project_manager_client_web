@@ -33,7 +33,7 @@ class DynamicCell extends Component {
         }
 
     getFormattedDate = () => {
-        return `${new Date(this.state.cellDate).getDate()}/${new Date(this.state.cellDate).getMonth()+1}`
+        return `${new Date(this.state.cellDate).getMonth()+1}/${new Date(this.state.cellDate).getDate()}`
     }
 
     render() {
